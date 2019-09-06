@@ -2,7 +2,7 @@
  
 
 
-# Group members (full names, also join a group in your section on Canvas)
+## Group members (full names, also join a group in your section on Canvas)
 Brandon Baker<br>
 Chase Canales<br>
 Cristian Mendoza<br>
