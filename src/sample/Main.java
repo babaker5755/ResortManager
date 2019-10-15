@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 // This is an edit so I can do a pull request. -Todd
+//this is an edit for pull request. -Jerry
 public class Main extends Application {
 
     @Override
