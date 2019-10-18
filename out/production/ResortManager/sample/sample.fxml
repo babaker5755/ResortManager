@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,8 +13,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
   <children>
     <TabPane fx:id="tabPane" prefHeight="709.0" prefWidth="770.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
@@ -20,7 +23,19 @@
           <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Button layoutX="327.0" layoutY="523.0" mnemonicParsing="false" text="Cancel Reservation" />
+                <Button layoutX="507.0" layoutY="600.0" mnemonicParsing="false" text="Cancel Reservation" />
+                        <ImageView fitHeight="303.0" fitWidth="744.0" layoutX="13.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../Desktop/BannerPic.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="51.0" prefWidth="741.0" text="Welcome To import resortName; Home Page">
+                           <font>
+                              <Font name="Lucida Calligraphy Italic" size="25.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField layoutX="108.0" layoutY="600.0" prefHeight="25.0" prefWidth="365.0" />
+                        <TextArea layoutX="14.0" layoutY="340.0" prefHeight="216.0" prefWidth="745.0" text="If you would like to book a room at our wonderful resort, simply click the &quot;Browse Catalog&quot; button at the top and pick from our wide &#10;selection of state-of-the-art rooms. With a whole TWO options, the possibilities are endless!&#10;&#10;If you are a staff manager here at import resortName; simply click the &quot;Manager&quot; tab and input your Secure Manager Key when&#10;prompted, allowing you access to our secure server and the ability to view different aspects of resort and client information.&#10;&#10;Finally, if you'd like to see all the wonderful things available to guests here at the resort, click the &quot;Amenities&quot; tab at the top of this page&#10;and be greeted with a vast description of all the different ways you can relax and unwind while staying at import resortName!&#10;&#10;&#10;&#10;(Images borrowed from Marriot.com and Hiltonbarbadosresort.com. We claim no ownership of any images on this program)" />
               </children>
             </AnchorPane>
           </content>
@@ -57,14 +72,14 @@
               <children>
                 <Pane layoutX="14.0" layoutY="14.0" prefHeight="650.0" prefWidth="742.0000999999975">
                   <children>
-                    <TextArea layoutX="24.0" layoutY="325.0" prefHeight="311.0" prefWidth="705.0" text="&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;Welcome to Paradise&#10;&#9;At import resortName, we pride ourselves in excellence and perfection. Our guests enjoy only the finest amenities available, from our 2000 foot indoor swimming pool to our state-of-the-art arcade, there's some thing here for everyone. Whether you want to visit our private beach or go on a ski trip down our private slopes, you'll never be out of things to do.&#10;&#10;&#9;With over a million accolades and awards, import resortName has been the pinnacle of hosiptality ever since early 2000 B.C. We have ensured the perfect accomodations for each and every guest, and make sure that our outrageous prices go towards funding even more ridiculous future projects, like our Endangered Species Petting Zoo coming this Spring!&#10;&#10;For inqueries, please contact:&#10;info@importResortName.com&#10;&#10;For press info, please contact:&#10;press@importResortName.com&#10;&#10;For legal lawsuits regarding our capture and containment methods of afformetioned endangered species, please contact:&#10;import@importRivalResortName.com" wrapText="true" />
+                    <TextArea layoutX="24.0" layoutY="325.0" prefHeight="311.0" prefWidth="705.0" text="&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;Welcome to Paradise&#10;&#9;At import resortName, we pride ourselves in excellence and perfection. Our guests enjoy only the finest amenities available, from our 2000 foot indoor swimming pool to our state-of-the-art arcade, there's some thing here for everyone. Whether you want to visit our private beach or go on a ski trip down our private slopes, you'll never be out of things to do.&#10;&#10;&#9;With over a million accolades and awards, import resortName has been the pinnacle of hosiptality ever since early 2000 B.C. We have ensured the perfect accomodations for each and every guest, and make sure that our outrageous prices go towards funding even more ridiculous future projects, like our Endangered Species Petting Zoo coming this Spring!&#10;&#10;For inqueries, please contact:&#10;info@importResortName.com&#10;&#10;For press info, please contact:&#10;press@importResortName.com&#10;&#10;For legal lawsuits regarding our capture and containment methods of afformetioned endangered species, please contact:&#10;info@importRivalResortName.com" wrapText="true" />
+                              <ImageView fitHeight="267.0" fitWidth="713.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../Desktop/AmenitiesPic.jpg" />
+                                 </image>
+                              </ImageView>
                   </children>
                 </Pane>
-                <ImageView fitHeight="316.9987580802873" fitWidth="475.7955017089844" layoutX="134.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@../../../../../Downloads/amenitiesStockImage.jpg" />
-                  </image>
-                </ImageView>
               </children>
             </AnchorPane>
           </content>
