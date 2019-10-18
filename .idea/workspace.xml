@@ -7,6 +7,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/ManagerRoomView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -231,6 +237,7 @@
       <workItem from="1571246526915" duration="575000" />
       <workItem from="1571345799206" duration="521000" />
       <workItem from="1571420742792" duration="1636000" />
+      <workItem from="1571422806968" duration="4373000" />
     </task>
     <task id="LOCAL-00001" summary="pull request">
       <created>1571161850397</created>
