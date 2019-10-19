@@ -7,7 +7,12 @@ public class BookingManager {
     private ArrayList<Booking> bookingList;
 
     BookingManager() {
-        bookingList = new ArrayList<Booking>();
+        bookingList = new ArrayList<>();
+    }
+
+    // Overloaded constructor.
+    BookingManager(ArrayList<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     public void addBooking(Booking myBooking) {
@@ -22,5 +27,7 @@ public class BookingManager {
         }
     }
 
-    public ArrayList<Booking> getBookingList() {return bookingList;}
+    public ArrayList<Booking> getBookingList() {
+        return bookingList;
+    }
 }

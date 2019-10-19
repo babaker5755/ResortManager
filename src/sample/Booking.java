@@ -5,27 +5,34 @@ import java.util.Date;
 
 public class Booking {
 
-  private Room room;
+  private String confirmationNumber;
+  private String roomNumber;
+  private double price;
   private String clientName;
   private String clientAddress;
   private String clientCreditCard;
   private String clientEmail;
-  private String confirmationNumber;
-  private LocalDate checkInDate;
-  private LocalDate checkOutDate;
+  private Date checkInDate;
+  private Date checkOutDate;
 
-  public Booking(Room room, String clientName, String clientAddress, String clientCreditCard,
-                 String clientEmail, LocalDate checkInDate, LocalDate checkOutDate, String confirmationNumber){
-    this.room = room;
+  public Booking(String confirmationNumber, String roomNumber, double price, String clientName, String clientAddress, String clientCreditCard,
+                 String clientEmail, Date checkInDate, Date checkOutDate){
+    this.confirmationNumber = confirmationNumber;
+    this.roomNumber = roomNumber;
+    this.price = price;
     this.clientName = clientName;
     this.clientAddress = clientAddress;
     this.clientCreditCard = clientCreditCard;
     this.clientEmail = clientEmail;
-    this.confirmationNumber = confirmationNumber;
     this.checkInDate = checkInDate;
     this.checkOutDate = checkOutDate;
-    this.room.setVacant(false);
   }
+
+  public String getRoomNumber() { return roomNumber; }
+  public void setRoomNumber(String roomNumber) { this.roomNumber = roomNumber; }
+
+  public double getPrice() { return price; }
+  public void setPrice(double price) { this.price = price; }
 
   public String getClientName() {
     return clientName;
@@ -55,9 +62,6 @@ public class Booking {
     this.clientEmail = clientEmail;
   }
 
-  public String getRoomNumber() { return room.getRoomNumber(); }
-  public void setRoomNumber(String roomNumber) { room.setRoomNumber(roomNumber); }
-
   public String getConfirmationNumber() {
     return confirmationNumber;
   }
@@ -65,13 +69,10 @@ public class Booking {
     this.confirmationNumber = confirmationNumber;
   }
 
-  public double getPrice() { return room.getPrice(); }
-  public void setPrice(double price) { room.setPrice(price); }
+  public Date getCheckInDate() { return checkInDate; }
+  public void setCheckInDate(Date checkInDate) { this.checkInDate = checkInDate; }
 
-  public LocalDate getCheckInDate() { return checkInDate; }
-  public void setCheckInDate(LocalDate checkInDate) { this.checkInDate = checkInDate; }
-
-  public LocalDate getCheckOutDate() { return checkOutDate; }
-  public void setCheckOutDate(LocalDate checkOutDate) { this.checkOutDate = checkOutDate; }
+  public Date getCheckOutDate() { return checkOutDate; }
+  public void setCheckOutDate(Date checkOutDate) { this.checkOutDate = checkOutDate; }
 
 }

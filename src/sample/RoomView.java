@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.Controller;
+import java.util.Date;
 
 public class RoomView {
 
@@ -159,10 +159,17 @@ public class RoomView {
             // Do something
             System.out.println("Submit Button Pressed" + priceLbl.toString());
 
-            Booking newBooking = new Booking(room, nameField.toString(), addressField.toString(),
-                    creditCardField.toString(), emailField.toString(), checkInPicker.getValue(),
-                    checkOutPicker.getValue(),"98328923");
+            System.out.print(room.getRoomNumber() + "\n\n\n");
+
+            Booking newBooking = new Booking("98328923", room.getRoomNumber(),
+                    room.getPrice(), nameField.toString(), addressField.toString(),
+                    creditCardField.toString(), emailField.toString(),
+                    java.sql.Date.valueOf(checkInPicker.getValue()),
+                    java.sql.Date.valueOf(checkOutPicker.getValue()));
             bookingList.addBooking(newBooking);
+            DatabaseManager DBM = new DatabaseManager();
+
+
             for (Booking b : bookingList.getBookingList()) {
               System.out.print("Room #: " + b.getRoomNumber() + "\n");
               System.out.print("Check-in Date: " + b.getCheckInDate() + "\n");
