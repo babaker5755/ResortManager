@@ -167,6 +167,7 @@ public class RoomView {
                     java.sql.Date.valueOf(checkInPicker.getValue()),
                     java.sql.Date.valueOf(checkOutPicker.getValue()));
             bookingList.addBooking(newBooking);
+            room.setVacant(false);
             DatabaseManager DBM = new DatabaseManager();
 
 
