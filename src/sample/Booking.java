@@ -61,38 +61,20 @@ public class Booking {
   public String getClientEmail() {
     return clientEmail;
   }
-    
+
   public void setClientEmail(String clientEmail) {
     this.clientEmail = clientEmail;
-  }
+    }
 
-  public String getRoomNumber() {
-    return roomNumber;
-  }
-
-  public void setRoomNumber(String roomNumber) {
-    this.roomNumber = roomNumber;
-  }
-
-  public String getConfirmationNumber() {
-    return confirmationNumber;
-  }
-
-  public String getConfirmationNumber() {
-    return confirmationNumber;
-  }
-    
   public void setConfirmationNumber(String confirmationNumber) {
     this.confirmationNumber = confirmationNumber;
   }
 
-  public double getPrice() {
-    return price;
+  public String getConfirmationNumber() {
+    return confirmationNumber;
   }
 
-  public void setPrice(double price) {
-    this.price = price;
-  }
+
   public Date getCheckInDate() { return checkInDate; }
   public void setCheckInDate(Date checkInDate) { this.checkInDate = checkInDate; }
 

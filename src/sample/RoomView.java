@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -68,6 +69,11 @@ public class RoomView {
     pane.getChildren().add(priceLbl);
 
 
+    //removed in conflict resolution
+//    Label emailLabel = new Label("Email Address");
+//    emailLabel.setLayoutX(205);
+//    emailLabel.setLayoutY(390);
+
     Label emailLabel = new Label("Email Address");
     emailLabel.setLayoutX(25);
     emailLabel.setLayoutY(410);
@@ -100,9 +106,6 @@ public class RoomView {
     addressField.setPrefHeight(40);
     pane.getChildren().add(addressField);
 
-    Label emailLabel = new Label("Email Address");
-    emailLabel.setLayoutX(205);
-    emailLabel.setLayoutY(390);
 
     TextField emailField = new TextField();
     emailField.setLayoutX(205);

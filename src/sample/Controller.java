@@ -25,8 +25,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class Controller {
-
 import org.h2.engine.Database;
 
 public class Controller {
@@ -236,7 +234,6 @@ public class Controller {
       priceLbl.setAlignment(Pos.CENTER);
       pane.getChildren().add(priceLbl);
 
-
       // Add Button
       Button btn = new Button("Book Now");
       btn.setPrefSize(120, 40);
@@ -254,9 +251,11 @@ public class Controller {
           });
       pane.getChildren().add(btn);
 
-      catalogGridPane.add(pane,column,row);
+      catalogGridPane.add(pane, column, row);
     }
-  private void setupGridPaneWithRooms(ArrayList<Room>  rooms) {
+}
+
+  private void setupGridPaneWithRooms(ArrayList<Room>  rooms){
 
     catalogGridPane.setGridLinesVisible(false);
     // For each room in the list of rooms
