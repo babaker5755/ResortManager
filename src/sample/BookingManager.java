@@ -1,0 +1,26 @@
+package sample;
+
+import java.util.ArrayList;
+
+public class BookingManager {
+
+    private ArrayList<Booking> bookingList;
+
+    BookingManager() {
+        bookingList = new ArrayList<Booking>();
+    }
+
+    public void addBooking(Booking myBooking) {
+        bookingList.add(myBooking);
+    }
+
+    public void removeBooking(String confirmationNumber) {
+        for (Booking b : bookingList) {
+            if (b.getConfirmationNumber() == confirmationNumber) {
+                bookingList.remove(b);
+            }
+        }
+    }
+
+    public ArrayList<Booking> getBookingList() {return bookingList;}
+}

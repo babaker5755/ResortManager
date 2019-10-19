@@ -6,14 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-// This is an edit so I can do a pull request. -Todd
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Bottom Text");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Testing");
+        primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
     }
 
