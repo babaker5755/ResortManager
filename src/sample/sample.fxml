@@ -26,7 +26,7 @@
                 <Button layoutX="507.0" layoutY="600.0" mnemonicParsing="false" text="Cancel Reservation" />
                         <ImageView fitHeight="303.0" fitWidth="744.0" layoutX="13.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../Desktop/BannerPic.jpg" />
+                              <Image url="/sample/BannerPic.jpg" />
                            </image>
                         </ImageView>
                         <TextField alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="51.0" prefWidth="741.0" text="Welcome To import resortName; Home Page">
@@ -91,7 +91,7 @@
                     <TextArea layoutX="24.0" layoutY="325.0" prefHeight="311.0" prefWidth="705.0" text="&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;Welcome to Paradise&#10;&#9;At import resortName, we pride ourselves in excellence and perfection. Our guests enjoy only the finest amenities available, from our 2000 foot indoor swimming pool to our state-of-the-art arcade, there's some thing here for everyone. Whether you want to visit our private beach or go on a ski trip down our private slopes, you'll never be out of things to do.&#10;&#10;&#9;With over a million accolades and awards, import resortName has been the pinnacle of hosiptality ever since early 2000 B.C. We have ensured the perfect accomodations for each and every guest, and make sure that our outrageous prices go towards funding even more ridiculous future projects, like our Endangered Species Petting Zoo coming this Spring!&#10;&#10;For inqueries, please contact:&#10;info@importResortName.com&#10;&#10;For press info, please contact:&#10;press@importResortName.com&#10;&#10;For legal lawsuits regarding our capture and containment methods of afformetioned endangered species, please contact:&#10;info@importRivalResortName.com" wrapText="true" />
                               <ImageView fitHeight="267.0" fitWidth="713.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../Desktop/AmenitiesPic.jpg" />
+                                    <Image url="/sample/AmenitiesPic.jpg" />
                                  </image>
                               </ImageView>
                   </children>
