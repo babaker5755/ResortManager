@@ -30,6 +30,10 @@ public class Controller {
   private BookingManager bookingList;
   private DatabaseManager dbManager;
 
+  @FXML private ImageView homePageImageView;
+
+  @FXML private ImageView amenitiesPageImageView;
+
   @FXML private GridPane catalogGridPane;
 
   @FXML private GridPane managerGridPane;
@@ -42,12 +46,19 @@ public class Controller {
 
   @FXML
   public void initialize() {
+
+    Image amenitiesImage = new Image(Controller.class.getResourceAsStream("AmenitiesPic.jpg"));
+    amenitiesPageImageView.setImage(amenitiesImage);
+    Image homePageImage = new Image(Controller.class.getResourceAsStream("BannerPic.jpg"));
+    homePageImageView.setImage(homePageImage);
+
     dbManager = new DatabaseManager();
     ArrayList<Room> rooms = dbManager.getRoomsAsList();
     bookingList = new BookingManager(dbManager.getBookingsAsList());
     setupGridPaneWithRooms(rooms);
     setupManagerGridPane(rooms);
     setupManagerReportForm();
+
   }
 
   @FXML
