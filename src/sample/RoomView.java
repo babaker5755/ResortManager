@@ -68,17 +68,6 @@ public class RoomView {
     priceLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(priceLbl);
 
-
-    //removed in conflict resolution
-//    Label emailLabel = new Label("Email Address");
-//    emailLabel.setLayoutX(205);
-//    emailLabel.setLayoutY(390);
-
-    Label emailLabel = new Label("Email Address");
-    emailLabel.setLayoutX(25);
-    emailLabel.setLayoutY(410);
-    emailLabel.setAlignment(Pos.CENTER);
-    pane.getChildren().add(emailLabel);
       
     Label nameLabel = new Label("Name");
     nameLabel.setLayoutX(25);
@@ -92,6 +81,7 @@ public class RoomView {
     nameField.setPrefWidth(175);
     nameField.setPrefHeight(40);
     pane.getChildren().add(nameField);
+
 
     Label addressLabel = new Label("Address");
     addressLabel.setLayoutX(25);
@@ -107,12 +97,19 @@ public class RoomView {
     pane.getChildren().add(addressField);
 
 
+    Label emailLabel = new Label("Email Address");
+    emailLabel.setLayoutX(205);
+    emailLabel.setLayoutY(390);
+    emailLabel.setAlignment(Pos.CENTER);
+    pane.getChildren().add(emailLabel);
+
     TextField emailField = new TextField();
     emailField.setLayoutX(205);
     emailField.setLayoutY(420);
     emailField.setPrefWidth(175);
     emailField.setPrefHeight(40);
     pane.getChildren().add(emailField);
+
 
     Label ccLabel = new Label("Credit Card Number");
     ccLabel.setLayoutX(205);
@@ -127,6 +124,7 @@ public class RoomView {
     creditCardField.setPrefHeight(40);
     pane.getChildren().add(creditCardField);
 
+
     Label checkInLabel = new Label("Check-in Date");
     checkInLabel.setLayoutX(25);
     checkInLabel.setLayoutY(550);
@@ -140,6 +138,7 @@ public class RoomView {
     checkInPicker.setPrefHeight(40);
     pane.getChildren().add(checkInPicker);
 
+
     Label checkOutLabel = new Label("Check-out Date");
     checkOutLabel.setLayoutX(205);
     checkOutLabel.setLayoutY(550);
@@ -152,6 +151,7 @@ public class RoomView {
     checkOutPicker.setPrefWidth(175);
     checkOutPicker.setPrefHeight(40);
     pane.getChildren().add(checkOutPicker);
+
 
     // Add Button
     Button btn = new Button("Submit");
@@ -167,13 +167,15 @@ public class RoomView {
             System.out.print(room.getRoomNumber() + "\n\n\n");
 
             Booking newBooking = new Booking("98328923", room.getRoomNumber(),
-                    room.getPrice(), nameField.toString(), addressField.toString(),
-                    creditCardField.toString(), emailField.toString(),
+                    room.getPrice(), nameField.getText(), addressField.getText(),
+                    creditCardField.getText(), emailField.getText(),
                     java.sql.Date.valueOf(checkInPicker.getValue()),
                     java.sql.Date.valueOf(checkOutPicker.getValue()));
             bookingList.addBooking(newBooking);
             room.setVacant(false);
             DatabaseManager DBM = new DatabaseManager();
+            // adding bookings to database
+            DBM.addBookingsToDB(bookingList.getBookingList());
 
 
             for (Booking b : bookingList.getBookingList()) {
