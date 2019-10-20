@@ -5,9 +5,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -68,7 +68,7 @@ public class RoomView {
     priceLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(priceLbl);
 
-
+      
     Label nameLabel = new Label("Name");
     nameLabel.setLayoutX(25);
     nameLabel.setLayoutY(390);
@@ -81,6 +81,7 @@ public class RoomView {
     nameField.setPrefWidth(175);
     nameField.setPrefHeight(40);
     pane.getChildren().add(nameField);
+
 
     Label addressLabel = new Label("Address");
     addressLabel.setLayoutX(25);
@@ -95,6 +96,7 @@ public class RoomView {
     addressField.setPrefHeight(40);
     pane.getChildren().add(addressField);
 
+
     Label emailLabel = new Label("Email Address");
     emailLabel.setLayoutX(205);
     emailLabel.setLayoutY(390);
@@ -107,6 +109,7 @@ public class RoomView {
     emailField.setPrefWidth(175);
     emailField.setPrefHeight(40);
     pane.getChildren().add(emailField);
+
 
     Label ccLabel = new Label("Credit Card Number");
     ccLabel.setLayoutX(205);
@@ -121,6 +124,7 @@ public class RoomView {
     creditCardField.setPrefHeight(40);
     pane.getChildren().add(creditCardField);
 
+
     Label checkInLabel = new Label("Check-in Date");
     checkInLabel.setLayoutX(25);
     checkInLabel.setLayoutY(550);
@@ -133,6 +137,7 @@ public class RoomView {
     checkInPicker.setPrefWidth(175);
     checkInPicker.setPrefHeight(40);
     pane.getChildren().add(checkInPicker);
+
 
     Label checkOutLabel = new Label("Check-out Date");
     checkOutLabel.setLayoutX(205);
@@ -147,6 +152,7 @@ public class RoomView {
     checkOutPicker.setPrefHeight(40);
     pane.getChildren().add(checkOutPicker);
 
+
     // Add Button
     Button btn = new Button("Submit");
     btn.setPrefSize(200, 50);
@@ -158,17 +164,18 @@ public class RoomView {
           public void handle(ActionEvent e) {
             // Do something
             System.out.println("Submit Button Pressed" + priceLbl.toString());
-
             System.out.print(room.getRoomNumber() + "\n\n\n");
 
             Booking newBooking = new Booking("98328923", room.getRoomNumber(),
-                    room.getPrice(), nameField.toString(), addressField.toString(),
-                    creditCardField.toString(), emailField.toString(),
+                    room.getPrice(), nameField.getText(), addressField.getText(),
+                    creditCardField.getText(), emailField.getText(),
                     java.sql.Date.valueOf(checkInPicker.getValue()),
                     java.sql.Date.valueOf(checkOutPicker.getValue()));
             bookingList.addBooking(newBooking);
             room.setVacant(false);
             DatabaseManager DBM = new DatabaseManager();
+            // adding bookings to database
+            DBM.addBookingsToDB(bookingList.getBookingList());
 
 
             for (Booking b : bookingList.getBookingList()) {

@@ -30,19 +30,55 @@ public class DatabaseManager {
         }
     }
 
-    void addRoomsToDB(Room[] rooms) {
+    void addRoomsToDB(ArrayList<Room> rooms) {
 
         for (Room room : rooms) {
-            System.out.println("Inserting records into table...");
+            System.out.println("Inserting room records into table...");
             try {
                 PreparedStatement ps = conn.prepareStatement("INSERT INTO ROOMS VALUES ('" + room.getRoomNumber() + "', '" +
                         room.getBedSize() + "', " + room.getNumBeds() + ", " +
                         room.getVacant() + ", " + room.getPrice() + ")");
                 ps.executeUpdate();
-                System.out.println("Inserted record into table.");
+                System.out.println("Inserted room record into table.");
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("Could not create record.");
+                System.out.println("Could not create room record.");
+            }
+        }
+    }
+    // add bookings to database
+    void addBookingsToDB(ArrayList<Booking> bookingList){
+        System.out.println("Inserting booking records into table...");
+        for (Booking booking : bookingList) {
+            try {
+                PreparedStatement ps = conn.prepareStatement("INSERT INTO BOOKINGS VALUES ('" + booking.getConfirmationNumber() + "', '" +
+                        booking.getRoomNumber() + "', '" + booking.getPrice() + "', '" +
+                        booking.getClientName() + "', '" + booking.getClientAddress() + "', '" +
+                        booking.getClientCreditCard() + "', '" + booking.getClientEmail() + "', '" +
+                        booking.getCheckInDate() + "', '" + booking.getCheckOutDate() + "')");
+                ps.executeUpdate();
+                System.out.println("Inserted booking record into table.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Could not create booking record.");
+            }
+        }
+    }
+    // delete booking from database and ArrayList
+    void removeBookingsFromDB(ArrayList<Booking> bookingList, String confirmationNumber){
+        System.out.println("Canceling booking...");
+        for (Booking booking : bookingList){
+            if(booking.getConfirmationNumber().equals(confirmationNumber)){
+                try {
+                    bookingList.remove(booking);
+                    PreparedStatement ps = conn.prepareStatement("DELETE FROM BOOKINGS WHERE CONFIRMATION_NUMBER='" + booking.getConfirmationNumber() + "'");
+                    ps.executeUpdate();
+                    System.out.println("Canceled booking.");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("Could not cancel booking.");
+                }
+
             }
         }
     }
@@ -80,12 +116,12 @@ public class DatabaseManager {
         return rooms;
     }
 
-    ArrayList<Booking> getBookingsAsList(ArrayList<Room> rooms) {
+    ArrayList<Booking> getBookingsAsList() {
         ArrayList<Booking> bookingList = new ArrayList<>();
 
         try {
             // Get all rows from the specified table.
-            ps = conn.prepareStatement("SELECT * FROM ROOMS");
+            ps = conn.prepareStatement("SELECT * FROM BOOKINGS");
             rs = ps.executeQuery();
 
             // Make each row a Booking object, then add it to the list of bookings.

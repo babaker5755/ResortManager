@@ -2,13 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="CSS file added">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Hotel_Database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Hotel_Database.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/RoomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/RoomView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -102,34 +120,22 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="CM-Test-Branch" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="prototype-branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\01\IdeaProjects\ResortManager\.idea" />
-      </set>
-    </option>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="babaker5755" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="ResortManager" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1QT2mizYz4AQ2JqOJhdhfNtiWz8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -139,6 +145,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -150,16 +157,24 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/h2-1.4.199.jar!/" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Oracle/JavaFX Scene Builder 1.1/JavaFX Scene Builder 1.1.exe" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\abass\IdeaProjects\resortmanager\lib" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sample" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -254,7 +269,7 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@ce7021d4" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@79811fe0" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
           </expand>
           <select />
@@ -276,16 +291,41 @@
       <workItem from="1567780430184" duration="30000" />
       <workItem from="1570320157917" duration="1256000" />
       <workItem from="1570323023120" duration="514000" />
-      <workItem from="1571488357179" duration="12886000" />
+      <workItem from="1571161738748" duration="991000" />
+      <workItem from="1571166136345" duration="267000" />
+      <workItem from="1571167357770" duration="617000" />
+      <workItem from="1571239404621" duration="1081000" />
+      <workItem from="1571246464976" duration="24000" />
+      <workItem from="1571246526915" duration="575000" />
+      <workItem from="1571345799206" duration="521000" />
+      <workItem from="1571420742792" duration="1636000" />
+      <workItem from="1571422806968" duration="4373000" />
+      <workItem from="1571518067262" duration="1173000" />
+      <workItem from="1571519274961" duration="197000" />
+      <workItem from="1571519485199" duration="6570000" />
     </task>
-    <task id="LOCAL-00001" summary="CSS file added">
-      <created>1571456744541</created>
+    <task id="LOCAL-00001" summary="pull request">
+      <created>1571161850397</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1571456744541</updated>
+      <updated>1571161850397</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="pull request">
+      <created>1571161916539</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1571161916539</updated>
+    </task>
+    <task id="LOCAL-00003" summary="CSS file added">
+      <created>1571240459881</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1571240459882</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,23 +334,6 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
-        <entry key="1">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="range">
-                    <value>
-                      <list>
-                        <option value="HEAD..CM-Test-Branch" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -320,16 +343,12 @@
         </entry>
       </map>
     </option>
-    <option name="OPEN_TABS">
-      <set>
-        <option value="1" />
-      </set>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="pull request" />
     <MESSAGE value="CSS file added" />
     <option name="LAST_COMMIT_MESSAGE" value="CSS file added" />
   </component>

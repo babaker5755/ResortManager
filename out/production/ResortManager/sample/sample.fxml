@@ -23,7 +23,7 @@
           <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Button layoutX="507.0" layoutY="600.0" mnemonicParsing="false" text="Cancel Reservation" />
+                <Button fx:id="cancelReservationBtn" layoutX="507.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#cancelReservation" text="Cancel Reservation" />
                         <ImageView fitHeight="303.0" fitWidth="744.0" layoutX="13.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="/sample/BannerPic.jpg" />
@@ -34,7 +34,7 @@
                               <Font name="Lucida Calligraphy Italic" size="25.0" />
                            </font>
                         </TextField>
-                        <PasswordField layoutX="108.0" layoutY="600.0" prefHeight="25.0" prefWidth="365.0" />
+                        <PasswordField fx:id="confirmationNumberField" layoutX="108.0" layoutY="600.0" prefHeight="25.0" prefWidth="365.0" />
                         <TextArea layoutX="14.0" layoutY="340.0" prefHeight="216.0" prefWidth="745.0" text="If you would like to book a room at our wonderful resort, simply click the &quot;Browse Catalog&quot; button at the top and pick from our wide &#10;selection of state-of-the-art rooms. With a whole TWO options, the possibilities are endless!&#10;&#10;If you are a staff manager here at import resortName; simply click the &quot;Manager&quot; tab and input your Secure Manager Key when&#10;prompted, allowing you access to our secure server and the ability to view different aspects of resort and client information.&#10;&#10;Finally, if you'd like to see all the wonderful things available to guests here at the resort, click the &quot;Amenities&quot; tab at the top of this page&#10;and be greeted with a vast description of all the different ways you can relax and unwind while staying at import resortName!&#10;&#10;&#10;&#10;(Images borrowed from Marriot.com and Hiltonbarbadosresort.com. We claim no ownership of any images on this program)" />
               </children>
             </AnchorPane>

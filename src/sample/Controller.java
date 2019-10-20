@@ -1,6 +1,7 @@
 package sample;
 
 import java.awt.Dimension;
+import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,13 +13,10 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -37,16 +35,26 @@ public class Controller {
 
   @FXML private Pane managerReportFormPane;
 
+  @FXML private Button cancelReservationBtn;
+
+  @FXML private PasswordField confirmationNumberField;
+
   @FXML
   public void initialize() {
     dbManager = new DatabaseManager();
     ArrayList<Room> rooms = dbManager.getRoomsAsList();
-    bookingList = new BookingManager();
+    bookingList = new BookingManager(dbManager.getBookingsAsList());
     setupGridPaneWithRooms(rooms);
     setupManagerGridPane(rooms);
     setupManagerReportForm();
 
 
+  }
+
+  @FXML
+  void cancelReservation(MouseEvent event) {
+    dbManager.removeBookingsFromDB(bookingList.getBookingList(), confirmationNumberField.getText());
+    System.out.println(confirmationNumberField.getText());
   }
 
   private void setupManagerReportForm() {
