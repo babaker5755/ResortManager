@@ -323,6 +323,7 @@ public class Controller {
                   }
                 });
         pane.getChildren().add(btn);
+        // some changes
 
         catalogGridPane.add(pane, column, row);
         System.out.print(rooms.get(i).getRoomNumber() + " added to view.\n");
