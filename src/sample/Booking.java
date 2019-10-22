@@ -15,8 +15,16 @@ public class Booking {
   private Date checkInDate;
   private Date checkOutDate;
 
-  public Booking(String confirmationNumber, String roomNumber, double price, String clientName, String clientAddress, String clientCreditCard,
-                 String clientEmail, Date checkInDate, Date checkOutDate){
+  public Booking(
+      String confirmationNumber,
+      String roomNumber,
+      double price,
+      String clientName,
+      String clientAddress,
+      String clientCreditCard,
+      String clientEmail,
+      Date checkInDate,
+      Date checkOutDate) {
     this.confirmationNumber = confirmationNumber;
     this.roomNumber = roomNumber;
     this.price = price;
@@ -28,16 +36,26 @@ public class Booking {
     this.checkOutDate = checkOutDate;
   }
 
-  public String getRoomNumber() { return roomNumber; }
-  public void setRoomNumber(String roomNumber) { this.roomNumber = roomNumber; }
+  public String getRoomNumber() {
+    return roomNumber;
+  }
 
-  public double getPrice() { return price; }
-  public void setPrice(double price) { this.price = price; }
+  public void setRoomNumber(String roomNumber) {
+    this.roomNumber = roomNumber;
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
+  }
 
   public String getClientName() {
     return clientName;
   }
-    
+
   public void setClientName(String clientName) {
     this.clientName = clientName;
   }
@@ -64,7 +82,7 @@ public class Booking {
 
   public void setClientEmail(String clientEmail) {
     this.clientEmail = clientEmail;
-    }
+  }
 
   public void setConfirmationNumber(String confirmationNumber) {
     this.confirmationNumber = confirmationNumber;
@@ -74,11 +92,19 @@ public class Booking {
     return confirmationNumber;
   }
 
+  public Date getCheckInDate() {
+    return checkInDate;
+  }
 
-  public Date getCheckInDate() { return checkInDate; }
-  public void setCheckInDate(Date checkInDate) { this.checkInDate = checkInDate; }
+  public void setCheckInDate(Date checkInDate) {
+    this.checkInDate = checkInDate;
+  }
 
-  public Date getCheckOutDate() { return checkOutDate; }
-  public void setCheckOutDate(Date checkOutDate) { this.checkOutDate = checkOutDate; }
+  public Date getCheckOutDate() {
+    return checkOutDate;
+  }
 
+  public void setCheckOutDate(Date checkOutDate) {
+    this.checkOutDate = checkOutDate;
+  }
 }

@@ -6,8 +6,7 @@ public class Manager {
   private String password;
 
   public String[] displaySummaryReport() {
-  String[] report = {"",""};
+    String[] report = {"", ""};
     return report;
   }
-
 }

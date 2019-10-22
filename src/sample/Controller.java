@@ -58,7 +58,6 @@ public class Controller {
     setupGridPaneWithRooms(rooms);
     setupManagerGridPane(rooms);
     setupManagerReportForm();
-
   }
 
   @FXML
@@ -130,9 +129,7 @@ public class Controller {
           }
         });
     managerReportFormPane.getChildren().add(btn);
-
   }
-
 
   private void setupManagerGridPane(ArrayList<Room> rooms) {
     managerGridPane.setGridLinesVisible(false);
@@ -201,7 +198,7 @@ public class Controller {
           });
       pane.getChildren().add(btn);
 
-      managerGridPane.add(pane,column,row);
+      managerGridPane.add(pane, column, row);
     } // end loop
   }
 
@@ -272,14 +269,13 @@ public class Controller {
 
       catalogGridPane.add(pane, column, row);
     }
-}
+  }
 
-  private void setupGridPaneWithRooms(ArrayList<Room>  rooms){
+  private void setupGridPaneWithRooms(ArrayList<Room> rooms) {
 
     catalogGridPane.setGridLinesVisible(false);
     // For each room in the list of rooms
     for (int i = 0; i < rooms.size(); i++) {
-
 
       if (rooms.get(i).getVacant() == true) {
         // Get row and column of current grid in gridpane
@@ -324,23 +320,22 @@ public class Controller {
         priceLbl.setAlignment(Pos.CENTER);
         pane.getChildren().add(priceLbl);
 
-
         // Add Button
         Button btn = new Button("Book Now");
         btn.setPrefSize(120, 40);
         btn.setLayoutX(15);
         btn.setLayoutY(275);
         btn.setOnAction(
-                new EventHandler<ActionEvent>() {
-                  @Override
-                  public void handle(ActionEvent e) {
-                    RoomView roomView = new RoomView();
-                    roomView.setRoom(room);
-                    roomView.setBookingList(bookingList);
-                    roomView.presentRoomView();
-                    System.out.println("button pressed " + priceLbl.toString());
-                  }
-                });
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                RoomView roomView = new RoomView();
+                roomView.setRoom(room);
+                roomView.setBookingList(bookingList);
+                roomView.presentRoomView();
+                System.out.println("button pressed " + priceLbl.toString());
+              }
+            });
         pane.getChildren().add(btn);
 
         catalogGridPane.add(pane, column, row);
@@ -349,8 +344,5 @@ public class Controller {
         System.out.print(rooms.get(i).getRoomNumber() + " is occupied!\n");
       }
     } // end loop
-
-
   }
-
 }

@@ -4,30 +4,30 @@ import java.util.ArrayList;
 
 public class BookingManager {
 
-    private ArrayList<Booking> bookingList;
+  private ArrayList<Booking> bookingList;
 
-    BookingManager() {
-        bookingList = new ArrayList<>();
-    }
+  BookingManager() {
+    bookingList = new ArrayList<>();
+  }
 
-    // Overloaded constructor.
-    BookingManager(ArrayList<Booking> bookingList) {
-        this.bookingList = bookingList;
-    }
+  // Overloaded constructor.
+  BookingManager(ArrayList<Booking> bookingList) {
+    this.bookingList = bookingList;
+  }
 
-    public void addBooking(Booking myBooking) {
-        bookingList.add(myBooking);
-    }
+  public void addBooking(Booking myBooking) {
+    bookingList.add(myBooking);
+  }
 
-    public void removeBooking(String confirmationNumber) {
-        for (Booking b : bookingList) {
-            if (b.getConfirmationNumber() == confirmationNumber) {
-                bookingList.remove(b);
-            }
-        }
+  public void removeBooking(String confirmationNumber) {
+    for (Booking b : bookingList) {
+      if (b.getConfirmationNumber() == confirmationNumber) {
+        bookingList.remove(b);
+      }
     }
+  }
 
-    public ArrayList<Booking> getBookingList() {
-        return bookingList;
-    }
+  public ArrayList<Booking> getBookingList() {
+    return bookingList;
+  }
 }
