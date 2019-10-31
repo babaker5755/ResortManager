@@ -74,5 +74,40 @@ public class ManagerRoomView {
     Scene dialogScene = new Scene(dialogVbox, 400, 650);
     dialog.setScene(dialogScene);
     dialog.show();
+
+    Button cancelBooking = new Button("Cancel Booking");
+    cancelBooking.setPrefSize(150, 40);
+    cancelBooking.setLayoutX(125);
+    cancelBooking.setLayoutY(605);
+    cancelBooking.setOnAction(
+        new EventHandler<ActionEvent>() {
+          @Override
+          public void handle(ActionEvent event) {
+            Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            VBox dialogVbox = new VBox();
+            Pane pane = new Pane();
+            Label confirmCancellation = new Label("Are sure you want cancel the booking? ");
+            confirmCancellation.setLayoutX(75);
+            confirmCancellation.setLayoutY(30);
+            Button yesButton = new Button("Yes");
+            yesButton.setPrefSize(50, 30);
+            yesButton.setLayoutX(100);
+            yesButton.setLayoutY(150);
+            Button noButton = new Button("No");
+            noButton.setLayoutX(200);
+            noButton.setLayoutY(150);
+            noButton.setPrefSize(50, 30);
+            pane.getChildren().add(noButton);
+            pane.getChildren().add(yesButton);
+
+            pane.getChildren().add(confirmCancellation);
+            Scene dialogScene = new Scene(dialogVbox, 350, 250);
+            dialogVbox.getChildren().add(pane);
+            dialog.setScene(dialogScene);
+            dialog.show();
+          }
+        });
+    pane.getChildren().add(cancelBooking);
   }
 }

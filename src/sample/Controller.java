@@ -105,10 +105,10 @@ public class Controller {
     endDatePicker.setLayoutY(70);
     managerReportFormPane.getChildren().add(endDatePicker);
 
-    // Add Button
+    // Generate Report Button In Manager Tab
     Button btn = new Button("Generate Report");
     btn.setPrefSize(150, 40);
-    btn.setLayoutX(300);
+    btn.setLayoutX(100);
     btn.setLayoutY(140);
     btn.setOnAction(
         new EventHandler<ActionEvent>() {
@@ -147,16 +147,15 @@ public class Controller {
       // Create pane from room data
       BrowsePane pane = new BrowsePane(room, true);
 
-// To Refresh values in the pane use these calls:
-//      pane.setBedSizeLblTxt(String text);
-//      pane.setNumBedsLblTxt(String text)
-//      pane.setImgViewImage(Image image);
-//      pane.setVacantLblTxt(String text);
-//      pane.setPriceLblTxt(String text);
+      // To Refresh values in the pane use these calls:
+      //      pane.setBedSizeLblTxt(String text);
+      //      pane.setNumBedsLblTxt(String text)
+      //      pane.setImgViewImage(Image image);
+      //      pane.setVacantLblTxt(String text);
+      //      pane.setPriceLblTxt(String text);
 
       // Add pane to specified grid
       managerGridPane.add(pane, column, row);
-
     } // end loop
   }
 
@@ -177,13 +176,14 @@ public class Controller {
       BrowsePane pane = new BrowsePane(room, false);
 
       // To Refresh values in the pane use these calls:
-//      pane.setBedSizeLblTxt(String text);
-//      pane.setNumBedsLblTxt(String text)
-//      pane.setImgViewImage(Image image);
-//      pane.setVacantLblTxt(String text);
-//      pane.setPriceLblTxt(String text);
+      //      pane.setBedSizeLblTxt(String text);
+      //      pane.setNumBedsLblTxt(String text)
+      //      pane.setImgViewImage(Image image);
+      //      pane.setVacantLblTxt(String text);
+      //      pane.setPriceLblTxt(String text);
 
       // Add pane to specified grid
+
       catalogGridPane.add(pane, column, row);
     }
   }
