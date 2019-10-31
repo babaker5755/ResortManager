@@ -108,7 +108,7 @@ public class Controller {
     // Generate Report Button In Manager Tab
     Button btn = new Button("Generate Report");
     btn.setPrefSize(150, 40);
-    btn.setLayoutX(100);
+    btn.setLayoutX(300);
     btn.setLayoutY(140);
     btn.setOnAction(
         new EventHandler<ActionEvent>() {
