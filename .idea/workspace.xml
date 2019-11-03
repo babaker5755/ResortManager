@@ -2,18 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="CSS file added">
-      <change afterPath="$PROJECT_DIR$/src/sample/ManagerLoginForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/ManagerReportView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ResortManager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ResortManager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/BrowsePane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/BrowsePane$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/BrowsePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/BrowsePane.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Hotel_Database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Hotel_Database.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/BrowsePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/BrowsePane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/RoomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/RoomView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManagerLoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManagerLoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -154,7 +156,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -289,6 +291,7 @@
       <workItem from="1571519485199" duration="6570000" />
       <workItem from="1572190659981" duration="1514000" />
       <workItem from="1572544537355" duration="9156000" />
+      <workItem from="1572809804176" duration="7106000" />
     </task>
     <task id="LOCAL-00001" summary="pull request">
       <created>1571161850397</created>

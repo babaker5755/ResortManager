@@ -1,9 +1,9 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,10 +15,8 @@ public class BrowsePane extends Pane {
   Image roomImage;
   ImageView imgView;
   Label vacantLbl;
-  Button btn;
+  JFXButton btn;
   Label priceLbl;
-
-
 
   public void setBedSizeLblTxt(String text) {
     this.bedSizeLbl.setText(text);
@@ -43,6 +41,7 @@ public class BrowsePane extends Pane {
   // For Manager Tab
   public BrowsePane(Room room, boolean forManager) {
 
+    this.getStyleClass().add("pane");
     if (forManager == true) {
       // Add Label
       bedSizeLbl = new Label(room.getBedSize());
@@ -79,7 +78,8 @@ public class BrowsePane extends Pane {
       this.getChildren().add(vacantLbl);
 
       // Add Button
-      btn = new Button("View");
+      btn = new JFXButton("View");
+      btn.getStyleClass().add("button-raised");
       btn.setPrefSize(60, 30);
       btn.setLayoutX(45);
       btn.setLayoutY(175);
@@ -100,7 +100,7 @@ public class BrowsePane extends Pane {
       bedSizeLbl = new Label(room.getBedSize());
       bedSizeLbl.setPrefWidth(150);
       bedSizeLbl.setLayoutX(0);
-      bedSizeLbl.setLayoutY(5);
+      bedSizeLbl.setLayoutY(35);
       bedSizeLbl.setAlignment(Pos.CENTER);
       this.getChildren().add(bedSizeLbl);
 
@@ -108,7 +108,7 @@ public class BrowsePane extends Pane {
       numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
       numBedsLbl.setPrefWidth(150);
       numBedsLbl.setLayoutX(0);
-      numBedsLbl.setLayoutY(20);
+      numBedsLbl.setLayoutY(55);
       numBedsLbl.setAlignment(Pos.CENTER);
       this.getChildren().add(numBedsLbl);
 
@@ -117,7 +117,7 @@ public class BrowsePane extends Pane {
       imgView.setFitHeight(120);
       imgView.setFitWidth(120);
       imgView.setLayoutX(15);
-      imgView.setLayoutY(45);
+      imgView.setLayoutY(80);
       this.getChildren().add(imgView);
 
       // Add Label
@@ -129,7 +129,8 @@ public class BrowsePane extends Pane {
       this.getChildren().add(priceLbl);
 
       // Add Button
-      btn = new Button("Book Now");
+      btn = new JFXButton("Book Now");
+      btn.getStyleClass().add("button-raised");
       btn.setPrefSize(120, 40);
       btn.setLayoutX(15);
       btn.setLayoutY(275);

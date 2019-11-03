@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,27 +12,30 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
 <GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <TabPane fx:id="tabPane" prefHeight="709.0" prefWidth="770.0" tabClosingPolicy="UNAVAILABLE">
+        <JFXTabPane fx:id="tabPane" prefHeight="750.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="Home">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="cancelReservationBtn" layoutX="507.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#cancelReservation" text="Cancel Reservation" />
+                                <JFXButton fx:id="cancelReservationBtn" layoutX="507.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#cancelReservation" text="Cancel Reservation" />
                                 <ImageView fx:id="homePageImageView" fitHeight="303.0" fitWidth="744.0" layoutX="13.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <!--                              <Image url="/sample/BannerPic.jpg" />-->
                                     </image>
                                 </ImageView>
-                                <PasswordField fx:id="confirmationNumberField" layoutX="108.0" layoutY="600.0" prefHeight="25.0" prefWidth="365.0" />
-                                <Label layoutX="134.0" layoutY="37.0" text="Welcome To import resortName; Home Page">
+                                <JFXTextField fx:id="confirmationNumberField" layoutX="108.0" layoutY="600.0" prefHeight="25.0" prefWidth="365.0" />
+                                <Label fx:id="homePageTitleLabel" layoutX="134.0" layoutY="37.0" text="Welcome To import resortName; Home Page">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="16.0" layoutY="382.0" prefHeight="222.0" prefWidth="738.0" text="If you would like to book a room at our wonderful resort, simply click the &quot;Browse Catalog&quot; button at the top and pick from our wide selection of state-of-the-art rooms.  With a whole TWO options, the possibilities are endless! If you are a staff manager here at import resortName; simply click the &quot;Manager&quot; tab and input your Secure Manager Key whenprompted, allowing you access to our secure server and the ability to view different aspects of resort and client information.\n Finally, if you'd like to see all the wonderful things available to guests here at the resort, click the &quot;Amenities&quot; tab at the top of this page and be greeted with a vast description of all the different ways you can relax and unwind while staying at import resortName! \n (Images borrowed from Marriot.com and Hiltonbarbadosresort.com. We claim no ownership of any images on this program)" wrapText="true" />
+                                <Label layoutX="16.0" fx:id="homePageBodyLabel" layoutY="382.0" prefHeight="222.0" prefWidth="738.0" text="If you would like to book a room at our wonderful resort, simply click the &quot;Browse Catalog&quot; button at the top and pick from our wide selection of state-of-the-art rooms.  With a whole TWO options, the possibilities are endless! If you are a staff manager here at import resortName; simply click the &quot;Manager&quot; tab and input your Secure Manager Key whenprompted, allowing you access to our secure server and the ability to view different aspects of resort and client information.\n Finally, if you'd like to see all the wonderful things available to guests here at the resort, click the &quot;Amenities&quot; tab at the top of this page and be greeted with a vast description of all the different ways you can relax and unwind while staying at import resortName! \n (Images borrowed from Marriot.com and Hiltonbarbadosresort.com. We claim no ownership of any images on this program)" wrapText="true" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -100,7 +102,7 @@
                     </content>
                 </Tab>
             </tabs>
-        </TabPane>
+        </JFXTabPane>
     </children>
     <columnConstraints>
         <ColumnConstraints />

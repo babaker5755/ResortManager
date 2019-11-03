@@ -1,0 +1,60 @@
+{
+    -fx-primary : #424250;
+    -fx-secondary : #37EFBA;
+    -fx-primarytext : #f9f9f9;
+    -fx-secondary-text : #f7f7f7;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-color-1:#1976D2;
+}
+.jfx-tab-pane .headers-region > .tab > .jfx-rippler {
+    -jfx-rippler-fill: -fx-secondary;
+}
+.jfx-tab-pane .headers-region .tab-selected-line {
+    -fx-background-color: -fx-secondary;
+}
+.root{
+    -fx-background-color: -fx-primary;
+}
+.title-label {
+    -fx-text-fill: -fx-primarytext;
+    /*-fx-font-size: 20pt;*/
+}
+.label {
+    -fx-text-fill: -fx-primarytext;
+    /*-fx-font-size: 12pt;*/
+}
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+.tab {
+    -fx-pref-height: 35;
+    -fx-background-color: -fx-primary;
+}
+.text-field {
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: transparent;
+    -fx-font-weight: BOLD;
+    -fx-prompt-text-fill: -fx-secondary-text;
+    -jfx-focus-color: -fx-primary;
+    -jfx-unfocus-color: -fx-secondary;
+}
+.button-raised {
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 12pt;
+}
+.button-raised:hover, .button-raised:focused {
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+.grid-pane {
+    -fx-background-color: -fx-primary;
+}
+.pane {
+    -fx-background-color: -fx-primary;
+}

@@ -1,29 +1,19 @@
 package sample;
 
-import java.awt.Dimension;
-import java.lang.reflect.Field;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import org.h2.engine.Database;
 
 public class Controller {
 
@@ -32,22 +22,29 @@ public class Controller {
 
   boolean hasLoggedInAsManager = false;
 
+  @FXML
+  private JFXTabPane tabPane;
   @FXML private ImageView homePageImageView;
-
   @FXML private ImageView amenitiesPageImageView;
-
   @FXML private GridPane catalogGridPane;
-
   @FXML private GridPane managerGridPane;
-
   @FXML private Pane managerReportFormPane;
-
-  @FXML private Button cancelReservationBtn;
-
-  @FXML private PasswordField confirmationNumberField;
+  @FXML private JFXButton cancelReservationBtn;
+  @FXML private JFXTextField confirmationNumberField;
+  @FXML private Label homePageTitleLabel;
+  @FXML private Label homePageBodyLabel;
 
   @FXML
   public void initialize() {
+    // Add style to tabs
+    for (Tab tab : tabPane.getTabs()) {
+      tab.getStyleClass().add("tab");
+    }
+
+    homePageBodyLabel.getStyleClass().add("label");
+    homePageTitleLabel.getStyleClass().add("title-label");
+    cancelReservationBtn.getStyleClass().add("button-raised");
+    confirmationNumberField.getStyleClass().add("text-field");
 
     Image amenitiesImage = new Image(Controller.class.getResourceAsStream("AmenitiesPic.jpg"));
     amenitiesPageImageView.setImage(amenitiesImage);
@@ -59,6 +56,7 @@ public class Controller {
     bookingList = new BookingManager(dbManager.getBookingsAsList());
     setupGridPaneWithRooms(rooms);
     loadManagerTab(rooms);
+
   }
 
   @FXML
@@ -69,10 +67,11 @@ public class Controller {
 
   private void loadManagerTab(ArrayList<Room> rooms) {
     if (hasLoggedInAsManager) {
-      setupManagerGridPane(rooms);
+      setupManagerGridPane(rooms, false);
       managerReportFormPane.getChildren().add(new ManagerReportView());
     } else {
       ManagerLoginForm loginPane = new ManagerLoginForm();
+      loginPane.getStyleClass().add("grid-pane");
       // Pass login action to form
       EventHandler<ActionEvent> loginAction =
               new EventHandler<ActionEvent>() {
@@ -85,13 +84,13 @@ public class Controller {
           }
         }
       };
-
+      setupManagerGridPane(rooms,true);
       loginPane.setLoginAction(loginAction);
       managerGridPane.getChildren().add(loginPane);
     }
   }
 
-  private void setupManagerGridPane(ArrayList<Room> rooms) {
+  private void setupManagerGridPane(ArrayList<Room> rooms, boolean setEmpty) {
     managerGridPane.setGridLinesVisible(false);
 
     // For each room in the list of rooms
@@ -108,7 +107,13 @@ public class Controller {
       BrowsePane pane = new BrowsePane(room, true);
 
       // Add pane to specified grid
-      managerGridPane.add(pane, column, row);
+      if (setEmpty) {
+        Pane emptyPane = new Pane();
+        emptyPane.getStyleClass().add("pane");
+        managerGridPane.add(emptyPane,column,row);
+      } else {
+        managerGridPane.add(pane, column, row);
+      }
     } // end loop
   }
 
