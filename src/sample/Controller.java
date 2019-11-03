@@ -30,6 +30,8 @@ public class Controller {
   private BookingManager bookingList;
   private DatabaseManager dbManager;
 
+  boolean hasLoggedInAsManager = false;
+
   @FXML private ImageView homePageImageView;
 
   @FXML private ImageView amenitiesPageImageView;
@@ -56,8 +58,7 @@ public class Controller {
     ArrayList<Room> rooms = dbManager.getRoomsAsList();
     bookingList = new BookingManager(dbManager.getBookingsAsList());
     setupGridPaneWithRooms(rooms);
-    setupManagerGridPane(rooms);
-    setupManagerReportForm();
+    loadManagerTab(rooms);
   }
 
   @FXML
@@ -66,69 +67,28 @@ public class Controller {
     System.out.println(confirmationNumberField.getText());
   }
 
-  private void setupManagerReportForm() {
-
-    // Add elements to the managerReportFormPane
-
-    // Add Label
-    Label titleLabel = new Label("Generate Report");
-    titleLabel.setPrefWidth(750);
-    titleLabel.setLayoutY(15);
-    titleLabel.setAlignment(Pos.CENTER);
-    managerReportFormPane.getChildren().add(titleLabel);
-
-    // Add Label
-    Label startLabel = new Label("Start Date");
-    startLabel.setPrefWidth(250);
-    startLabel.setLayoutX(50);
-    startLabel.setLayoutY(50);
-    managerReportFormPane.getChildren().add(startLabel);
-
-    // Add Date Picker
-    DatePicker startDatePicker = new DatePicker();
-    startDatePicker.setPrefWidth(250);
-    startDatePicker.setLayoutX(50);
-    startDatePicker.setLayoutY(70);
-    managerReportFormPane.getChildren().add(startDatePicker);
-
-    // Add Label
-    Label endLabel = new Label("End Date");
-    endLabel.setPrefWidth(250);
-    endLabel.setLayoutX(450);
-    endLabel.setLayoutY(50);
-    managerReportFormPane.getChildren().add(endLabel);
-
-    // Add Date Picker
-    DatePicker endDatePicker = new DatePicker();
-    endDatePicker.setPrefWidth(250);
-    endDatePicker.setLayoutX(450);
-    endDatePicker.setLayoutY(70);
-    managerReportFormPane.getChildren().add(endDatePicker);
-
-    // Generate Report Button In Manager Tab
-    Button btn = new Button("Generate Report");
-    btn.setPrefSize(150, 40);
-    btn.setLayoutX(300);
-    btn.setLayoutY(140);
-    btn.setOnAction(
-        new EventHandler<ActionEvent>() {
-          @Override
-          public void handle(ActionEvent e) {
-            System.out.println("present report");
-            final Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            VBox dialogVbox = new VBox(20);
-
-            Pane pane = new Pane();
-            pane.getChildren().add(new TableView<>());
-
-            dialogVbox.getChildren().add(pane);
-            Scene dialogScene = new Scene(dialogVbox, 250, 400);
-            dialog.setScene(dialogScene);
-            dialog.show();
+  private void loadManagerTab(ArrayList<Room> rooms) {
+    if (hasLoggedInAsManager) {
+      setupManagerGridPane(rooms);
+      managerReportFormPane.getChildren().add(new ManagerReportView());
+    } else {
+      ManagerLoginForm loginPane = new ManagerLoginForm();
+      // Pass login action to form
+      EventHandler<ActionEvent> loginAction =
+              new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent e) {
+          if (loginPane.authenticate()) {
+            managerGridPane.getChildren().remove(loginPane);
+            hasLoggedInAsManager = true;
+            loadManagerTab(rooms);
           }
-        });
-    managerReportFormPane.getChildren().add(btn);
+        }
+      };
+
+      loginPane.setLoginAction(loginAction);
+      managerGridPane.getChildren().add(loginPane);
+    }
   }
 
   private void setupManagerGridPane(ArrayList<Room> rooms) {
@@ -147,45 +107,9 @@ public class Controller {
       // Create pane from room data
       BrowsePane pane = new BrowsePane(room, true);
 
-      // To Refresh values in the pane use these calls:
-      //      pane.setBedSizeLblTxt(String text);
-      //      pane.setNumBedsLblTxt(String text)
-      //      pane.setImgViewImage(Image image);
-      //      pane.setVacantLblTxt(String text);
-      //      pane.setPriceLblTxt(String text);
-
       // Add pane to specified grid
       managerGridPane.add(pane, column, row);
     } // end loop
-  }
-
-  private void setupGridPaneWithRooms(Room[] rooms) {
-
-    catalogGridPane.setGridLinesVisible(false);
-    // For each room in the list of rooms
-    for (int i = 0; i < rooms.length; i++) {
-
-      // Get row and column of current grid in gridpane
-      int row = (i < 5) ? 0 : 1;
-      int column = (i < 5) ? i : i - 5;
-
-      // Add items to the grid
-      Room room = rooms[i];
-
-      // Create pane from room data
-      BrowsePane pane = new BrowsePane(room, false);
-
-      // To Refresh values in the pane use these calls:
-      //      pane.setBedSizeLblTxt(String text);
-      //      pane.setNumBedsLblTxt(String text)
-      //      pane.setImgViewImage(Image image);
-      //      pane.setVacantLblTxt(String text);
-      //      pane.setPriceLblTxt(String text);
-
-      // Add pane to specified grid
-
-      catalogGridPane.add(pane, column, row);
-    }
   }
 
   private void setupGridPaneWithRooms(ArrayList<Room> rooms) {
@@ -194,72 +118,18 @@ public class Controller {
     // For each room in the list of rooms
     for (int i = 0; i < rooms.size(); i++) {
 
-      if (rooms.get(i).getVacant() == true) {
-        // Get row and column of current grid in gridpane
-        int row = (i < 5) ? 0 : 1;
-        int column = (i < 5) ? i : i - 5;
+      // Get row and column of current grid in gridpane
+      int row = (i < 5) ? 0 : 1;
+      int column = (i < 5) ? i : i - 5;
 
-        // Add items to the grid
-        Room room = rooms.get(i);
+      // Add items to the grid
+      Room room = rooms.get(i);
 
-        // Add elements to this pane
-        Pane pane = new Pane();
+      // Create pane from room data
+      BrowsePane pane = new BrowsePane(room, false);
 
-        // Add Label
-        Label bedSizeLbl = new Label(room.getBedSize());
-        bedSizeLbl.setPrefWidth(150);
-        bedSizeLbl.setLayoutX(0);
-        bedSizeLbl.setLayoutY(5);
-        bedSizeLbl.setAlignment(Pos.CENTER);
-        pane.getChildren().add(bedSizeLbl);
-
-        // Add Label
-        Label numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
-        numBedsLbl.setPrefWidth(150);
-        numBedsLbl.setLayoutX(0);
-        numBedsLbl.setLayoutY(20);
-        numBedsLbl.setAlignment(Pos.CENTER);
-        pane.getChildren().add(numBedsLbl);
-
-        Image roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
-        ImageView imgView = new ImageView(roomImage);
-        imgView.setFitHeight(120);
-        imgView.setFitWidth(120);
-        imgView.setLayoutX(15);
-        imgView.setLayoutY(45);
-        pane.getChildren().add(imgView);
-
-        // Add Label
-        Label priceLbl = new Label("$" + room.getPrice());
-        priceLbl.setPrefWidth(150);
-        priceLbl.setLayoutX(0);
-        priceLbl.setLayoutY(250);
-        priceLbl.setAlignment(Pos.CENTER);
-        pane.getChildren().add(priceLbl);
-
-        // Add Button
-        Button btn = new Button("Book Now");
-        btn.setPrefSize(120, 40);
-        btn.setLayoutX(15);
-        btn.setLayoutY(275);
-        btn.setOnAction(
-            new EventHandler<ActionEvent>() {
-              @Override
-              public void handle(ActionEvent e) {
-                RoomView roomView = new RoomView();
-                roomView.setRoom(room);
-                roomView.setBookingList(bookingList);
-                roomView.presentRoomView();
-                System.out.println("button pressed " + priceLbl.toString());
-              }
-            });
-        pane.getChildren().add(btn);
-
-        catalogGridPane.add(pane, column, row);
-        System.out.print(rooms.get(i).getRoomNumber() + " added to view.\n");
-      } else {
-        System.out.print(rooms.get(i).getRoomNumber() + " is occupied!\n");
-      }
-    } // end loop
+      // Add pane to specified grid
+      catalogGridPane.add(pane, column, row);
+    }
   }
 }

@@ -191,8 +191,5 @@ public class RoomView {
     Scene dialogScene = new Scene(dialogVbox, 400, 700);
     dialog.setScene(dialogScene);
     dialog.show();
-
-
-
   }
 }
