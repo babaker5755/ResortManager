@@ -1,17 +1,18 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 public class ManagerLoginForm extends Pane {
-  private TextField usernameField = new TextField();
-  private TextField passwordField = new TextField();
-  Button btn = new Button("Login");
+  private JFXTextField usernameField = new JFXTextField();
+  private JFXPasswordField passwordField = new JFXPasswordField();
+  JFXButton btn = new JFXButton("Login");
   Label errorLabel = new Label("");
 
   public void setLoginAction(EventHandler<ActionEvent> loginAction) {
@@ -19,9 +20,9 @@ public class ManagerLoginForm extends Pane {
   }
 
   public ManagerLoginForm() {
-
     // Add Label
     Label titleLabel = new Label("Login to continue");
+    titleLabel.getStyleClass().add("title-label");
     titleLabel.setPrefWidth(750);
     titleLabel.setLayoutY(55);
     titleLabel.setAlignment(Pos.CENTER);
@@ -35,7 +36,7 @@ public class ManagerLoginForm extends Pane {
     this.getChildren().add(usernameLabel);
 
     // Add TextField
-
+    usernameField.getStyleClass().add("text-field");
     usernameField.setPrefWidth(250);
     usernameField.setLayoutX(250);
     usernameField.setLayoutY(140);
@@ -49,12 +50,14 @@ public class ManagerLoginForm extends Pane {
     this.getChildren().add(passwordLabel);
 
     // Add TextField
+    passwordField.getStyleClass().add("text-field");
     passwordField.setPrefWidth(250);
     passwordField.setLayoutX(250);
     passwordField.setLayoutY(220);
     this.getChildren().add(passwordField);
 
     // Login Button
+    btn.getStyleClass().add("button-raised");
     btn.setPrefSize(150, 40);
     btn.setLayoutX(300);
     btn.setLayoutY(300);
