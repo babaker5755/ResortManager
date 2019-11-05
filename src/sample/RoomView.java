@@ -160,6 +160,17 @@ public class RoomView {
             System.out.println("Submit Button Pressed" + priceLbl.toString());
             System.out.print(room.getRoomNumber() + "\n\n\n");
 
+            Stage confirmPopup = new Stage();
+            confirmPopup.initModality(Modality.APPLICATION_MODAL);
+            VBox popupVbox = new VBox();
+            Pane pane = new Pane();
+            Label lbl = new Label("You're booked! Your confirmation number is:"); // TODO: Add confirmation
+            pane.getChildren().add(lbl);
+            Scene dialogScene = new Scene(popupVbox, 250, 50); //Change confirmation popup size here
+            popupVbox.getChildren().add(pane);
+            confirmPopup.setScene(dialogScene);
+            confirmPopup.show();
+
             Booking newBooking =
                 new Booking(
                     "98328923",
