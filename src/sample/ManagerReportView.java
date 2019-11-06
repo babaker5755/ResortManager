@@ -59,18 +59,8 @@ public class ManagerReportView extends Pane {
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
-            System.out.println("present report");
-            final Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            VBox dialogVbox = new VBox(20);
-
-            Pane pane = new Pane();
-            pane.getChildren().add(new TableView<>());
-
-            dialogVbox.getChildren().add(pane);
-            Scene dialogScene = new Scene(dialogVbox, 250, 400);
-            dialog.setScene(dialogScene);
-            dialog.show();
+            DRSRModalView  drsrModalView = new DRSRModalView();
+            drsrModalView.initialize();
           }
         });
     this.getChildren().add(btn);
