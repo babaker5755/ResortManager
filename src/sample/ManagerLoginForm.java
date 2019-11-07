@@ -20,6 +20,7 @@ public class ManagerLoginForm extends Pane {
   }
 
   public ManagerLoginForm() {
+
     // Add Label
     Label titleLabel = new Label("Login to continue");
     titleLabel.getStyleClass().add("title-label");
@@ -71,9 +72,14 @@ public class ManagerLoginForm extends Pane {
   }
 
   public boolean authenticate() {
+
+    DatabaseManager DBManager = new DatabaseManager();
     String username = usernameField.getText();
     String password = passwordField.getText();
-    if (!username.isEmpty() && !password.isEmpty()) {
+
+
+
+    if (DBManager.authenticateUser(username, password)) {
       this.getChildren().remove(errorLabel);
       this.errorLabel.setText("Success");
       this.getChildren().add(errorLabel);
