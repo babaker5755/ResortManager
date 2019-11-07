@@ -56,13 +56,28 @@ public class ManagerReportView extends Pane {
     btn.setLayoutX(300);
     btn.setLayoutY(140);
     btn.setOnAction(
-        new EventHandler<ActionEvent>() {
-          @Override
-          public void handle(ActionEvent e) {
-            DRSRModalView  drsrModalView = new DRSRModalView();
-            drsrModalView.initialize();
-          }
-        });
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                DRSRModalView  drsrModalView = new DRSRModalView();
+                drsrModalView.initialize();
+              }
+            });
     this.getChildren().add(btn);
+
+    // Generate Report Button In Manager Tab
+    Button logoutBtn = new Button("Logout");
+    logoutBtn.setPrefSize(150, 40);
+    logoutBtn.setLayoutX(550);
+    logoutBtn.setLayoutY(190);
+    logoutBtn.setOnAction(
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                 ManagerLoginForm managerLoginForm = new ManagerLoginForm();
+              }
+            });
+    this.getChildren().add(logoutBtn);
+
   }
 }

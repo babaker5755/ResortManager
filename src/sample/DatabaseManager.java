@@ -58,6 +58,7 @@ public class DatabaseManager {
       }
     }
   }
+
   // add bookings to database
   void addBookingsToDB(ArrayList<Booking> bookingList) {
     System.out.println("Inserting booking records into table...");
@@ -92,6 +93,7 @@ public class DatabaseManager {
       }
     }
   }
+
   // delete booking from database and ArrayList
   void removeBookingsFromDB(ArrayList<Booking> bookingList, String confirmationNumber) {
     System.out.println("Canceling booking...");
@@ -112,6 +114,33 @@ public class DatabaseManager {
         }
       }
     }
+  }
+
+  boolean authenticateUser(String userName, String password) {
+
+    boolean authenticatedFlag = false;
+
+    try {
+      // Get all rows from the specified table.
+      ps = conn.prepareStatement(
+              "SELECT USERNAME, PASSWORD FROM MANAGERS WHERE USERNAME='"
+                  + userName
+                  + "'");
+      rs = ps.executeQuery();
+
+      if (rs.next()) {
+        if (rs.getString("PASSWORD").equals(password)) {
+          authenticatedFlag = true;
+        }
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.print("Could not execute query.");
+    }
+
+    return authenticatedFlag;
+
   }
 
   ArrayList<Room> getRoomsAsList() {
