@@ -1,6 +1,5 @@
 package sample;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Booking {
@@ -15,7 +14,8 @@ public class Booking {
   private Date checkInDate;
   private Date checkOutDate;
 
-  public Booking(
+  // Default constructor. Requires every field.
+  Booking(
       String confirmationNumber,
       String roomNumber,
       double price,
@@ -32,8 +32,8 @@ public class Booking {
     this.clientAddress = clientAddress;
     this.clientCreditCard = clientCreditCard;
     this.clientEmail = clientEmail;
-    this.checkInDate = checkInDate;
-    this.checkOutDate = checkOutDate;
+    this.checkInDate = new Date(checkInDate.getTime());
+    this.checkOutDate = new Date(checkOutDate.getTime());
   }
 
   public String getConfirmationNumber() {
@@ -86,16 +86,16 @@ public class Booking {
   }
 
   public Date getCheckInDate() {
-    return checkInDate;
+    return new Date(checkInDate.getTime());
   }
   public void setCheckInDate(Date checkInDate) {
-    this.checkInDate = checkInDate;
+    this.checkInDate = new Date(checkInDate.getTime());
   }
 
   public Date getCheckOutDate() {
-    return checkOutDate;
+    return new Date(checkOutDate.getTime());
   }
   public void setCheckOutDate(Date checkOutDate) {
-    this.checkOutDate = checkOutDate;
+    this.checkOutDate = new Date(checkOutDate.getTime());
   }
 }

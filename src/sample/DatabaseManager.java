@@ -1,7 +1,6 @@
 package sample;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DatabaseManager {
