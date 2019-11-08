@@ -119,12 +119,10 @@ public class ManagerRoomView {
 
                   TablePosition pos = tableView.getSelectionModel().getSelectedCells().get(0);
                   int row = pos.getRow();
-
-// Item here is the table view type:
                   Booking selectedBooking = tableView.getItems().get(row);
                   bookingList.removeBooking(selectedBooking.getConfirmationNumber());
 
-                  DBM.removeBookingFromDB(selectedBooking);
+                  DBM.removeBooking(selectedBooking);
                 }
               }
             );

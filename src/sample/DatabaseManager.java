@@ -129,7 +129,7 @@ public class DatabaseManager {
   }
 
   // add bookings to database
-  void addBookingsToDB(ArrayList<Booking> bookingList) {
+  void addBookings(ArrayList<Booking> bookingList) {
     System.out.println("Inserting booking records into table...");
     for (Booking booking : bookingList) {
       try {
@@ -163,7 +163,7 @@ public class DatabaseManager {
     }
   }
 
-  void addBookingToDB(Booking booking) {
+  void addBooking(Booking booking) {
     System.out.println("Inserting booking records into table...");
     try {
       PreparedStatement ps = conn.prepareStatement(
@@ -182,9 +182,9 @@ public class DatabaseManager {
                               + "', '"
                               + booking.getClientEmail()
                               + "', '"
-                              + booking.getCheckInDate()
+                              + new Date(booking.getCheckInDate().getTime())
                               + "', '"
-                              + booking.getCheckOutDate()
+                              + new Date(booking.getCheckOutDate().getTime())
                               + "')");
       ps.executeUpdate();
       System.out.println("Inserted booking record into table.");
@@ -194,7 +194,7 @@ public class DatabaseManager {
     }
   }
 
-  void removeBookingFromDB(Booking booking) {
+  void removeBooking(Booking booking) {
     System.out.println("Canceling booking...");
     try {
       PreparedStatement ps =
@@ -210,7 +210,7 @@ public class DatabaseManager {
     }
   }
   // delete booking from database and ArrayList
-  void removeBookingsFromDB(ArrayList<Booking> bookingList, String confirmationNumber) {
+  void removeBookingInList(ArrayList<Booking> bookingList, String confirmationNumber) {
     System.out.println("Canceling booking...");
     for (int i = 0; i < bookingList.size(); i++) {
       if (bookingList.get(i).getConfirmationNumber().equals(confirmationNumber)) {
