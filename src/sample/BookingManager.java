@@ -41,13 +41,16 @@ public class BookingManager {
    * @param confirmationNumber The confirmation number for the booking to remove from the manager.
    */
   public void removeBooking(String confirmationNumber) {
-    for (Booking b : bookingList) {
-      if (b.getConfirmationNumber().equals(confirmationNumber)) {
-        bookingList.remove(b);
+    for (int i = 0; i < bookingList.size(); i++) {
+      if (bookingList.get(i).getConfirmationNumber().equals(confirmationNumber)) {
+        bookingList.remove(i);
       }
     }
   }
 
+  /**
+   * Populates the list of bookings from the database.
+   */
   public void populateFromDB() {
     DatabaseManager DBM = new DatabaseManager();
     bookingList = DBM.getBookingsAsList();

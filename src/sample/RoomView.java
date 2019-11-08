@@ -176,8 +176,6 @@ public class RoomView {
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();
 
-
-
             DatabaseManager DBM = new DatabaseManager();
             bookingList.populateFromDB();
 
@@ -196,7 +194,7 @@ public class RoomView {
             room.setVacant(false);
 
             // adding bookings to database
-            DBM.addBookingToDB(newBooking);
+            DBM.addBooking(newBooking);
 
             for (Booking b : bookingList.getBookingList()) {
               System.out.print("Room #: " + b.getRoomNumber() + "\n");
