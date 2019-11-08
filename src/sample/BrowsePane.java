@@ -59,6 +59,7 @@ public class BrowsePane extends Pane {
       numBedsLbl.setAlignment(Pos.CENTER);
       this.getChildren().add(numBedsLbl);
 
+      // Add Image
       roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
       imgView = new ImageView(roomImage);
       imgView.setFitHeight(90);
@@ -77,7 +78,7 @@ public class BrowsePane extends Pane {
       vacantLbl.setAlignment(Pos.CENTER);
       this.getChildren().add(vacantLbl);
 
-      // Add Button
+      // Add Button to view room details
       btn = new JFXButton("View");
       btn.getStyleClass().add("button-raised");
       btn.setPrefSize(60, 30);
@@ -94,8 +95,9 @@ public class BrowsePane extends Pane {
             }
           });
       this.getChildren().add(btn);
+
     } else {
-        // For catalog tab
+      // For catalog tab
       // Add Label
       bedSizeLbl = new Label(room.getBedSize());
       bedSizeLbl.setPrefWidth(150);
@@ -112,6 +114,7 @@ public class BrowsePane extends Pane {
       numBedsLbl.setAlignment(Pos.CENTER);
       this.getChildren().add(numBedsLbl);
 
+      // Add Image
       roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
       imgView = new ImageView(roomImage);
       imgView.setFitHeight(120);
@@ -128,7 +131,7 @@ public class BrowsePane extends Pane {
       priceLbl.setAlignment(Pos.CENTER);
       this.getChildren().add(priceLbl);
 
-      // Add Button
+      // Add Button to open the "book room" window
       btn = new JFXButton("Book Now");
       btn.getStyleClass().add("button-raised");
       btn.setPrefSize(120, 40);
@@ -147,6 +150,4 @@ public class BrowsePane extends Pane {
       this.getChildren().add(btn);
     }
   }
-
-
 }
