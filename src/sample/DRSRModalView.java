@@ -33,5 +33,4 @@ public class DRSRModalView extends TableView {
         dialog.setScene(dialogScene);
         dialog.show();
     }
-
 }

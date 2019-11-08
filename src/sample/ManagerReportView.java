@@ -74,7 +74,8 @@ public class ManagerReportView extends Pane {
             new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent e) {
-                 ManagerLoginForm managerLoginForm = new ManagerLoginForm();
+
+                // Insert code to close ManagerRoomView and re-display ManagerLoginForm
               }
             });
     this.getChildren().add(logoutBtn);

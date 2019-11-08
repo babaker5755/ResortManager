@@ -32,6 +32,36 @@ public class DatabaseManager {
     }
   }
 
+  void disconnectFromDB() {
+    try {
+      if (rs != null) {
+        rs.close();
+      }
+    } catch (Exception e) {
+      System.out.print("Error closing ResultSet.\n");
+      e.printStackTrace();
+    }
+    try {
+      if (ps != null) {
+        ps.close();
+      }
+    } catch (Exception e) {
+      System.out.print("Error closing PreparedStatement.\n");
+      e.printStackTrace();
+    }
+    try {
+      if (conn != null) {
+        conn.close();
+      }
+    } catch (Exception e) {
+      System.out.print("Error closing Connection.\n");
+      e.printStackTrace();
+    }
+
+    isConnectedToDB = false;
+    System.out.print("Connection successfully closed.\n");
+  }
+
   void addRoomsToDB(ArrayList<Room> rooms) {
 
     for (Room room : rooms) {
@@ -114,33 +144,6 @@ public class DatabaseManager {
         }
       }
     }
-  }
-
-  boolean authenticateUser(String userName, String password) {
-
-    boolean authenticatedFlag = false;
-
-    try {
-      // Get all rows from the specified table.
-      ps = conn.prepareStatement(
-              "SELECT USERNAME, PASSWORD FROM MANAGERS WHERE USERNAME='"
-                  + userName
-                  + "'");
-      rs = ps.executeQuery();
-
-      if (rs.next()) {
-        if (rs.getString("PASSWORD").equals(password)) {
-          authenticatedFlag = true;
-        }
-      }
-
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.print("Could not execute query.");
-    }
-
-    return authenticatedFlag;
-
   }
 
   ArrayList<Room> getRoomsAsList() {
@@ -233,5 +236,85 @@ public class DatabaseManager {
     }
 
     return bookingList;
+  }
+
+  ArrayList<Booking> getBookingsByRoom(String roomNumber) {
+    ArrayList<Booking> bookingList = new ArrayList<>();
+
+    try {
+
+      // Get all rows from the specified table.
+      ps = conn.prepareStatement("SELECT * FROM BOOKINGS WHERE ROOM_NUMBER='"
+      + roomNumber
+      + "'");
+      rs = ps.executeQuery();
+
+      // Make each row a Booking object, then add it to the list of bookings.
+      while (rs.next()) {
+        Booking booking =
+                new Booking(
+                        rs.getString("CONFIRMATION_NUMBER"),
+                        rs.getString("ROOM_NUMBER"),
+                        rs.getDouble("PRICE"),
+                        rs.getString("CLIENT_NAME"),
+                        rs.getString("CLIENT_ADDRESS"),
+                        rs.getString("CLIENT_CREDITCARD"),
+                        rs.getString("CLIENT_EMAIL"),
+                        rs.getDate("START_DATE"),
+                        rs.getDate("END_DATE"));
+        bookingList.add(booking);
+
+        // Confirm in console.
+        System.out.println(
+                "CONFIRMATION_NUMBER: "
+                        + rs.getString("CONFIRMATION_NUMBER")
+                        + ", ROOM_NUMBER: "
+                        + rs.getString("ROOM_NUMBER")
+                        + ", PRICE: "
+                        + rs.getDouble("PRICE")
+                        + ", CLIENT_NAME: "
+                        + rs.getString("CLIENT_NAME")
+                        + ", CLIENT_ADDRESS: "
+                        + rs.getString("CLIENT_ADDRESS")
+                        + ", CLIENT_CREDITCARD: "
+                        + rs.getString("CLIENT_CREDITCARD")
+                        + ", CLIENT_EMAIL: "
+                        + rs.getString("CLIENT_EMAIL")
+                        + ", START_DATE: "
+                        + rs.getDate("START_DATE")
+                        + ", END_DATE: "
+                        + rs.getDate("END_DATE"));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.print("Could not execute query.");
+    }
+
+    return bookingList;
+  }
+
+  boolean authenticateUser(String userName, String password) {
+
+    boolean authenticatedFlag = false;
+
+    try {
+      // Get all rows from the specified table.
+      ps = conn.prepareStatement(
+              "SELECT USERNAME, PASSWORD FROM MANAGERS WHERE USERNAME='"
+                      + userName
+                      + "'");
+      rs = ps.executeQuery();
+
+      if (rs.next()) {
+        if (rs.getString("PASSWORD").equals(password)) {
+          authenticatedFlag = true;
+        }
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.print("Could not execute query.");
+    }
+
+    return authenticatedFlag;
   }
 }

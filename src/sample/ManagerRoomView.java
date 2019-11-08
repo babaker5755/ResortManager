@@ -1,19 +1,21 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Date;
 
 public class ManagerRoomView {
 
@@ -27,13 +29,14 @@ public class ManagerRoomView {
     final Stage dialog = new Stage();
     dialog.initModality(Modality.APPLICATION_MODAL);
     VBox dialogVbox = new VBox(20);
+    dialog.setWidth(700);
 
     // Add elements to this pane
     Pane pane = new Pane();
 
     // Add Label
     Label bedSizeLbl = new Label(room.getBedSize());
-    bedSizeLbl.setPrefWidth(400);
+    bedSizeLbl.setPrefWidth(700);
     bedSizeLbl.setLayoutX(0);
     bedSizeLbl.setLayoutY(15);
     bedSizeLbl.setAlignment(Pos.CENTER);
@@ -41,7 +44,7 @@ public class ManagerRoomView {
 
     // Add Label
     Label numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
-    numBedsLbl.setPrefWidth(400);
+    numBedsLbl.setPrefWidth(700);
     numBedsLbl.setLayoutX(0);
     numBedsLbl.setLayoutY(40);
     numBedsLbl.setAlignment(Pos.CENTER);
@@ -51,23 +54,24 @@ public class ManagerRoomView {
     ImageView imgView = new ImageView(roomImage);
     imgView.setFitHeight(135);
     imgView.setFitWidth(135);
-    imgView.setLayoutX(130);
+    imgView.setLayoutX(284);
     imgView.setLayoutY(75);
     pane.getChildren().add(imgView);
 
     // Add Label
     Label priceLbl = new Label("$" + room.getPrice());
-    priceLbl.setPrefWidth(400);
+    priceLbl.setPrefWidth(700);
     priceLbl.setLayoutX(0);
     priceLbl.setLayoutY(235);
     priceLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(priceLbl);
 
-    TableView tableView = new TableView();
-    tableView.setPrefWidth(400);
+    TableView<Booking> tableView = new TableView();
+    tableView.setPrefWidth(690);
     tableView.setPrefHeight(300);
     tableView.setLayoutX(0);
     tableView.setLayoutY(300);
+    tableView = setTableView(tableView);
     pane.getChildren().add(tableView);
 
     dialogVbox.getChildren().add(pane);
@@ -100,7 +104,6 @@ public class ManagerRoomView {
             noButton.setPrefSize(50, 30);
             pane.getChildren().add(noButton);
             pane.getChildren().add(yesButton);
-
             pane.getChildren().add(confirmCancellation);
             Scene dialogScene = new Scene(dialogVbox, 350, 250);
             dialogVbox.getChildren().add(pane);
@@ -109,5 +112,56 @@ public class ManagerRoomView {
           }
         });
     pane.getChildren().add(cancelBooking);
+  }
+
+  private TableView<Booking> setTableView(TableView<Booking> tableView) {
+
+    DatabaseManager db = new DatabaseManager();
+    final ObservableList<Booking> bookingsByRoom =
+            FXCollections.observableArrayList(db.getBookingsByRoom(room.getRoomNumber()));
+    db.disconnectFromDB();
+    tableView.setItems(bookingsByRoom);
+
+    TableColumn<Booking, String> confNumberCol = new TableColumn<>("Confirmation Number");
+    confNumberCol.setStyle("-fx-alignment: CENTER;");
+    confNumberCol.setCellValueFactory(new PropertyValueFactory<>("confirmationNumber"));
+    confNumberCol.setMaxWidth(100);
+    tableView.getColumns().add(confNumberCol);
+
+    TableColumn<Booking, String> roomNumberCol = new TableColumn<>("Room Number");
+    roomNumberCol.setStyle("-fx-alignment: CENTER;");
+    roomNumberCol.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+    roomNumberCol.setMaxWidth(60);
+    tableView.getColumns().add(roomNumberCol);
+
+    TableColumn<Booking, Date> checkInCol = new TableColumn<>("Check-In Date");
+    checkInCol.setStyle("-fx-alignment: CENTER;");
+    checkInCol.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+    tableView.getColumns().add(checkInCol);
+
+    TableColumn<Booking, Date> checkOutCol = new TableColumn<>("Check-Out Date");
+    checkOutCol.setStyle("-fx-alignment: CENTER;");
+    checkOutCol.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+    tableView.getColumns().add(checkOutCol);
+
+    TableColumn<Booking, String> clientNameCol = new TableColumn<>("Client Name");
+    clientNameCol.setStyle("-fx-alignment: CENTER;");
+    clientNameCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
+    clientNameCol.setMinWidth(310);
+    tableView.getColumns().add(clientNameCol);
+
+    /* WHY DO THESE MESS THE TABLE UP?
+    TableColumn<Booking, String> clientAddressCol = new TableColumn<>("Client Address");
+    clientNameCol.setStyle("-fx-alignment: CENTER;");
+    clientNameCol.setCellValueFactory(new PropertyValueFactory<>("clientAddress"));
+    tableView.getColumns().add(clientAddressCol);
+
+    TableColumn<Booking, String> clientEmailCol = new TableColumn<>("Client Email");
+    clientNameCol.setStyle("-fx-alignment: CENTER;");
+    clientNameCol.setCellValueFactory(new PropertyValueFactory<>("clientEmail"));
+    tableView.getColumns().add(clientEmailCol);
+     */
+
+    return tableView;
   }
 }
