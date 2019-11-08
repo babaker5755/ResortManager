@@ -61,7 +61,7 @@ public class Controller {
 
   @FXML
   void cancelReservation(MouseEvent event) {
-    dbManager.removeBookingInList(bookingList.getBookingList(), confirmationNumberField.getText());
+    dbManager.removeBookingInList(dbManager.getBookingsAsList(), confirmationNumberField.getText());
     System.out.println(confirmationNumberField.getText());
   }
 
