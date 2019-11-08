@@ -95,32 +95,63 @@ public class DatabaseManager {
     for (Booking booking : bookingList) {
       try {
         PreparedStatement ps =
-            conn.prepareStatement(
-                "INSERT INTO BOOKINGS VALUES ('"
-                    + booking.getConfirmationNumber()
-                    + "', '"
-                    + booking.getRoomNumber()
-                    + "', '"
-                    + booking.getPrice()
-                    + "', '"
-                    + booking.getClientName()
-                    + "', '"
-                    + booking.getClientAddress()
-                    + "', '"
-                    + booking.getClientCreditCard()
-                    + "', '"
-                    + booking.getClientEmail()
-                    + "', '"
-                    + booking.getCheckInDate()
-                    + "', '"
-                    + booking.getCheckOutDate()
-                    + "')");
+                conn.prepareStatement(
+                        "INSERT INTO BOOKINGS VALUES ('"
+                                + booking.getConfirmationNumber()
+                                + "', '"
+                                + booking.getRoomNumber()
+                                + "', '"
+                                + booking.getPrice()
+                                + "', '"
+                                + booking.getClientName()
+                                + "', '"
+                                + booking.getClientAddress()
+                                + "', '"
+                                + booking.getClientCreditCard()
+                                + "', '"
+                                + booking.getClientEmail()
+                                + "', '"
+                                + booking.getCheckInDate()
+                                + "', '"
+                                + booking.getCheckOutDate()
+                                + "')");
         ps.executeUpdate();
         System.out.println("Inserted booking record into table.");
       } catch (SQLException e) {
         e.printStackTrace();
         System.out.println("Could not create booking record.");
       }
+    }
+  }
+
+  void addBookingToDB(Booking booking) {
+    System.out.println("Inserting booking records into table...");
+    try {
+      PreparedStatement ps = conn.prepareStatement(
+                      "INSERT INTO BOOKINGS VALUES ('"
+                              + booking.getConfirmationNumber()
+                              + "', '"
+                              + booking.getRoomNumber()
+                              + "', '"
+                              + booking.getPrice()
+                              + "', '"
+                              + booking.getClientName()
+                              + "', '"
+                              + booking.getClientAddress()
+                              + "', '"
+                              + booking.getClientCreditCard()
+                              + "', '"
+                              + booking.getClientEmail()
+                              + "', '"
+                              + booking.getCheckInDate()
+                              + "', '"
+                              + booking.getCheckOutDate()
+                              + "')");
+      ps.executeUpdate();
+      System.out.println("Inserted booking record into table.");
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println("Could not create booking record.");
     }
   }
 

@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.util.Date;
+import java.util.Random;
 
 public class RoomView {
 
@@ -176,10 +177,12 @@ public class RoomView {
             DatabaseManager DBM = new DatabaseManager();
 
             bookingList.populateFromDB();
-            
+            Random rand = new Random();
+            int confNumber = rand.nextInt(89999999) + 10000000;
+
             Booking newBooking =
                 new Booking(
-                    "98328923",
+                    Integer.toString(confNumber),
                     room.getRoomNumber(),
                     room.getPrice(),
                     nameField.getText(),
@@ -192,7 +195,7 @@ public class RoomView {
             room.setVacant(false);
 
             // adding bookings to database
-            DBM.addBookingsToDB(bookingList.getBookingList());
+            DBM.addBookingToDB(newBooking);
 
             for (Booking b : bookingList.getBookingList()) {
               System.out.print("Room #: " + b.getRoomNumber() + "\n");
