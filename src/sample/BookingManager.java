@@ -10,6 +10,7 @@ public class BookingManager {
     bookingList = new ArrayList<>();
   }
 
+
   // Overloaded constructor.
   BookingManager(ArrayList<Booking> bookingList) {
     this.bookingList = bookingList;
@@ -20,11 +21,17 @@ public class BookingManager {
   }
 
   public void removeBooking(String confirmationNumber) {
-    for (Booking b : bookingList) {
-      if (b.getConfirmationNumber() == confirmationNumber) {
-        bookingList.remove(b);
+    for (int i = 0; i < bookingList.size(); i++) {
+      if (bookingList.get(i).getConfirmationNumber() == confirmationNumber) {
+        bookingList.remove(i);
       }
     }
+  }
+
+  public void populateFromDB() {
+    DatabaseManager DBM = new DatabaseManager();
+    bookingList = DBM.getBookingsAsList();
+    DBM.disconnectFromDB();
   }
 
   public ArrayList<Booking> getBookingList() {

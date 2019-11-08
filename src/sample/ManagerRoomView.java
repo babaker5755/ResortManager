@@ -66,12 +66,11 @@ public class ManagerRoomView {
     priceLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(priceLbl);
 
-    TableView<Booking> tableView = new TableView();
+    final TableView<Booking> tableView = setTableView(new TableView());
     tableView.setPrefWidth(690);
     tableView.setPrefHeight(300);
     tableView.setLayoutX(0);
     tableView.setLayoutY(300);
-    tableView = setTableView(tableView);
     pane.getChildren().add(tableView);
 
     dialogVbox.getChildren().add(pane);
@@ -81,7 +80,7 @@ public class ManagerRoomView {
 
     Button cancelBooking = new Button("Cancel Booking");
     cancelBooking.setPrefSize(150, 40);
-    cancelBooking.setLayoutX(125);
+    cancelBooking.setLayoutX(250);
     cancelBooking.setLayoutY(605);
     cancelBooking.setOnAction(
         new EventHandler<ActionEvent>() {
@@ -109,8 +108,38 @@ public class ManagerRoomView {
             dialogVbox.getChildren().add(pane);
             dialog.setScene(dialogScene);
             dialog.show();
+
+            yesButton.setOnAction(
+              new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                  DatabaseManager DBM = new DatabaseManager();
+                  BookingManager bookingList = new BookingManager();
+                  bookingList.populateFromDB();
+
+                  TablePosition pos = tableView.getSelectionModel().getSelectedCells().get(0);
+                  int row = pos.getRow();
+
+// Item here is the table view type:
+                  Booking selectedBooking = tableView.getItems().get(row);
+                  bookingList.removeBooking(selectedBooking.getConfirmationNumber());
+
+                  DBM.removeBookingFromDB(selectedBooking);
+                }
+              }
+            );
+
+            noButton.setOnAction(
+              new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                  dialog.close();
+                }
+              }
+            );
           }
         });
+
     pane.getChildren().add(cancelBooking);
   }
 
@@ -125,13 +154,13 @@ public class ManagerRoomView {
     TableColumn<Booking, String> confNumberCol = new TableColumn<>("Confirmation Number");
     confNumberCol.setStyle("-fx-alignment: CENTER;");
     confNumberCol.setCellValueFactory(new PropertyValueFactory<>("confirmationNumber"));
-    confNumberCol.setMaxWidth(100);
+    confNumberCol.setMaxWidth(180);
     tableView.getColumns().add(confNumberCol);
 
     TableColumn<Booking, String> roomNumberCol = new TableColumn<>("Room Number");
     roomNumberCol.setStyle("-fx-alignment: CENTER;");
     roomNumberCol.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-    roomNumberCol.setMaxWidth(60);
+    roomNumberCol.setMaxWidth(100);
     tableView.getColumns().add(roomNumberCol);
 
     TableColumn<Booking, Date> checkInCol = new TableColumn<>("Check-In Date");
@@ -147,7 +176,7 @@ public class ManagerRoomView {
     TableColumn<Booking, String> clientNameCol = new TableColumn<>("Client Name");
     clientNameCol.setStyle("-fx-alignment: CENTER;");
     clientNameCol.setCellValueFactory(new PropertyValueFactory<>("clientName"));
-    clientNameCol.setMinWidth(310);
+    clientNameCol.setMinWidth(224);
     tableView.getColumns().add(clientNameCol);
 
     /* WHY DO THESE MESS THE TABLE UP?

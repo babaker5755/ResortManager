@@ -15,11 +15,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.util.Date;
+import java.util.Random;
 
 public class RoomView {
 
   Room room;
-  BookingManager bookingList;
+  BookingManager bookingList = new BookingManager();
 
   public void setRoom(Room room) {
     this.room = room;
@@ -156,6 +157,10 @@ public class RoomView {
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
+
+            Random rand = new Random();
+            int confNumber = rand.nextInt(89999999) + 10000000;
+
             // Do something
             System.out.println("Submit Button Pressed" + priceLbl.toString());
             System.out.print(room.getRoomNumber() + "\n\n\n");
@@ -164,16 +169,21 @@ public class RoomView {
             confirmPopup.initModality(Modality.APPLICATION_MODAL);
             VBox popupVbox = new VBox();
             Pane pane = new Pane();
-            Label lbl = new Label("You're booked! Your confirmation number is:"); // TODO: Add confirmation
+            Label lbl = new Label("You're booked! Your confirmation number is: " + confNumber); // TODO: Add confirmation
             pane.getChildren().add(lbl);
-            Scene dialogScene = new Scene(popupVbox, 250, 50); //Change confirmation popup size here
+            Scene dialogScene = new Scene(popupVbox, 600, 100); //Change confirmation popup size here
             popupVbox.getChildren().add(pane);
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();
 
+
+
+            DatabaseManager DBM = new DatabaseManager();
+            bookingList.populateFromDB();
+
             Booking newBooking =
                 new Booking(
-                    "98328923",
+                    Integer.toString(confNumber),
                     room.getRoomNumber(),
                     room.getPrice(),
                     nameField.getText(),
@@ -184,10 +194,9 @@ public class RoomView {
                     java.sql.Date.valueOf(checkOutPicker.getValue()));
             bookingList.addBooking(newBooking);
             room.setVacant(false);
-            DatabaseManager DBM = new DatabaseManager();
 
             // adding bookings to database
-            DBM.addBookingsToDB(bookingList.getBookingList());
+            DBM.addBookingToDB(newBooking);
 
             for (Booking b : bookingList.getBookingList()) {
               System.out.print("Room #: " + b.getRoomNumber() + "\n");
