@@ -123,6 +123,8 @@ public class ManagerRoomView {
                   bookingList.removeBooking(selectedBooking.getConfirmationNumber());
 
                   DBM.removeBooking(selectedBooking);
+                  dialog.close();
+                  setTableView(tableView);
                 }
               }
             );
