@@ -157,6 +157,10 @@ public class RoomView {
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
+
+            Random rand = new Random();
+            int confNumber = rand.nextInt(89999999) + 10000000;
+
             // Do something
             System.out.println("Submit Button Pressed" + priceLbl.toString());
             System.out.print(room.getRoomNumber() + "\n\n\n");
@@ -165,7 +169,7 @@ public class RoomView {
             confirmPopup.initModality(Modality.APPLICATION_MODAL);
             VBox popupVbox = new VBox();
             Pane pane = new Pane();
-            Label lbl = new Label("You're booked! Your confirmation number is:"); // TODO: Add confirmation
+            Label lbl = new Label("You're booked! Your confirmation number is: " + confNumber); // TODO: Add confirmation
             pane.getChildren().add(lbl);
             Scene dialogScene = new Scene(popupVbox, 250, 50); //Change confirmation popup size here
             popupVbox.getChildren().add(pane);
@@ -175,10 +179,7 @@ public class RoomView {
 
 
             DatabaseManager DBM = new DatabaseManager();
-
             bookingList.populateFromDB();
-            Random rand = new Random();
-            int confNumber = rand.nextInt(89999999) + 10000000;
 
             Booking newBooking =
                 new Booking(

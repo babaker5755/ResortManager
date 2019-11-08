@@ -158,14 +158,13 @@ public class DatabaseManager {
   // delete booking from database and ArrayList
   void removeBookingsFromDB(ArrayList<Booking> bookingList, String confirmationNumber) {
     System.out.println("Canceling booking...");
-    for (Booking booking : bookingList) {
-      if (booking.getConfirmationNumber().equals(confirmationNumber)) {
+    for (int i = 0; i < bookingList.size()-1; i++) {
+      if (bookingList.get(i).getConfirmationNumber().equals(confirmationNumber)) {
         try {
-          bookingList.remove(booking);
           PreparedStatement ps =
               conn.prepareStatement(
                   "DELETE FROM BOOKINGS WHERE CONFIRMATION_NUMBER='"
-                      + booking.getConfirmationNumber()
+                      + confirmationNumber
                       + "'");
           ps.executeUpdate();
           System.out.println("Canceled booking.");
