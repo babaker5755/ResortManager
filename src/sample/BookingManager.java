@@ -21,9 +21,9 @@ public class BookingManager {
   }
 
   public void removeBooking(String confirmationNumber) {
-    for (Booking b : bookingList) {
-      if (b.getConfirmationNumber() == confirmationNumber) {
-        bookingList.remove(b);
+    for (int i = 0; i < bookingList.size(); i++) {
+      if (bookingList.get(i).getConfirmationNumber() == confirmationNumber) {
+        bookingList.remove(i);
       }
     }
   }

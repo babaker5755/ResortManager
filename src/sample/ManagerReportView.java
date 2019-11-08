@@ -75,6 +75,7 @@ public class ManagerReportView extends Pane {
               @Override
               public void handle(ActionEvent e) {
 
+
                 // Insert code to close ManagerRoomView and re-display ManagerLoginForm
               }
             });

@@ -89,6 +89,46 @@ public class DatabaseManager {
     }
   }
 
+  ArrayList<Room> getRoomsAsList() {
+    ArrayList<Room> rooms = new ArrayList<>();
+
+    try {
+      // Get all rows from the specified table.
+      ps = conn.prepareStatement("SELECT * FROM ROOMS");
+      rs = ps.executeQuery();
+
+      // Make each row a room object, then add it to the list of rooms.
+      while (rs.next()) {
+        Room room =
+                new Room(
+                        rs.getString("ROOM_NUMBER"),
+                        rs.getString("BED_SIZE"),
+                        rs.getInt("NUM_BEDS"),
+                        rs.getBoolean("IS_VACANT"),
+                        rs.getDouble("PRICE"));
+        rooms.add(room);
+
+        // Cumbersome console confirmation.
+        System.out.println(
+                "ROOM_NUMBER: "
+                        + rs.getString("ROOM_NUMBER")
+                        + ", BED_SIZE: "
+                        + rs.getString("BED_SIZE")
+                        + ", NUM_BEDS: "
+                        + rs.getInt("NUM_BEDS")
+                        + ", IS_VACANT: "
+                        + rs.getBoolean("IS_VACANT")
+                        + ", PRICE: "
+                        + rs.getDouble("PRICE"));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.print("Could not execute query.");
+    }
+
+    return rooms;
+  }
+
   // add bookings to database
   void addBookingsToDB(ArrayList<Booking> bookingList) {
     System.out.println("Inserting booking records into table...");
@@ -155,10 +195,25 @@ public class DatabaseManager {
     }
   }
 
+  void removeBookingFromDB(Booking booking) {
+    System.out.println("Canceling booking...");
+    try {
+      PreparedStatement ps =
+              conn.prepareStatement(
+                      "DELETE FROM BOOKINGS WHERE CONFIRMATION_NUMBER='"
+                              + booking.getConfirmationNumber()
+                              + "'");
+      ps.executeUpdate();
+      System.out.println("Canceled booking.");
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println("Could not cancel booking.");
+    }
+  }
   // delete booking from database and ArrayList
   void removeBookingsFromDB(ArrayList<Booking> bookingList, String confirmationNumber) {
     System.out.println("Canceling booking...");
-    for (int i = 0; i < bookingList.size()-1; i++) {
+    for (int i = 0; i < bookingList.size(); i++) {
       if (bookingList.get(i).getConfirmationNumber().equals(confirmationNumber)) {
         try {
           PreparedStatement ps =
@@ -167,6 +222,7 @@ public class DatabaseManager {
                       + confirmationNumber
                       + "'");
           ps.executeUpdate();
+          bookingList.remove(i);
           System.out.println("Canceled booking.");
         } catch (SQLException e) {
           e.printStackTrace();
@@ -174,46 +230,6 @@ public class DatabaseManager {
         }
       }
     }
-  }
-
-  ArrayList<Room> getRoomsAsList() {
-    ArrayList<Room> rooms = new ArrayList<>();
-
-    try {
-      // Get all rows from the specified table.
-      ps = conn.prepareStatement("SELECT * FROM ROOMS");
-      rs = ps.executeQuery();
-
-      // Make each row a room object, then add it to the list of rooms.
-      while (rs.next()) {
-        Room room =
-            new Room(
-                rs.getString("ROOM_NUMBER"),
-                rs.getString("BED_SIZE"),
-                rs.getInt("NUM_BEDS"),
-                rs.getBoolean("IS_VACANT"),
-                rs.getDouble("PRICE"));
-        rooms.add(room);
-
-        // Cumbersome console confirmation.
-        System.out.println(
-            "ROOM_NUMBER: "
-                + rs.getString("ROOM_NUMBER")
-                + ", BED_SIZE: "
-                + rs.getString("BED_SIZE")
-                + ", NUM_BEDS: "
-                + rs.getInt("NUM_BEDS")
-                + ", IS_VACANT: "
-                + rs.getBoolean("IS_VACANT")
-                + ", PRICE: "
-                + rs.getDouble("PRICE"));
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.print("Could not execute query.");
-    }
-
-    return rooms;
   }
 
   ArrayList<Booking> getBookingsAsList() {

@@ -171,7 +171,7 @@ public class RoomView {
             Pane pane = new Pane();
             Label lbl = new Label("You're booked! Your confirmation number is: " + confNumber); // TODO: Add confirmation
             pane.getChildren().add(lbl);
-            Scene dialogScene = new Scene(popupVbox, 250, 50); //Change confirmation popup size here
+            Scene dialogScene = new Scene(popupVbox, 600, 100); //Change confirmation popup size here
             popupVbox.getChildren().add(pane);
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();
