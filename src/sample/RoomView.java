@@ -185,6 +185,7 @@ public class RoomView {
             bookingList.addBooking(newBooking);
             room.setVacant(false);
             DatabaseManager DBM = new DatabaseManager();
+
             // adding bookings to database
             DBM.addBookingsToDB(bookingList.getBookingList());
 

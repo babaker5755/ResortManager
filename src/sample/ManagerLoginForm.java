@@ -77,8 +77,6 @@ public class ManagerLoginForm extends Pane {
     String username = usernameField.getText();
     String password = passwordField.getText();
 
-
-
     if (DBManager.authenticateUser(username, password)) {
       this.getChildren().remove(errorLabel);
       this.errorLabel.setText("Success");

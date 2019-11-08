@@ -36,10 +36,16 @@ public class Booking {
     this.checkOutDate = checkOutDate;
   }
 
+  public String getConfirmationNumber() {
+    return confirmationNumber;
+  }
+  public void setConfirmationNumber(String confirmationNumber) {
+    this.confirmationNumber = confirmationNumber;
+  }
+
   public String getRoomNumber() {
     return roomNumber;
   }
-
   public void setRoomNumber(String roomNumber) {
     this.roomNumber = roomNumber;
   }
@@ -47,7 +53,6 @@ public class Booking {
   public double getPrice() {
     return price;
   }
-
   public void setPrice(double price) {
     this.price = price;
   }
@@ -55,7 +60,6 @@ public class Booking {
   public String getClientName() {
     return clientName;
   }
-
   public void setClientName(String clientName) {
     this.clientName = clientName;
   }
@@ -63,7 +67,6 @@ public class Booking {
   public String getClientAddress() {
     return clientAddress;
   }
-
   public void setClientAddress(String clientAddress) {
     this.clientAddress = clientAddress;
   }
@@ -71,7 +74,6 @@ public class Booking {
   public String getClientCreditCard() {
     return clientCreditCard;
   }
-
   public void setClientCreditCard(String clientCreditCard) {
     this.clientCreditCard = clientCreditCard;
   }
@@ -79,23 +81,13 @@ public class Booking {
   public String getClientEmail() {
     return clientEmail;
   }
-
   public void setClientEmail(String clientEmail) {
     this.clientEmail = clientEmail;
-  }
-
-  public void setConfirmationNumber(String confirmationNumber) {
-    this.confirmationNumber = confirmationNumber;
-  }
-
-  public String getConfirmationNumber() {
-    return confirmationNumber;
   }
 
   public Date getCheckInDate() {
     return checkInDate;
   }
-
   public void setCheckInDate(Date checkInDate) {
     this.checkInDate = checkInDate;
   }
@@ -103,7 +95,6 @@ public class Booking {
   public Date getCheckOutDate() {
     return checkOutDate;
   }
-
   public void setCheckOutDate(Date checkOutDate) {
     this.checkOutDate = checkOutDate;
   }
