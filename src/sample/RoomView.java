@@ -19,7 +19,7 @@ import java.util.Date;
 public class RoomView {
 
   Room room;
-  BookingManager bookingList;
+  BookingManager bookingList = new BookingManager();
 
   public void setRoom(Room room) {
     this.room = room;
@@ -171,6 +171,12 @@ public class RoomView {
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();
 
+
+
+            DatabaseManager DBM = new DatabaseManager();
+
+            bookingList.populateFromDB();
+            
             Booking newBooking =
                 new Booking(
                     "98328923",
@@ -184,7 +190,6 @@ public class RoomView {
                     java.sql.Date.valueOf(checkOutPicker.getValue()));
             bookingList.addBooking(newBooking);
             room.setVacant(false);
-            DatabaseManager DBM = new DatabaseManager();
 
             // adding bookings to database
             DBM.addBookingsToDB(bookingList.getBookingList());

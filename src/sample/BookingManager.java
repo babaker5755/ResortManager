@@ -10,6 +10,7 @@ public class BookingManager {
     bookingList = new ArrayList<>();
   }
 
+
   // Overloaded constructor.
   BookingManager(ArrayList<Booking> bookingList) {
     this.bookingList = bookingList;
@@ -25,6 +26,12 @@ public class BookingManager {
         bookingList.remove(b);
       }
     }
+  }
+
+  public void populateFromDB() {
+    DatabaseManager DBM = new DatabaseManager();
+    bookingList = DBM.getBookingsAsList();
+    DBM.disconnectFromDB();
   }
 
   public ArrayList<Booking> getBookingList() {
