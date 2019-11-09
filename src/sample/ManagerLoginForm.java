@@ -12,11 +12,11 @@ import javafx.scene.layout.Pane;
 public class ManagerLoginForm extends Pane {
   private JFXTextField usernameField = new JFXTextField();
   private JFXPasswordField passwordField = new JFXPasswordField();
-  JFXButton btn = new JFXButton("Login");
+  JFXButton loginBtn = new JFXButton("Login");
   Label errorLabel = new Label("");
 
   public void setLoginAction(EventHandler<ActionEvent> loginAction) {
-    this.btn.setOnAction(loginAction);
+    this.loginBtn.setOnAction(loginAction);
   }
 
   public ManagerLoginForm() {
@@ -58,11 +58,11 @@ public class ManagerLoginForm extends Pane {
     this.getChildren().add(passwordField);
 
     // Login Button
-    btn.getStyleClass().add("button-raised");
-    btn.setPrefSize(150, 40);
-    btn.setLayoutX(300);
-    btn.setLayoutY(300);
-    this.getChildren().add(btn);
+    loginBtn.getStyleClass().add("button-raised");
+    loginBtn.setPrefSize(150, 40);
+    loginBtn.setLayoutX(300);
+    loginBtn.setLayoutY(300);
+    this.getChildren().add(loginBtn);
 
     // Add Label
     errorLabel.setAlignment(Pos.CENTER);
