@@ -176,6 +176,7 @@ public class RoomView {
             popupVbox.getChildren().add(pane);
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();
+            dialog.close(); //closes submit popup
 
             DatabaseManager DBM = new DatabaseManager();
             bookingList.populateFromDB();
