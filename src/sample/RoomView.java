@@ -164,7 +164,7 @@ public class RoomView {
             // Do something
             System.out.println("Submit Button Pressed" + priceLbl.toString());
             System.out.print(room.getRoomNumber() + "\n\n\n");
-
+            dialog.close(); //closes booking window
             Stage confirmPopup = new Stage();
             confirmPopup.initModality(Modality.APPLICATION_MODAL);
             VBox popupVbox = new VBox();
@@ -176,7 +176,6 @@ public class RoomView {
             popupVbox.getChildren().add(pane);
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();
-            dialog.close(); //closes submit popup
 
             DatabaseManager DBM = new DatabaseManager();
             bookingList.populateFromDB();
