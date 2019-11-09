@@ -2,11 +2,14 @@ package sample;
 
 import java.util.Date;
 
+import static sample.DetailedResortSummaryReport.TAX_RATE;
+
 public class Booking {
 
   private String confirmationNumber;
   private String roomNumber;
   private double price;
+  private double charge;
   private String clientName;
   private String clientAddress;
   private String clientCreditCard;
@@ -34,6 +37,11 @@ public class Booking {
     this.clientEmail = clientEmail;
     this.checkInDate = new Date(checkInDate.getTime());
     this.checkOutDate = new Date(checkOutDate.getTime());
+  }
+
+  public double getCharge() {
+    this.charge = (this.price * TAX_RATE) + this.price;
+    return charge;
   }
 
   public String getConfirmationNumber() {

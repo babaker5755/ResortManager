@@ -13,6 +13,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.time.ZoneId;
+import java.util.Date;
+
 public class ManagerReportView extends Pane {
   public  ManagerReportView() {
     // Add Label
@@ -59,13 +62,15 @@ public class ManagerReportView extends Pane {
             new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent e) {
+                Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
+                Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
                 DRSRModalView  drsrModalView = new DRSRModalView();
-                drsrModalView.initialize();
+                drsrModalView.initialize(startDate,endDate);
               }
             });
     this.getChildren().add(btn);
 
-    // Generate Report Button In Manager Tab
+    // Log out currently signed in manager
     Button logoutBtn = new Button("Logout");
     logoutBtn.setPrefSize(150, 40);
     logoutBtn.setLayoutX(550);
