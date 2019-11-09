@@ -104,7 +104,7 @@ public class Controller {
       Room room = rooms.get(i);
 
       // Create pane from room data
-      BrowsePane pane = new BrowsePane(room, true);
+      ManagerBrowsePane pane = new ManagerBrowsePane(room);
 
       // Add pane to specified grid
       if (setEmpty) {
@@ -131,7 +131,7 @@ public class Controller {
       Room room = rooms.get(i);
 
       // Create pane from room data
-      BrowsePane pane = new BrowsePane(room, false);
+      CatalogBrowsePane pane = new CatalogBrowsePane(room);
 
       // Add pane to specified grid
       catalogGridPane.add(pane, column, row);
