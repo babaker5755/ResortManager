@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -17,6 +18,14 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class ManagerReportView extends Pane {
+  private EventHandler<ActionEvent> logoutHandler;
+  private Button logoutBtn = new Button("Logout");
+
+  public void setLogoutHandler(EventHandler<ActionEvent> logoutHandler) {
+    logoutBtn.setOnAction(logoutHandler);
+    this.logoutHandler = logoutHandler;
+  }
+
   public  ManagerReportView() {
     // Add Label
     Label titleLabel = new Label("Generate Report");
@@ -70,21 +79,14 @@ public class ManagerReportView extends Pane {
             });
     this.getChildren().add(btn);
 
+
     // Log out currently signed in manager
-    Button logoutBtn = new Button("Logout");
     logoutBtn.setPrefSize(150, 40);
     logoutBtn.setLayoutX(550);
     logoutBtn.setLayoutY(190);
-    logoutBtn.setOnAction(
-            new EventHandler<ActionEvent>() {
-              @Override
-              public void handle(ActionEvent e) {
-
-
-                // Insert code to close ManagerRoomView and re-display ManagerLoginForm
-              }
-            });
+    logoutBtn.setOnAction(logoutHandler);
     this.getChildren().add(logoutBtn);
+
 
   }
 }

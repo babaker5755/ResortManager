@@ -20,7 +20,7 @@ public class Controller {
   private BookingManager bookingList;
   private DatabaseManager dbManager;
 
-  boolean hasLoggedInAsManager = false;
+  private boolean hasLoggedInAsManager = false;
 
   @FXML
   private JFXTabPane tabPane;
@@ -58,7 +58,6 @@ public class Controller {
     loadManagerTab(rooms);
 
   }
-
   @FXML
   void cancelReservation(MouseEvent event) {
     dbManager.removeBookingInList(dbManager.getBookingsAsList(), confirmationNumberField.getText());
@@ -68,7 +67,18 @@ public class Controller {
   private void loadManagerTab(ArrayList<Room> rooms) {
     if (hasLoggedInAsManager) {
       setupManagerGridPane(rooms, false);
-      managerReportFormPane.getChildren().add(new ManagerReportView());
+      ManagerReportView managerReportView = new ManagerReportView();
+      EventHandler<ActionEvent> logoutHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent e) {
+          hasLoggedInAsManager = false;
+          setupManagerGridPane(rooms, true);
+          managerReportFormPane.getChildren().remove(managerReportView);
+          loadManagerTab(rooms);
+        }
+      };
+      managerReportView.setLogoutHandler(logoutHandler);
+      managerReportFormPane.getChildren().add(managerReportView);
     } else {
       ManagerLoginForm loginPane = new ManagerLoginForm();
       loginPane.getStyleClass().add("grid-pane");
