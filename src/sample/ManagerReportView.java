@@ -4,16 +4,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -26,7 +24,7 @@ public class ManagerReportView extends Pane {
     this.logoutHandler = logoutHandler;
   }
 
-  public  ManagerReportView() {
+  public ManagerReportView() {
     // Add Label
     Label titleLabel = new Label("Generate Report");
     titleLabel.setPrefWidth(750);
@@ -48,6 +46,17 @@ public class ManagerReportView extends Pane {
     startDatePicker.setLayoutY(70);
     this.getChildren().add(startDatePicker);
 
+    startDatePicker.setDayCellFactory(
+        picker ->
+            new DateCell() {
+              public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0);
+              }
+            });
+
     // Add Label
     Label endLabel = new Label("End Date");
     endLabel.setPrefWidth(250);
@@ -62,23 +71,33 @@ public class ManagerReportView extends Pane {
     endDatePicker.setLayoutY(70);
     this.getChildren().add(endDatePicker);
 
+    endDatePicker.setDayCellFactory(
+        picker ->
+            new DateCell() {
+              public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0);
+              }
+            });
+
     // Generate Report Button In Manager Tab
     Button btn = new Button("Generate Report");
     btn.setPrefSize(150, 40);
     btn.setLayoutX(300);
     btn.setLayoutY(140);
     btn.setOnAction(
-            new EventHandler<ActionEvent>() {
-              @Override
-              public void handle(ActionEvent e) {
-                Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
-                Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
-                DRSRModalView  drsrModalView = new DRSRModalView();
-                drsrModalView.initialize(startDate,endDate);
-              }
-            });
+        new EventHandler<ActionEvent>() {
+          @Override
+          public void handle(ActionEvent e) {
+            Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
+            Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
+            DRSRModalView drsrModalView = new DRSRModalView();
+            drsrModalView.initialize(startDate, endDate);
+          }
+        });
     this.getChildren().add(btn);
-
 
     // Log out currently signed in manager
     logoutBtn.setPrefSize(150, 40);
@@ -86,7 +105,5 @@ public class ManagerReportView extends Pane {
     logoutBtn.setLayoutY(190);
     logoutBtn.setOnAction(logoutHandler);
     this.getChildren().add(logoutBtn);
-
-
   }
 }
