@@ -48,17 +48,6 @@ public class ManagerReportView extends Pane {
     startDatePicker.setLayoutY(70);
     this.getChildren().add(startDatePicker);
 
-    startDatePicker.setDayCellFactory(
-        picker ->
-            new DateCell() {
-              public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                LocalDate today = LocalDate.now();
-
-                setDisable(empty || date.compareTo(today) < 0);
-              }
-            });
-
     // Add Label
     Label endLabel = new Label("End Date");
     endLabel.setPrefWidth(250);
@@ -72,17 +61,6 @@ public class ManagerReportView extends Pane {
     endDatePicker.setLayoutX(450);
     endDatePicker.setLayoutY(70);
     this.getChildren().add(endDatePicker);
-
-    endDatePicker.setDayCellFactory(
-        picker ->
-            new DateCell() {
-              public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                LocalDate today = LocalDate.now();
-
-                setDisable(empty || date.compareTo(today) < 0);
-              }
-            });
 
     // Generate Report Button In Manager Tab
     JFXButton btn = new JFXButton("Generate Report");
