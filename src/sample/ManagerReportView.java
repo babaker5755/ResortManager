@@ -1,5 +1,6 @@
 package sample;
 
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -42,7 +43,7 @@ public class ManagerReportView extends Pane {
     this.getChildren().add(startLabel);
 
     // Add Date Picker
-    DatePicker startDatePicker = new DatePicker();
+    JFXDatePicker startDatePicker = new JFXDatePicker();
     startDatePicker.setPrefWidth(250);
     startDatePicker.setLayoutX(50);
     startDatePicker.setLayoutY(70);
@@ -56,7 +57,7 @@ public class ManagerReportView extends Pane {
     this.getChildren().add(endLabel);
 
     // Add Date Picker
-    DatePicker endDatePicker = new DatePicker();
+    JFXDatePicker endDatePicker = new JFXDatePicker();
     endDatePicker.setPrefWidth(250);
     endDatePicker.setLayoutX(450);
     endDatePicker.setLayoutY(70);
