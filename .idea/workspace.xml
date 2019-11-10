@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="1. Fixed homepage cancelReservation button to use database getBookingsAsList Method instead of from the booking manager class.&#10;2. Updated tableviews in manager room view to update after selecting yes button on cancel booking confirmation popup.&#10;3. Manager room view cancel booking confirmation popup now closes on yes button as well.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Hotel_Database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/RoomView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/RoomView.java" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="1. Date pickers in the room catalog view for customers have dates before&#10;today grayed out." />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +29,6 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
-        <item name="HOTEL_DATABASE: database" type="2aa06773:H2ImplModel$Database" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
-        <item name="HOTEL_DATABASE: database" type="2aa06773:H2ImplModel$Database" />
-        <item name="PUBLIC: schema" type="7f85d983:H2ImplModel$Schema" />
       </path>
     </expand>
     <select />
@@ -319,8 +301,8 @@
       <workItem from="1573329904510" duration="2416000" />
       <workItem from="1573332494139" duration="7000" />
       <workItem from="1573352760485" duration="74000" />
-      <workItem from="1573352835163" duration="1225000" />
-      <workItem from="1573355664873" duration="870000" />
+      <workItem from="1573352835163" duration="1815000" />
+      <workItem from="1573354652492" duration="1137000" />
     </task>
     <task id="LOCAL-00001" summary="pull request">
       <created>1571161850397</created>
@@ -364,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573266996506</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1. Date pickers in the room catalog view for customers have dates before&#10;today grayed out.">
+      <created>1573354255128</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1573354255128</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,6 +409,7 @@
     <MESSAGE value="CSS file added" />
     <MESSAGE value="1. Fixed homepage cancelReservation button to use database getBookingsAsList Method instead of from the booking manager class.&#10;2. Updated tableviews in manager room view to update after selecting yes button on cancel booking confirmation popup.&#10;3. Manager room view cancel booking confirmation popup now closes on yes button as well." />
     <MESSAGE value="1. Created DRSR abstract class with calculation functions.&#10;2. Tweaked DRSR modal view width,size.&#10;3. Set up tableview within DRSR modal to display bookings (all &#10;information within bookings) and charges (price of room and added tax)&#10;from within &#10;date range of date pickers (start date), (end date)" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Created DRSR abstract class with calculation functions.&#10;2. Tweaked DRSR modal view width,size.&#10;3. Set up tableview within DRSR modal to display bookings (all &#10;information within bookings) and charges (price of room and added tax)&#10;from within &#10;date range of date pickers (start date), (end date)" />
+    <MESSAGE value="1. Date pickers in the room catalog view for customers have dates before&#10;today grayed out." />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Date pickers in the room catalog view for customers have dates before&#10;today grayed out." />
   </component>
 </project>
