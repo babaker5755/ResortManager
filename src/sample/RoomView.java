@@ -1,5 +1,6 @@
 package sample;
 
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -36,9 +37,10 @@ public class RoomView {
 
     // Add elements to this pane
     Pane pane = new Pane();
-
+    pane.getStyleClass().add("root");
     // Add Label
     Label bedSizeLbl = new Label(room.getBedSize());
+    bedSizeLbl.getStyleClass().add("label");
     bedSizeLbl.setPrefWidth(400);
     bedSizeLbl.setLayoutX(0);
     bedSizeLbl.setLayoutY(15);
@@ -47,6 +49,7 @@ public class RoomView {
 
     // Add Label
     Label numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
+    numBedsLbl.getStyleClass().add("label");
     numBedsLbl.setPrefWidth(400);
     numBedsLbl.setLayoutX(0);
     numBedsLbl.setLayoutY(40);
@@ -63,6 +66,7 @@ public class RoomView {
 
     // Add Label
     Label priceLbl = new Label("$" + room.getPrice());
+    priceLbl.getStyleClass().add("label");
     priceLbl.setPrefWidth(400);
     priceLbl.setLayoutX(0);
     priceLbl.setLayoutY(360);
@@ -70,6 +74,7 @@ public class RoomView {
     pane.getChildren().add(priceLbl);
 
     Label nameLabel = new Label("Name");
+    nameLabel.getStyleClass().add("label");
     nameLabel.setLayoutX(25);
     nameLabel.setLayoutY(390);
     nameLabel.setAlignment(Pos.CENTER);
@@ -83,6 +88,7 @@ public class RoomView {
     pane.getChildren().add(nameField);
 
     Label addressLabel = new Label("Address");
+    addressLabel.getStyleClass().add("label");
     addressLabel.setLayoutX(25);
     addressLabel.setLayoutY(470);
     addressLabel.setAlignment(Pos.CENTER);
@@ -96,6 +102,7 @@ public class RoomView {
     pane.getChildren().add(addressField);
 
     Label emailLabel = new Label("Email Address");
+    emailLabel.getStyleClass().add("label");
     emailLabel.setLayoutX(205);
     emailLabel.setLayoutY(390);
     emailLabel.setAlignment(Pos.CENTER);
@@ -109,6 +116,7 @@ public class RoomView {
     pane.getChildren().add(emailField);
 
     Label ccLabel = new Label("Credit Card Number");
+    ccLabel.getStyleClass().add("label");
     ccLabel.setLayoutX(205);
     ccLabel.setLayoutY(470);
     ccLabel.setAlignment(Pos.CENTER);
@@ -122,23 +130,26 @@ public class RoomView {
     pane.getChildren().add(creditCardField);
 
     Label checkInLabel = new Label("Check-in Date");
+    checkInLabel.getStyleClass().add("label");
     checkInLabel.setLayoutX(25);
     checkInLabel.setLayoutY(550);
     checkInLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(checkInLabel);
 
-    DatePicker checkInPicker = new DatePicker();
+    JFXDatePicker checkInPicker = new JFXDatePicker();
     checkInPicker.setLayoutX(25);
     checkInPicker.setLayoutY(580);
     checkInPicker.setPrefWidth(175);
     checkInPicker.setPrefHeight(40);
-    checkInPicker.setDayCellFactory(picker -> new DateCell() {
-      public void updateItem(LocalDate date, boolean empty) {
-        super.updateItem(date, empty);
-        LocalDate today = LocalDate.now();
-        setDisable(empty || date.compareTo(today) < 0 );
-      }
-    });
+    checkInPicker.setDayCellFactory(
+        picker ->
+            new DateCell() {
+              public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 0);
+              }
+            });
     pane.getChildren().add(checkInPicker);
 
     Label checkOutLabel = new Label("Check-out Date");
@@ -147,18 +158,20 @@ public class RoomView {
     checkOutLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(checkOutLabel);
 
-    DatePicker checkOutPicker = new DatePicker();
+    JFXDatePicker checkOutPicker = new JFXDatePicker();
     checkOutPicker.setLayoutX(205);
     checkOutPicker.setLayoutY(580);
     checkOutPicker.setPrefWidth(175);
     checkOutPicker.setPrefHeight(40);
-    checkOutPicker.setDayCellFactory(picker -> new DateCell() {
-      public void updateItem(LocalDate date, boolean empty) {
-        super.updateItem(date, empty);
-        LocalDate today = LocalDate.now();
-        setDisable(empty || date.compareTo(today) < 0 );
-      }
-    });
+    checkOutPicker.setDayCellFactory(
+        picker ->
+            new DateCell() {
+              public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+                setDisable(empty || date.compareTo(today) < 0);
+              }
+            });
     pane.getChildren().add(checkOutPicker);
 
     // Add Button
@@ -177,15 +190,20 @@ public class RoomView {
             // Do something
             System.out.println("Submit Button Pressed" + priceLbl.toString());
             System.out.print(room.getRoomNumber() + "\n\n\n");
-            dialog.close(); //closes booking window
+            dialog.close(); // closes booking window
             Stage confirmPopup = new Stage();
             confirmPopup.initModality(Modality.APPLICATION_MODAL);
             VBox popupVbox = new VBox();
             Pane pane = new Pane();
-            Label lbl = new Label("  You're booked! Your confirmation number is: " + confNumber
-                    + "\n   Please write this number down and keep it safe!"); // TODO: Add confirmation
+            Label lbl =
+                new Label(
+                    "  You're booked! Your confirmation number is: "
+                        + confNumber
+                        + "\n   Please write this number down and keep it safe!"); // TODO: Add
+                                                                                   // confirmation
             pane.getChildren().add(lbl);
-            Scene dialogScene = new Scene(popupVbox, 325, 75); //Change confirmation popup size here
+            Scene dialogScene =
+                new Scene(popupVbox, 325, 75); // Change confirmation popup size here
             popupVbox.getChildren().add(pane);
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();

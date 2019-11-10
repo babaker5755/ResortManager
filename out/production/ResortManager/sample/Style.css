@@ -45,7 +45,7 @@
     -fx-border-color: -fx-secondary;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-    -fx-font-size: 12pt;
+    -fx-font-size: 11pt;
 }
 .button-raised:hover, .button-raised:focused {
     -fx-border-color: -fx-secondary;
