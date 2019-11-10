@@ -1,6 +1,7 @@
 package sample;
 
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -18,7 +19,7 @@ import java.util.Date;
 
 public class ManagerReportView extends Pane {
   private EventHandler<ActionEvent> logoutHandler;
-  private Button logoutBtn = new Button("Logout");
+  private JFXButton logoutBtn = new JFXButton("Logout");
 
   public void setLogoutHandler(EventHandler<ActionEvent> logoutHandler) {
     logoutBtn.setOnAction(logoutHandler);
@@ -84,7 +85,8 @@ public class ManagerReportView extends Pane {
             });
 
     // Generate Report Button In Manager Tab
-    Button btn = new Button("Generate Report");
+    JFXButton btn = new JFXButton("Generate Report");
+    btn.getStyleClass().add("button-raised");
     btn.setPrefSize(150, 40);
     btn.setLayoutX(300);
     btn.setLayoutY(140);
@@ -101,6 +103,7 @@ public class ManagerReportView extends Pane {
     this.getChildren().add(btn);
 
     // Log out currently signed in manager
+    logoutBtn.getStyleClass().add("button-raised");
     logoutBtn.setPrefSize(150, 40);
     logoutBtn.setLayoutX(550);
     logoutBtn.setLayoutY(190);
