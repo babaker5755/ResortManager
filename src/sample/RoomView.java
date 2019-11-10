@@ -1,5 +1,7 @@
 package sample;
 
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -75,7 +77,7 @@ public class RoomView {
     nameLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(nameLabel);
 
-    TextField nameField = new TextField();
+    JFXTextField nameField = new JFXTextField();
     nameField.setLayoutX(25);
     nameField.setLayoutY(420);
     nameField.setPrefWidth(175);
@@ -88,7 +90,7 @@ public class RoomView {
     addressLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(addressLabel);
 
-    TextField addressField = new TextField();
+    JFXTextField addressField = new JFXTextField();
     addressField.setLayoutX(25);
     addressField.setLayoutY(500);
     addressField.setPrefWidth(175);
@@ -101,7 +103,7 @@ public class RoomView {
     emailLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(emailLabel);
 
-    TextField emailField = new TextField();
+    JFXTextField emailField = new JFXTextField();
     emailField.setLayoutX(205);
     emailField.setLayoutY(420);
     emailField.setPrefWidth(175);
@@ -114,7 +116,7 @@ public class RoomView {
     ccLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(ccLabel);
 
-    TextField creditCardField = new TextField();
+    JFXTextField creditCardField = new JFXTextField();
     creditCardField.setLayoutX(205);
     creditCardField.setLayoutY(500);
     creditCardField.setPrefWidth(175);
@@ -127,7 +129,7 @@ public class RoomView {
     checkInLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(checkInLabel);
 
-    DatePicker checkInPicker = new DatePicker();
+    JFXDatePicker checkInPicker = new JFXDatePicker();
     checkInPicker.setLayoutX(25);
     checkInPicker.setLayoutY(580);
     checkInPicker.setPrefWidth(175);
@@ -147,7 +149,7 @@ public class RoomView {
     checkOutLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(checkOutLabel);
 
-    DatePicker checkOutPicker = new DatePicker();
+    JFXDatePicker checkOutPicker = new JFXDatePicker();
     checkOutPicker.setLayoutX(205);
     checkOutPicker.setLayoutY(580);
     checkOutPicker.setPrefWidth(175);
