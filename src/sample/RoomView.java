@@ -4,16 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Random;
 
@@ -133,6 +132,13 @@ public class RoomView {
     checkInPicker.setLayoutY(580);
     checkInPicker.setPrefWidth(175);
     checkInPicker.setPrefHeight(40);
+    checkInPicker.setDayCellFactory(picker -> new DateCell() {
+      public void updateItem(LocalDate date, boolean empty) {
+        super.updateItem(date, empty);
+        LocalDate today = LocalDate.now();
+        setDisable(empty || date.compareTo(today) < 0 );
+      }
+    });
     pane.getChildren().add(checkInPicker);
 
     Label checkOutLabel = new Label("Check-out Date");
@@ -146,6 +152,13 @@ public class RoomView {
     checkOutPicker.setLayoutY(580);
     checkOutPicker.setPrefWidth(175);
     checkOutPicker.setPrefHeight(40);
+    checkOutPicker.setDayCellFactory(picker -> new DateCell() {
+      public void updateItem(LocalDate date, boolean empty) {
+        super.updateItem(date, empty);
+        LocalDate today = LocalDate.now();
+        setDisable(empty || date.compareTo(today) < 0 );
+      }
+    });
     pane.getChildren().add(checkOutPicker);
 
     // Add Button
