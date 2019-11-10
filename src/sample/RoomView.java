@@ -1,5 +1,6 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -38,7 +39,11 @@ public class RoomView {
 
     // Add elements to this pane
     Pane pane = new Pane();
+    pane.setPrefHeight(1000);
+    pane.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
     pane.getStyleClass().add("root");
+
+
     // Add Label
     Label bedSizeLbl = new Label(room.getBedSize());
     bedSizeLbl.getStyleClass().add("label");
@@ -176,8 +181,9 @@ public class RoomView {
     pane.getChildren().add(checkOutPicker);
 
     // Add Button
-    Button btn = new Button("Submit");
+    JFXButton btn = new JFXButton("Submit");
     btn.setPrefSize(200, 50);
+    btn.getStyleClass().add("button-raised");
     btn.setLayoutX(100);
     btn.setLayoutY(640);
     btn.setOnAction(
@@ -205,6 +211,7 @@ public class RoomView {
             pane.getChildren().add(lbl);
             Scene dialogScene =
                 new Scene(popupVbox, 325, 75); // Change confirmation popup size here
+            dialogScene.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
             popupVbox.getChildren().add(pane);
             confirmPopup.setScene(dialogScene);
             confirmPopup.show();

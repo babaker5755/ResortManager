@@ -1,5 +1,6 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +34,9 @@ public class ManagerRoomView {
 
     // Add elements to this pane
     Pane pane = new Pane();
+    pane.setPrefHeight(1000);
+    pane.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
+    pane.getStyleClass().add("root");
 
     // Add Label
     Label bedSizeLbl = new Label(room.getBedSize());
@@ -69,7 +73,7 @@ public class ManagerRoomView {
     final TableView<Booking> tableView = setTableView(new TableView());
     tableView.setPrefWidth(690);
     tableView.setPrefHeight(300);
-    tableView.setLayoutX(0);
+    tableView.setLayoutX(5);
     tableView.setLayoutY(300);
     pane.getChildren().add(tableView);
 
@@ -78,9 +82,10 @@ public class ManagerRoomView {
     dialog.setScene(dialogScene);
     dialog.show();
 
-    Button cancelBooking = new Button("Cancel Booking");
+    JFXButton cancelBooking = new JFXButton("Cancel Booking");
     cancelBooking.setPrefSize(150, 40);
-    cancelBooking.setLayoutX(250);
+    cancelBooking.getStyleClass().add("button-raised");
+    cancelBooking.setLayoutX(275);
     cancelBooking.setLayoutY(605);
     cancelBooking.setOnAction(
         new EventHandler<ActionEvent>() {

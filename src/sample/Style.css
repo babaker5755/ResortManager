@@ -36,7 +36,7 @@
     -fx-background-color: transparent;
     -fx-font-weight: BOLD;
     -fx-prompt-text-fill: -fx-secondary-text;
-    -jfx-focus-color: -fx-primary;
+    -jfx-focus-color: -fx-primarytext;
     -jfx-unfocus-color: -fx-secondary;
 }
 .button-raised {
