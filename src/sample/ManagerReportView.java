@@ -66,7 +66,7 @@ public class ManagerReportView extends Pane {
     JFXButton btn = new JFXButton("Generate Report");
     btn.getStyleClass().add("button-raised");
     btn.setPrefSize(150, 40);
-    btn.setLayoutX(300);
+    btn.setLayoutX(200);
     btn.setLayoutY(140);
     btn.setOnAction(
         new EventHandler<ActionEvent>() {
@@ -79,6 +79,28 @@ public class ManagerReportView extends Pane {
           }
         });
     this.getChildren().add(btn);
+
+    JFXButton statisticsButton = new JFXButton("Resort Statistics");
+    statisticsButton.getStyleClass().add("button-raised");
+    statisticsButton.setPrefSize(150, 40);
+    statisticsButton.setLayoutX(400);
+    statisticsButton.setLayoutY(140);
+    statisticsButton.setOnAction(
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                Stage dialog = new Stage();
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                VBox dialogVbox = new VBox();
+                Pane pane = new Pane();
+
+                Scene dialogScene = new Scene(dialogVbox, 700, 700);
+                dialogVbox.getChildren().add(pane);
+                dialog.setScene(dialogScene);
+                dialog.show();
+              }
+            });
+    this.getChildren().add(statisticsButton);
 
     // Log out currently signed in manager
     logoutBtn.getStyleClass().add("button-raised");

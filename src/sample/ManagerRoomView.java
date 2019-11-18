@@ -144,8 +144,10 @@ public class ManagerRoomView {
             );
           }
         });
-
     pane.getChildren().add(cancelBooking);
+
+
+
   }
 
   private TableView<Booking> setTableView(TableView<Booking> tableView) {
