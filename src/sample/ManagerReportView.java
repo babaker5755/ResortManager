@@ -89,15 +89,9 @@ public class ManagerReportView extends Pane {
             new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent e) {
-                Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                VBox dialogVbox = new VBox();
-                Pane pane = new Pane();
+                Graphs barChart = new Graphs();
+                barChart.start();
 
-                Scene dialogScene = new Scene(dialogVbox, 700, 700);
-                dialogVbox.getChildren().add(pane);
-                dialog.setScene(dialogScene);
-                dialog.show();
               }
             });
     this.getChildren().add(statisticsButton);
