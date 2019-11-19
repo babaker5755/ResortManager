@@ -87,7 +87,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Pane layoutX="5.0" layoutY="0.0" prefHeight="650.0" prefWidth="750">
+                                <Pane fx:id="amenitiesPane" layoutX="5.0" layoutY="0.0" prefHeight="650.0" prefWidth="750">
                                     <children>
                                         <ImageView fx:id="amenitiesPageImageView" fitHeight="265.0" fitWidth="730.0" layoutX="10.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
