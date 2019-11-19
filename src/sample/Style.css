@@ -1,8 +1,12 @@
 {
-    -fx-primary : #424250;
-    -fx-secondary : #37EFBA;
-    -fx-primarytext : #f9f9f9;
-    -fx-secondary-text : #f7f7f7;
+    /*-fx-primary : #424250;*/
+    -fx-primary : #FFFFFF;
+    /*-fx-secondary : #37EFBA;*/
+    -fx-secondary : #6495ED;
+    /*-fx-primarytext : #f9f9f9;*/
+    -fx-primarytext : #000000;
+    /*-fx-secondary-text : #f7f7f7;*/
+    -fx-secondary-text : #000000;
     -fx-blue: #1976D2;
     -fx-red: #FF0000;
     -fx-color-1:#1976D2;
@@ -20,6 +24,9 @@
     -fx-text-fill: -fx-primarytext;
     /*-fx-font-size: 20pt;*/
 }
+.tab-label {
+    -fx-text-fill:  -fx-primarytext;
+}
 .label {
     -fx-text-fill: -fx-primarytext;
     /*-fx-font-size: 12pt;*/
@@ -30,6 +37,7 @@
 .tab {
     -fx-pref-height: 35;
     -fx-background-color: -fx-primary;
+    -fx-text-fill:  -fx-primarytext;
 }
 .text-field {
     -fx-text-fill: -fx-primarytext;

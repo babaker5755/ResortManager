@@ -82,13 +82,13 @@ public class RoomView {
     Label nameLabel = new Label("Name");
     nameLabel.getStyleClass().add("label");
     nameLabel.setLayoutX(25);
-    nameLabel.setLayoutY(390);
+    nameLabel.setLayoutY(400);
     nameLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(nameLabel);
 
     JFXTextField nameField = new JFXTextField();
     nameField.setLayoutX(25);
-    nameField.setLayoutY(420);
+    nameField.setLayoutY(410);
     nameField.setPrefWidth(175);
     nameField.setPrefHeight(40);
     pane.getChildren().add(nameField);
@@ -96,13 +96,13 @@ public class RoomView {
     Label addressLabel = new Label("Address");
     addressLabel.getStyleClass().add("label");
     addressLabel.setLayoutX(25);
-    addressLabel.setLayoutY(470);
+    addressLabel.setLayoutY(480);
     addressLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(addressLabel);
 
     JFXTextField addressField = new JFXTextField();
     addressField.setLayoutX(25);
-    addressField.setLayoutY(500);
+    addressField.setLayoutY(490);
     addressField.setPrefWidth(175);
     addressField.setPrefHeight(40);
     pane.getChildren().add(addressField);
@@ -110,13 +110,13 @@ public class RoomView {
     Label emailLabel = new Label("Email Address");
     emailLabel.getStyleClass().add("label");
     emailLabel.setLayoutX(205);
-    emailLabel.setLayoutY(390);
+    emailLabel.setLayoutY(400);
     emailLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(emailLabel);
 
     JFXTextField emailField = new JFXTextField();
     emailField.setLayoutX(205);
-    emailField.setLayoutY(420);
+    emailField.setLayoutY(410);
     emailField.setPrefWidth(175);
     emailField.setPrefHeight(40);
     pane.getChildren().add(emailField);
@@ -124,13 +124,13 @@ public class RoomView {
     Label ccLabel = new Label("Credit Card Number");
     ccLabel.getStyleClass().add("label");
     ccLabel.setLayoutX(205);
-    ccLabel.setLayoutY(470);
+    ccLabel.setLayoutY(480);
     ccLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(ccLabel);
 
     JFXTextField creditCardField = new JFXTextField();
     creditCardField.setLayoutX(205);
-    creditCardField.setLayoutY(500);
+    creditCardField.setLayoutY(490);
     creditCardField.setPrefWidth(175);
     creditCardField.setPrefHeight(40);
     pane.getChildren().add(creditCardField);
@@ -138,13 +138,13 @@ public class RoomView {
     Label checkInLabel = new Label("Check-in Date");
     checkInLabel.getStyleClass().add("label");
     checkInLabel.setLayoutX(25);
-    checkInLabel.setLayoutY(550);
+    checkInLabel.setLayoutY(560);
     checkInLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(checkInLabel);
 
     JFXDatePicker checkInPicker = new JFXDatePicker();
     checkInPicker.setLayoutX(25);
-    checkInPicker.setLayoutY(580);
+    checkInPicker.setLayoutY(570);
     checkInPicker.setPrefWidth(175);
     checkInPicker.setPrefHeight(40);
     checkInPicker.setDayCellFactory(
@@ -160,13 +160,13 @@ public class RoomView {
 
     Label checkOutLabel = new Label("Check-out Date");
     checkOutLabel.setLayoutX(205);
-    checkOutLabel.setLayoutY(550);
+    checkOutLabel.setLayoutY(560);
     checkOutLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(checkOutLabel);
 
     JFXDatePicker checkOutPicker = new JFXDatePicker();
     checkOutPicker.setLayoutX(205);
-    checkOutPicker.setLayoutY(580);
+    checkOutPicker.setLayoutY(570);
     checkOutPicker.setPrefWidth(175);
     checkOutPicker.setPrefHeight(40);
     checkOutPicker.setDayCellFactory(
