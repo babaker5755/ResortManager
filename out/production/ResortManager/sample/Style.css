@@ -22,7 +22,7 @@
 }
 .title-label {
     -fx-text-fill: -fx-primarytext;
-    /*-fx-font-size: 20pt;*/
+    -fx-font-size: 20pt;
 }
 .tab-label {
     -fx-text-fill:  -fx-primarytext;

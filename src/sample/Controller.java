@@ -33,6 +33,7 @@ public class Controller {
   @FXML private JFXTextField confirmationNumberField;
   @FXML private Label homePageTitleLabel;
   @FXML private Label homePageBodyLabel;
+  @FXML private Pane amenitiesPane;
 
   @FXML
   public void initialize() {
@@ -56,6 +57,22 @@ public class Controller {
     bookingList = new BookingManager(dbManager.getBookingsAsList());
     setupGridPaneWithRooms(rooms);
     loadManagerTab(rooms);
+
+    // Add Button
+    JFXButton roomServiceButton = new JFXButton("Order Room Service");
+    roomServiceButton.setPrefSize(200, 50);
+    roomServiceButton.getStyleClass().add("button-raised");
+    roomServiceButton.setLayoutX(275);
+    roomServiceButton.setLayoutY(660);
+    roomServiceButton.setOnAction(
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                RoomServicePane roomServicePane = new RoomServicePane();
+                roomServicePane.presentRoomServicePane();
+              }
+            });
+    amenitiesPane.getChildren().add(roomServiceButton);
 
   }
   @FXML
