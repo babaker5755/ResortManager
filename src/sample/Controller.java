@@ -1,12 +1,16 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
@@ -14,6 +18,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class Controller {
 
@@ -34,6 +41,7 @@ public class Controller {
   @FXML private Label homePageTitleLabel;
   @FXML private Label homePageBodyLabel;
   @FXML private Pane amenitiesPane;
+  @FXML private GridPane amenitiesGridPane;
 
   @FXML
   public void initialize() {
@@ -58,22 +66,7 @@ public class Controller {
     setupGridPaneWithRooms(rooms);
     loadManagerTab(rooms);
 
-    // Add Button
-    JFXButton roomServiceButton = new JFXButton("Order Room Service");
-    roomServiceButton.setPrefSize(200, 50);
-    roomServiceButton.getStyleClass().add("button-raised");
-    roomServiceButton.setLayoutX(275);
-    roomServiceButton.setLayoutY(660);
-    roomServiceButton.setOnAction(
-            new EventHandler<ActionEvent>() {
-              @Override
-              public void handle(ActionEvent e) {
-                RoomServicePane roomServicePane = new RoomServicePane();
-                roomServicePane.presentRoomServicePane();
-              }
-            });
-    amenitiesPane.getChildren().add(roomServiceButton);
-
+    setupAmenitiesGridPane();
   }
   @FXML
   void cancelReservation(MouseEvent event) {
@@ -164,4 +157,66 @@ public class Controller {
       catalogGridPane.add(pane, column, row);
     }
   }
+
+  private void setupAmenitiesGridPane() {
+    List<String>  listOfAmenities = Arrays.asList(
+            "Order Room Service", "State-of-the-art gym", "Wedding Packages", "100-machine arcade", "Private Beach", "Private Ski Slopes"
+    );
+
+    amenitiesGridPane.setGridLinesVisible(false);
+    // For each room in the list of rooms
+    for (int i = 0; i < listOfAmenities.size() ; i++) {
+
+      // Get row and column of current grid in gridpane
+      int row = (i < 3) ? 0 : 1;
+      int column = (i < 3) ? i : i - 3;
+
+      Pane pane = new Pane();
+      JFXButton button = new JFXButton(listOfAmenities.get(i));
+      button.getStyleClass().add("button-raised");
+      button.setPrefHeight(140);
+      button.setPrefWidth(240);
+      button.setAlignment(Pos.CENTER);
+      int finalI = i;
+      button.setOnAction(
+              new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                    switch (listOfAmenities.get(finalI)) {
+                      case "Order Room Service" :
+                        RoomServicePane roomServicePane = new RoomServicePane();
+                        roomServicePane.presentRoomServicePane();
+                        return;
+                      default:
+                        presentAmenityInfo(listOfAmenities.get(finalI));
+                  }
+                }
+              });
+      pane.getChildren().add(button);
+
+      // Add pane to specified grid
+      amenitiesGridPane.add(pane, column, row);
+    }
+  }
+
+  public void presentAmenityInfo(String amenity) {
+    final Stage dialog = new Stage();
+    dialog.initModality(Modality.APPLICATION_MODAL);
+    VBox dialogVbox = new VBox(20);
+    Pane pane = new Pane();
+
+    Label titleLabel = new Label(amenity);
+    titleLabel.getStyleClass().add("title-label");
+    titleLabel.setLayoutX(0);
+    titleLabel.setLayoutY(20);
+    titleLabel.setPrefWidth(400);
+    titleLabel.setAlignment(Pos.CENTER);
+    pane.getChildren().add(titleLabel);
+
+    dialogVbox.getChildren().add(pane);
+    Scene dialogScene = new Scene(dialogVbox, 400, 400);
+    dialog.setScene(dialogScene);
+    dialog.show();
+  }
+
 }

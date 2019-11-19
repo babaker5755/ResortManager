@@ -84,13 +84,13 @@ public class RoomServicePane extends Pane {
     btn.setLayoutX(100);
     btn.setLayoutY(630);
     btn.setOnAction(
-        new EventHandler<ActionEvent>() {
-          @Override
-          public void handle(ActionEvent e) {
-            errorLabel.setText("Order Submitted");
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                errorLabel.setText("Order Submitted");
 
-          }
-        });
+              }
+            });
     mainPane.getChildren().add(btn);
 
     dialogVbox.getChildren().add(mainPane);

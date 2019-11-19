@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Stats button for graphs has been add in the MangerReportView">
-      <change afterPath="$PROJECT_DIR$/src/sample/RoomServicePane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomServicePane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomServicePane$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomServicePane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomServicePane$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomServicePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/RoomServicePane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Hotel_Database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/RoomServicePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/RoomServicePane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
