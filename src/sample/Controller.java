@@ -160,7 +160,8 @@ public class Controller {
 
   private void setupAmenitiesGridPane() {
     List<String>  listOfAmenities = Arrays.asList(
-            "Order Room Service", "State-of-the-art gym", "Wedding Packages", "100-machine arcade", "Private Beach", "Private Ski Slopes"
+            "Order Room Service", "Gym, Pool, and Track", "Wedding Packages", "Arcade & Minigames", "Private Beach",
+            "Private Ski Slopes"
     );
 
     amenitiesGridPane.setGridLinesVisible(false);
@@ -223,14 +224,14 @@ public class Controller {
       case "Order Room Service":
         // There's no way I'm touching THAT.
         break;
-      case "State-of-the-art gym":
+      case "Gym, Pool, and Track":
         Label amenitiesTextGym = new Label("Are you the type of person who never is happy unless they're working\n" +
                 "out? Do you constantly wish that you were lifting weights with your bros,\neven when on vacation? Well, " +
                 "at our state of the art gym, open 24/7 for\nguests, you will be in workout heaven. With over three " +
                 "hundred\ntreadmills, four hundred weight benches, and over ten tons of assorted\nbarbells, dumbbells, " +
                 "and other types of weights. Our indoor bicycle\ntrack and swimming pool are also available for you " +
                 "to use no matter the\ntime or day.");
-        amenitiesTextGym.getStyleClass().add("label");
+        amenitiesTextGym.getStyleClass().add("text-field");
         amenitiesTextGym.setLayoutX(0);
         amenitiesTextGym.setLayoutY(50);
         amenitiesTextGym.setPrefWidth(400);
@@ -247,21 +248,21 @@ public class Controller {
                 "France.\nWith the price of that one, we definitely put the steep in steeple! Neither\nof those catch " +
                 "your eye? The our Custom Package is the way to go!\nSimply tell us your request and we'll take care " +
                 "of everything.");
-        amenitiesTextWedding.getStyleClass().add("label");
+        amenitiesTextWedding.getStyleClass().add("text-field");
         amenitiesTextWedding.setLayoutX(0);
         amenitiesTextWedding.setLayoutY(50);
         amenitiesTextWedding.setPrefWidth(400);
         amenitiesTextWedding.setAlignment(Pos.CENTER);
         pane.getChildren().add(amenitiesTextWedding);
         break;
-      case "100-machine arcade":
+      case "Arcade & Minigames":
         Label amenitiesTextArcade = new Label("Our Arcade room has every game and system ever created (even those\n" +
                 "rare Japanese ones!) We've worked hard to ensure that we've obtained\neach and every game that is " +
                 "or was ever available for purchase, and a\nconsole to go with each one. Play your friends at a friendly " +
                 "game of\nMortal Street Fighting 1, or the new Mortal Street Fighting 13 that has\nyet to even come out " +
                 "yet! Wanting something a bit more exciting? Our\nindoor go-kart track is right around the corner, " +
                 "along with our laser tag\narena, trivia gameshow room, and bowling alley!");
-        amenitiesTextArcade.getStyleClass().add("label");
+        amenitiesTextArcade.getStyleClass().add("text-field");
         amenitiesTextArcade.setLayoutX(0);
         amenitiesTextArcade.setLayoutY(50);
         amenitiesTextArcade.setPrefWidth(400);
@@ -275,7 +276,7 @@ public class Controller {
                 "Our beaches in\nGreece, Italy, and Morocco are only a quick trip away with our private jet\nrentals. With" +
                 " locations all over the world, you can find a place in any continent\nyou'd like to soak up some sun, " +
                 "enjoy the water, and sip on mimosas all\nday long.");
-        amenitiesTextBeach.getStyleClass().add("label");
+        amenitiesTextBeach.getStyleClass().add("text-field");
         amenitiesTextBeach.setLayoutX(0);
         amenitiesTextBeach.setLayoutY(50);
         amenitiesTextBeach.setPrefWidth(400);
@@ -287,7 +288,7 @@ public class Controller {
                 "to any of our private ski resorts and shred that fresh snow,\nbrochacho. With resorts all over the world, " +
                 "we have a location for you\nwherever you'd like to be. Our in-house ski and snowboard\nmanufacturers " +
                 "will design a set of skiis just for you, perfectly handcrafted\nto your exact needs.");
-        amenitiesTextSki.getStyleClass().add("label");
+        amenitiesTextSki.getStyleClass().add("text-field");
         amenitiesTextSki.setLayoutX(0);
         amenitiesTextSki.setLayoutY(50);
         amenitiesTextSki.setPrefWidth(400);

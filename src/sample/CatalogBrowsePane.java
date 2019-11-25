@@ -14,6 +14,16 @@ public class CatalogBrowsePane extends Pane {
   private Label bedSizeLbl;
   private Label numBedsLbl;
   private Image roomImage;
+  private Image beachRoomImage;
+  private Image easternRoomImage;
+  private Image highRollersRoomImage;
+  private Image jungleRoomImage;
+  private Image seaFloorRoomImage;
+  private Image spaceRoomImage;
+  private Image spyRoomImage;
+  private Image superheroRoomImage;
+  private Image victorianRoomImage;
+  private Image winterRoomImage;
   private ImageView imgView;
   private JFXButton btn;
   private Label priceLbl;

@@ -64,6 +64,9 @@ public class RoomView {
 
     Image roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
     ImageView imgView = new ImageView(roomImage);
+    //Image spyRoomImage = new Image(Controller.class.getResourceAsStream("Room_Spy.jpg"));
+    //ImageView imgView = new ImageView(spyRoomImage);
+
     imgView.setFitHeight(270);
     imgView.setFitWidth(270);
     imgView.setLayoutX(65);
