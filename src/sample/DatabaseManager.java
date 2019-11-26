@@ -60,70 +60,82 @@ public class DatabaseManager {
     isConnectedToDB = false;
     System.out.print("Connection successfully closed.\n");
   }
-
-  void addRoomsToDB(ArrayList<Room> rooms) {
-
-    for (Room room : rooms) {
-      System.out.println("Inserting room records into table...");
-      try {
-        PreparedStatement ps =
-            conn.prepareStatement(
-                "INSERT INTO ROOMS VALUES ('"
-                    + room.getRoomNumber()
-                    + "', '"
-                    + room.getBedSize()
-                    + "', "
-                    + room.getNumBeds()
-                    + ", "
-                    + room.getVacant()
-                    + ", "
-                    + room.getPrice()
-                    + ")");
-        ps.executeUpdate();
-        System.out.println("Inserted room record into table.");
-      } catch (SQLException e) {
-        e.printStackTrace();
-        System.out.println("Could not create room record.");
-      }
-    }
-  }
+// this was not being used so i commented it out
+//  void addRoomsToDB(ArrayList<Room> rooms) {
+//
+//    for (Room room : rooms) {
+//      System.out.println("Inserting room records into table...");
+//      try {
+//        PreparedStatement ps =
+//            conn.prepareStatement(
+//                "INSERT INTO ROOMS VALUES ('"
+//                    + room.getRoomNumber()
+//                    + "', '"
+//                    + room.getBedSize()
+//                    + "', "
+//                    + room.getNumBeds()
+//                    + ", "
+//                    + room.getVacant()
+//                    + ", "
+//                    + room.getPrice()
+//                    + ")");
+//        ps.executeUpdate();
+//        System.out.println("Inserted room record into table.");
+//      } catch (SQLException e) {
+//        e.printStackTrace();
+//        System.out.println("Could not create room record.");
+//      }
+//    }
+//  }
 
   ArrayList<Room> getRoomsAsList() {
     ArrayList<Room> rooms = new ArrayList<>();
+    rooms.add(new Room("Beach",2,false,100.00,"Room_Beach.jpg" ));
+    rooms.add(new Room("Eastern",2,false,100.00,"Room_Eastern.jpg" ));
+    rooms.add(new Room("High Rollers",2,false,100.00,"Room_High_Rollers.jpg" ));
+    rooms.add(new Room("Jungle",2,false,100.00,"Room_Jungle.jpg" ));
+    rooms.add(new Room("Sea Floor",2,false,100.00,"Room_Sea_Floor.jpg" ));
+    rooms.add(new Room("Space",2,false,100.00,"Room_Space.jpg" ));
+    rooms.add(new Room("Spy",2,false,100.00,"Room_Spy.jpg" ));
+    rooms.add(new Room("Superhero",2,false,100.00,"Room_Superhero.jpg" ));
+    rooms.add(new Room("Victorian",2,false,100.00,"Room_Victorian.jpg" ));
+    rooms.add(new Room("Winter",2,false,100.00,"Room_Winter.png" ));
 
-    try {
-      // Get all rows from the specified table.
-      ps = conn.prepareStatement("SELECT * FROM ROOMS");
-      rs = ps.executeQuery();
+//    try {
+//      // Get all rows from the specified table.
+//      ps = conn.prepareStatement("SELECT * FROM ROOMS");
+//      rs = ps.executeQuery();
+//
+//      // Make each row a room object, then add it to the list of rooms.
+//      while (rs.next()) {
+//        Room room =
+//                new Room(
+//                        rs.getString("ROOM_NUMBER"),
+//                        rs.getString("BED_SIZE"),
+//                        rs.getInt("NUM_BEDS"),
+//                        rs.getBoolean("IS_VACANT"),
+//                        rs.getDouble("PRICE"),
+//                        ""
+//                        );
+//        rooms.add(room);
 
-      // Make each row a room object, then add it to the list of rooms.
-      while (rs.next()) {
-        Room room =
-                new Room(
-                        rs.getString("ROOM_NUMBER"),
-                        rs.getString("BED_SIZE"),
-                        rs.getInt("NUM_BEDS"),
-                        rs.getBoolean("IS_VACANT"),
-                        rs.getDouble("PRICE"));
-        rooms.add(room);
-
-        // Cumbersome console confirmation.
-        System.out.println(
-                "ROOM_NUMBER: "
-                        + rs.getString("ROOM_NUMBER")
-                        + ", BED_SIZE: "
-                        + rs.getString("BED_SIZE")
-                        + ", NUM_BEDS: "
-                        + rs.getInt("NUM_BEDS")
-                        + ", IS_VACANT: "
-                        + rs.getBoolean("IS_VACANT")
-                        + ", PRICE: "
-                        + rs.getDouble("PRICE"));
-      }
-    } catch (SQLException e) {
-      e.printStackTrace();
-      System.out.print("Could not execute query.");
-    }
+//        // Cumbersome console confirmation.
+//        System.out.println(
+//                "ROOM_NUMBER: "
+//                        + rs.getString("ROOM_NUMBER")
+//                        + ", BED_SIZE: "
+//                        + rs.getString("BED_SIZE")
+//                        + ", NUM_BEDS: "
+//                        + rs.getInt("NUM_BEDS")
+//                        + ", IS_VACANT: "
+//                        + rs.getBoolean("IS_VACANT")
+//                        + ", PRICE: "
+//                        + rs.getDouble("PRICE"));
+//      }
+//    } catch (SQLException e) {
+//      e.printStackTrace();
+//      System.out.print("Could not execute query.");
+//    }
 
     return rooms;
   }

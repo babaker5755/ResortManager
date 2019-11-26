@@ -1,21 +1,28 @@
 package sample;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class Room {
 
   private String roomNumber;
-  private String bedSize;
   private int numBeds;
   private Boolean isVacant;
   private double price;
+  private String imageUrl;
 
-  public Room(String roomNumber, String bedSize, int numBeds, Boolean isVacant, double price) {
+  public Room(
+      String roomNumber,
+      int numBeds,
+      Boolean isVacant,
+      double price,
+      String imageUrl) {
     this.roomNumber = roomNumber;
-    this.bedSize = bedSize;
     this.numBeds = numBeds;
     this.isVacant = isVacant;
     this.price = price;
+    this.imageUrl = imageUrl;
+  }
+
+  public String getImageUrl() {
+    return imageUrl;
   }
 
   public String getRoomNumber() {
@@ -24,14 +31,6 @@ public class Room {
 
   public void setRoomNumber(String roomNumber) {
     this.roomNumber = roomNumber;
-  }
-
-  public String getBedSize() {
-    return bedSize;
-  }
-
-  public void setBedSize(String bedSize) {
-    this.bedSize = bedSize;
   }
 
   public int getNumBeds() {

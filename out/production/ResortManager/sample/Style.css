@@ -24,6 +24,10 @@
     -fx-text-fill: -fx-primarytext;
     -fx-font-size: 20pt;
 }
+.medium-label {
+     -fx-text-fill: -fx-primarytext;
+     -fx-font-size: 15pt;
+ }
 .tab-label {
     -fx-text-fill:  -fx-primarytext;
 }
