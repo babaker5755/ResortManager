@@ -47,6 +47,7 @@ public class ManagerReportView extends Pane {
     startDatePicker.setLayoutX(50);
     startDatePicker.setLayoutY(70);
     this.getChildren().add(startDatePicker);
+    startDatePicker.setPromptText("Ex: 01/01/1999");
 
     // Add Label
     Label endLabel = new Label("End Date");
@@ -61,6 +62,7 @@ public class ManagerReportView extends Pane {
     endDatePicker.setLayoutX(450);
     endDatePicker.setLayoutY(70);
     this.getChildren().add(endDatePicker);
+    endDatePicker.setPromptText("Ex: 01/01/2000");
 
     // Generate Report Button In Manager Tab
     JFXButton btn = new JFXButton("Generate Report");
