@@ -30,7 +30,7 @@ public class ManagerBrowsePane extends Pane {
     this.getChildren().add(numBedsLbl);
 
     // Add Image
-    roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
+    roomImage = new Image(Controller.class.getResourceAsStream(room.getImageUrl()));
     imgView = new ImageView(roomImage);
     imgView.setFitHeight(90);
     imgView.setFitWidth(90);

@@ -46,7 +46,7 @@ public class ManagerRoomView {
     numBedsLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(numBedsLbl);
 
-    Image roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
+    Image roomImage = new Image(Controller.class.getResourceAsStream(room.getImageUrl()));
     ImageView imgView = new ImageView(roomImage);
     imgView.setFitHeight(135);
     imgView.setFitWidth(135);
