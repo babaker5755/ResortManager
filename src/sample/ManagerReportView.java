@@ -93,7 +93,6 @@ public class ManagerReportView extends Pane {
               public void handle(ActionEvent e) {
                 Graphs barChart = new Graphs();
                 barChart.start();
-
               }
             });
     this.getChildren().add(statisticsButton);
