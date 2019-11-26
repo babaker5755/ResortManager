@@ -39,14 +39,6 @@ public class ManagerRoomView {
     pane.getStyleClass().add("root");
 
     // Add Label
-    Label bedSizeLbl = new Label(room.getBedSize());
-    bedSizeLbl.setPrefWidth(700);
-    bedSizeLbl.setLayoutX(0);
-    bedSizeLbl.setLayoutY(15);
-    bedSizeLbl.setAlignment(Pos.CENTER);
-    pane.getChildren().add(bedSizeLbl);
-
-    // Add Label
     Label numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
     numBedsLbl.setPrefWidth(700);
     numBedsLbl.setLayoutX(0);

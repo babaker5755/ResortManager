@@ -45,13 +45,13 @@ public class RoomView {
 
 
     // Add Label
-    Label bedSizeLbl = new Label(room.getBedSize());
-    bedSizeLbl.getStyleClass().add("label");
-    bedSizeLbl.setPrefWidth(400);
-    bedSizeLbl.setLayoutX(0);
-    bedSizeLbl.setLayoutY(15);
-    bedSizeLbl.setAlignment(Pos.CENTER);
-    pane.getChildren().add(bedSizeLbl);
+    Label nameLbl = new Label(room.getRoomNumber());
+    nameLbl.getStyleClass().add("medium-label");
+    nameLbl.setPrefWidth(400);
+    nameLbl.setLayoutX(0);
+    nameLbl.setLayoutY(15);
+    nameLbl.setAlignment(Pos.CENTER);
+    pane.getChildren().add(nameLbl);
 
     // Add Label
     Label numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
@@ -62,7 +62,7 @@ public class RoomView {
     numBedsLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(numBedsLbl);
 
-    Image roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
+    Image roomImage = new Image(Controller.class.getResourceAsStream(room.getImageUrl()));
     ImageView imgView = new ImageView(roomImage);
     //Image spyRoomImage = new Image(Controller.class.getResourceAsStream("Room_Spy.jpg"));
     //ImageView imgView = new ImageView(spyRoomImage);
