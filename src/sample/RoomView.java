@@ -95,6 +95,7 @@ public class RoomView {
     nameField.setPrefWidth(175);
     nameField.setPrefHeight(40);
     pane.getChildren().add(nameField);
+    nameField.setPromptText("Ex: John Doe");
 
     Label addressLabel = new Label("Address");
     addressLabel.getStyleClass().add("label");
@@ -109,6 +110,7 @@ public class RoomView {
     addressField.setPrefWidth(175);
     addressField.setPrefHeight(40);
     pane.getChildren().add(addressField);
+    addressField.setPromptText("Ex: 51 Pineapple Ave.");
 
     Label emailLabel = new Label("Email Address");
     emailLabel.getStyleClass().add("label");
@@ -123,6 +125,7 @@ public class RoomView {
     emailField.setPrefWidth(175);
     emailField.setPrefHeight(40);
     pane.getChildren().add(emailField);
+    emailField.setPromptText("Ex: email@email.com");
 
     Label ccLabel = new Label("Credit Card Number");
     ccLabel.getStyleClass().add("label");
@@ -137,6 +140,7 @@ public class RoomView {
     creditCardField.setPrefWidth(175);
     creditCardField.setPrefHeight(40);
     pane.getChildren().add(creditCardField);
+    creditCardField.setPromptText("Ex: 5555 5555 5555 5555");
 
     Label checkInLabel = new Label("Check-in Date");
     checkInLabel.getStyleClass().add("label");
@@ -160,6 +164,7 @@ public class RoomView {
               }
             });
     pane.getChildren().add(checkInPicker);
+    checkInPicker.setPromptText("Ex: 01/12/2019");
 
     Label checkOutLabel = new Label("Check-out Date");
     checkOutLabel.setLayoutX(205);
@@ -178,10 +183,12 @@ public class RoomView {
               public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
-                setDisable(empty || date.compareTo(today) < 0);
+                setDisable(empty || date.compareTo(today) < 0
+                        || date.compareTo(checkInPicker.getValue()) < 0);
               }
             });
     pane.getChildren().add(checkOutPicker);
+    checkOutPicker.setPromptText("Ex: 01/14/2019");
 
     // Add Button
     JFXButton btn = new JFXButton("Submit");
@@ -193,58 +200,66 @@ public class RoomView {
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
+            if (nameField.getText() == null
+                    || emailField.getText() == null
+                    || addressField.getText() == null
+                    || creditCardField.getText() == null
+                    || checkInPicker.getValue() == null
+                    || checkOutPicker.getValue() == null) {
+              new Alert(Alert.AlertType.ERROR, "One or more fields have not been filled out!").showAndWait();
+            }else {
+              Random rand = new Random();
+              int confNumber = rand.nextInt(89999999) + 10000000;
 
-            Random rand = new Random();
-            int confNumber = rand.nextInt(89999999) + 10000000;
+              // Do something
+              System.out.println("Submit Button Pressed" + priceLbl.toString());
+              System.out.print(room.getRoomNumber() + "\n\n\n");
+              dialog.close(); // closes booking window
+              Stage confirmPopup = new Stage();
+              confirmPopup.initModality(Modality.APPLICATION_MODAL);
+              VBox popupVbox = new VBox();
+              Pane pane = new Pane();
+              Label lbl =
+                      new Label(
+                              "  You're booked! Your confirmation number is: "
+                                      + confNumber
+                                      + "\n   Please write this number down and keep it safe!"); // TODO: Add
+              // confirmation
+              pane.getChildren().add(lbl);
+              Scene dialogScene =
+                      new Scene(popupVbox, 325, 75); // Change confirmation popup size here
+              dialogScene.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
+              popupVbox.getChildren().add(pane);
+              confirmPopup.setScene(dialogScene);
+              confirmPopup.show();
 
-            // Do something
-            System.out.println("Submit Button Pressed" + priceLbl.toString());
-            System.out.print(room.getRoomNumber() + "\n\n\n");
-            dialog.close(); // closes booking window
-            Stage confirmPopup = new Stage();
-            confirmPopup.initModality(Modality.APPLICATION_MODAL);
-            VBox popupVbox = new VBox();
-            Pane pane = new Pane();
-            Label lbl =
-                new Label(
-                    "  You're booked! Your confirmation number is: "
-                        + confNumber
-                        + "\n   Please write this number down and keep it safe!"); // TODO: Add
-                                                                                   // confirmation
-            pane.getChildren().add(lbl);
-            Scene dialogScene =
-                new Scene(popupVbox, 325, 75); // Change confirmation popup size here
-            dialogScene.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
-            popupVbox.getChildren().add(pane);
-            confirmPopup.setScene(dialogScene);
-            confirmPopup.show();
+              DatabaseManager DBM = new DatabaseManager();
+              bookingList.populateFromDB();
 
-            DatabaseManager DBM = new DatabaseManager();
-            bookingList.populateFromDB();
+              Booking newBooking =
+                      new Booking(
+                              Integer.toString(confNumber),
+                              room.getRoomNumber(),
+                              room.getPrice(),
+                              nameField.getText(),
+                              addressField.getText(),
+                              creditCardField.getText(),
+                              emailField.getText(),
+                              java.sql.Date.valueOf(checkInPicker.getValue()),
+                              java.sql.Date.valueOf(checkOutPicker.getValue()));
+              bookingList.addBooking(newBooking);
+              room.setVacant(false);
 
-            Booking newBooking =
-                new Booking(
-                    Integer.toString(confNumber),
-                    room.getRoomNumber(),
-                    room.getPrice(),
-                    nameField.getText(),
-                    addressField.getText(),
-                    creditCardField.getText(),
-                    emailField.getText(),
-                    java.sql.Date.valueOf(checkInPicker.getValue()),
-                    java.sql.Date.valueOf(checkOutPicker.getValue()));
-            bookingList.addBooking(newBooking);
-            room.setVacant(false);
+              // adding bookings to database
+              DBM.addBooking(newBooking);
 
-            // adding bookings to database
-            DBM.addBooking(newBooking);
-
-            for (Booking b : bookingList.getBookingList()) {
-              System.out.print("Room #: " + b.getRoomNumber() + "\n");
-              System.out.print("Check-in Date: " + b.getCheckInDate() + "\n");
-              System.out.print("Check-out Date: " + b.getCheckOutDate() + "\n");
+              for (Booking b : bookingList.getBookingList()) {
+                System.out.print("Room #: " + b.getRoomNumber() + "\n");
+                System.out.print("Check-in Date: " + b.getCheckInDate() + "\n");
+                System.out.print("Check-out Date: " + b.getCheckOutDate() + "\n");
+              }
+              System.out.print("\n\n");
             }
-            System.out.print("\n\n");
           }
         });
     pane.getChildren().add(btn);
