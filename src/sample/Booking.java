@@ -1,5 +1,6 @@
 package sample;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import static sample.DetailedResortSummaryReport.TAX_RATE;
@@ -40,7 +41,8 @@ public class Booking {
   }
 
   public double getCharge() {
-    this.charge = (this.price * TAX_RATE) + this.price;
+    int days = (int) ChronoUnit.DAYS.between(checkInDate.toInstant(),checkOutDate.toInstant());
+    this.charge = (this.price * days + TAX_RATE * (this.price * days));
     return charge;
   }
 

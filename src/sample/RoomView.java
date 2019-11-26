@@ -183,8 +183,12 @@ public class RoomView {
               public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();
-                setDisable(empty || date.compareTo(today) < 0
-                        || date.compareTo(checkInPicker.getValue()) < 0);
+                if(checkInPicker.getValue() != null) {
+                  setDisable(empty || date.compareTo(today) < 0
+                          || date.compareTo(checkInPicker.getValue()) < 0);
+                } else {
+                  setDisable(empty || date.compareTo(today) < 0);
+                }
               }
             });
     pane.getChildren().add(checkOutPicker);
@@ -207,7 +211,7 @@ public class RoomView {
                     || checkInPicker.getValue() == null
                     || checkOutPicker.getValue() == null) {
               new Alert(Alert.AlertType.ERROR, "One or more fields have not been filled out!").showAndWait();
-            }else {
+            }else{
               Random rand = new Random();
               int confNumber = rand.nextInt(89999999) + 10000000;
 
