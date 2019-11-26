@@ -204,10 +204,10 @@ public class RoomView {
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
-            if (nameField.getText() == null
-                    || emailField.getText() == null
-                    || addressField.getText() == null
-                    || creditCardField.getText() == null
+            if ( (nameField.getText() == null || nameField.getText().equals(""))
+                    || (emailField.getText() == null || emailField.getText().equals(""))
+                    || (addressField.getText() == null || addressField.getText().equals(""))
+                    || (creditCardField.getText() == null || creditCardField.getText().equals(""))
                     || checkInPicker.getValue() == null
                     || checkOutPicker.getValue() == null) {
               new Alert(Alert.AlertType.ERROR, "One or more fields have not been filled out!").showAndWait();
