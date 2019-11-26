@@ -27,8 +27,8 @@ public class Graphs {
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
     final BarChart<String, Number> bc = new BarChart<String, Number>(xAxis, yAxis);
-    bc.setTitle("Country Summary");
-    xAxis.setLabel("Country");
+    bc.setTitle("Monthly Summary Report");
+    xAxis.setLabel("Month");
     yAxis.setLabel("Value");
 
     XYChart.Series series1 = new XYChart.Series();
