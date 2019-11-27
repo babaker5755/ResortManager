@@ -1,11 +1,15 @@
 package sample;
 
+import java.sql.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import static sample.DetailedResortSummaryReport.TAX_RATE;
 
 public class Booking {
+  private Connection conn = null;
+  private PreparedStatement ps = null;
+  private ResultSet rs = null;
 
   private String confirmationNumber;
   private String roomNumber;
@@ -41,7 +45,31 @@ public class Booking {
     this.charge = getCharge();
   }
 
+  public void setCharge(double charge) {
+    this.charge = charge;
+  }
+
   public double getCharge() {
+    try {
+      // Establish a connection to the database and flag the DBManager as connected.
+      Class.forName("org.h2.Driver");
+      conn = DriverManager.getConnection("jdbc:h2:./res/Hotel_Database");
+      ps = conn.prepareStatement(
+              "SELECT * FROM BOOKINGS WHERE CONFIRMATION_NUMBER='"+this.confirmationNumber+"'");
+      rs = ps.executeQuery();
+
+      String dBConfirmationNumber = "";
+      Double totalCharge = 0.00;
+      while (rs.next()) {
+        dBConfirmationNumber = rs.getString("CONFIRMATION_NUMBER");
+        totalCharge = rs.getDouble("TOTAL_CHARGE");
+      }
+      if (dBConfirmationNumber.equals(this.confirmationNumber)) {
+        return totalCharge;
+      }
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
     int days = (int) ChronoUnit.DAYS.between(checkInDate.toInstant(),checkOutDate.toInstant());
     this.charge = (this.price * days + TAX_RATE * (this.price * days));
     return charge;
