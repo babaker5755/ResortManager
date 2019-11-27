@@ -140,41 +140,12 @@ public class DatabaseManager {
     return rooms;
   }
 
-  // add bookings to database
-  void addBookings(ArrayList<Booking> bookingList) {
-    System.out.println("Inserting booking records into table...");
-    for (Booking booking : bookingList) {
-      try {
-        PreparedStatement ps =
-                conn.prepareStatement(
-                        "INSERT INTO BOOKINGS VALUES ('"
-                                + booking.getConfirmationNumber()
-                                + "', '"
-                                + booking.getRoomNumber()
-                                + "', '"
-                                + booking.getPrice()
-                                + "', '"
-                                + booking.getClientName()
-                                + "', '"
-                                + booking.getClientAddress()
-                                + "', '"
-                                + booking.getClientCreditCard()
-                                + "', '"
-                                + booking.getClientEmail()
-                                + "', '"
-                                + booking.getCheckInDate()
-                                + "', '"
-                                + booking.getCheckOutDate()
-                                + "')");
-        ps.executeUpdate();
-        System.out.println("Inserted booking record into table.");
-      } catch (SQLException e) {
-        e.printStackTrace();
-        System.out.println("Could not create booking record.");
-      }
-    }
+  // add to total charge to booking
+  void addToCharge(){
+
   }
 
+  // add booking to database
   void addBooking(Booking booking) {
     System.out.println("Inserting booking records into table...");
     try {
@@ -197,6 +168,8 @@ public class DatabaseManager {
                               + new Date(booking.getCheckInDate().getTime())
                               + "', '"
                               + new Date(booking.getCheckOutDate().getTime())
+                              + "', '"
+                              + booking.getCharge()
                               + "')");
       ps.executeUpdate();
       System.out.println("Inserted booking record into table.");
@@ -285,7 +258,9 @@ public class DatabaseManager {
                 + ", START_DATE: "
                 + rs.getDate("START_DATE")
                 + ", END_DATE: "
-                + rs.getDate("END_DATE"));
+                + rs.getDate("END_DATE")
+                + ", TOTAL_CHARGE: "
+                + booking.getCharge());
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -340,7 +315,9 @@ public class DatabaseManager {
                         + ", START_DATE: "
                         + rs.getDate("START_DATE")
                         + ", END_DATE: "
-                        + rs.getDate("END_DATE"));
+                        + rs.getDate("END_DATE")
+                        + ", TOTAL_CHARGE: "
+                        + booking.getCharge());
       }
     } catch (SQLException e) {
       e.printStackTrace();

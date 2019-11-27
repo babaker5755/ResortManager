@@ -74,10 +74,14 @@ public class ManagerReportView extends Pane {
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
-            Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
-            Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
-            DRSRModalView drsrModalView = new DRSRModalView();
-            drsrModalView.initialize(startDate, endDate);
+            if(startDatePicker.getValue() == null || endDatePicker.getValue() == null) {
+              new Alert(Alert.AlertType.ERROR,"Please pick a start date and an end date!").showAndWait();
+            }else{
+              Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
+              Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
+              DRSRModalView drsrModalView = new DRSRModalView();
+              drsrModalView.initialize(startDate, endDate);
+            }
           }
         });
     this.getChildren().add(btn);
