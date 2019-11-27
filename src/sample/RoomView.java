@@ -154,15 +154,6 @@ public class RoomView {
     checkInPicker.setLayoutY(570);
     checkInPicker.setPrefWidth(175);
     checkInPicker.setPrefHeight(40);
-    checkInPicker.setDayCellFactory(
-        picker ->
-            new DateCell() {
-              public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                LocalDate today = LocalDate.now();
-                setDisable(empty || date.compareTo(today) < 0);
-              }
-            });
     pane.getChildren().add(checkInPicker);
     checkInPicker.setPromptText("Ex: 01/12/2019");
 
@@ -185,7 +176,7 @@ public class RoomView {
                 LocalDate today = LocalDate.now();
                 if(checkInPicker.getValue() != null) {
                   setDisable(empty || date.compareTo(today) < 0
-                          || date.compareTo(checkInPicker.getValue()) < 0);
+                          || date.compareTo(checkInPicker.getValue()) <= 0);
                 } else {
                   setDisable(empty || date.compareTo(today) < 0);
                 }
@@ -193,6 +184,21 @@ public class RoomView {
             });
     pane.getChildren().add(checkOutPicker);
     checkOutPicker.setPromptText("Ex: 01/14/2019");
+
+    checkInPicker.setDayCellFactory(
+            picker ->
+                    new DateCell() {
+                      public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        LocalDate today = LocalDate.now();
+                        if(checkOutPicker.getValue() != null) {
+                          setDisable(empty || date.compareTo(today) < 0
+                                  || 0 <= date.compareTo(checkOutPicker.getValue()));
+                        } else {
+                          setDisable(empty || date.compareTo(today) < 0);
+                        }
+                      }
+                    });
 
     // Add Button
     JFXButton btn = new JFXButton("Submit");

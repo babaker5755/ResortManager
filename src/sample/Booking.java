@@ -38,6 +38,7 @@ public class Booking {
     this.clientEmail = clientEmail;
     this.checkInDate = new Date(checkInDate.getTime());
     this.checkOutDate = new Date(checkOutDate.getTime());
+    this.charge = getCharge();
   }
 
   public double getCharge() {
