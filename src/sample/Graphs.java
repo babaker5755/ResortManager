@@ -7,10 +7,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Graphs {
     private Connection conn = null;
@@ -38,10 +35,18 @@ public class Graphs {
       XYChart.Series series2 = new XYChart.Series();
       series2.setName("Revenue");
 
+        try {
+            // Establish a connection to the database and flag the DBManager as connected.
+            Class.forName("org.h2.Driver");
+            conn = DriverManager.getConnection("jdbc:h2:./res/Hotel_Database");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
       int[] monthlyBookingCountArr = new int[12];
       for(int i = 0; i < 12; i++){
           ps = conn.prepareStatement(
-                  "SELECT COUNT(*) AS bookingCount FROM BOOKINGS WHERE MONTH(ARR_DATE) = "+ i +" AND " +
+                  "SELECT COUNT(*) AS bookingCount FROM BOOKINGS WHERE MONTH(START_DATE) = " + i + " AND " +
                           "YEAR(getdate())");
           rs = ps.executeQuery();
           monthlyBookingCountArr[i] = rs.getInt("bookingCount");
