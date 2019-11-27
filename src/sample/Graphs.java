@@ -43,20 +43,31 @@ public class Graphs {
             e.printStackTrace();
         }
 
-      int[] monthlyBookingCountArr = new int[12];
+      int[] monthlyBookingCountArray = new int[12];
+      double[] monthlyChargeArray = new double[12];
       for(int i = 0; i < 12; i++){
+          int count = 0;
           ps = conn.prepareStatement(
-                  "SELECT COUNT(*) AS bookingCount FROM BOOKINGS WHERE MONTH(START_DATE) = " + i + " AND " +
-                          "YEAR(getdate())");
+                  "SELECT * FROM BOOKINGS WHERE MONTH(START_DATE) = '" + (i+1)+ "' AND " +
+                          "YEAR(CURDATE())");
           rs = ps.executeQuery();
-          monthlyBookingCountArr[i] = rs.getInt("bookingCount");
-          series1.getData().add(new XYChart.Data(months[i], monthlyBookingCountArr[i]));
-
+          while(rs.next()){
+              count++;
+          }
+          monthlyBookingCountArray[i] = count;
+          series1.getData().add(new XYChart.Data(months[i], monthlyBookingCountArray[i]));
+      }
+      for(int i = 0; i < 12; i++){
+          double totalMonthlyRevenue = 0;
           ps = conn.prepareStatement(
-                  "SELECT COUNT(*) AS bookingCount FROM BOOKINGS WHERE MONTH(ARR_DATE) = "+ i +" AND " +
-                          "YEAR(getdate())");
+                  "SELECT * FROM BOOKINGS WHERE MONTH(START_DATE) = '" + (i+1)+ "' AND " +
+                          "YEAR(CURDATE())");
           rs = ps.executeQuery();
-
+          while(rs.next()){
+              totalMonthlyRevenue = totalMonthlyRevenue + rs.getDouble("TOTAL_CHARGE");
+          }
+          monthlyChargeArray[i] = totalMonthlyRevenue;
+          series2.getData().add(new XYChart.Data(months[i], monthlyChargeArray[i]));
       }
 
 //      XYChart.Series series2 = new XYChart.Series();
