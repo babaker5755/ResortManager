@@ -102,18 +102,6 @@ public class DRSRModalView extends TableView {
     chargeCol.setCellValueFactory(new PropertyValueFactory<>("charge"));
     tableView.getColumns().add(chargeCol);
 
-    /* WHY DO THESE MESS THE TABLE UP?
-    TableColumn<Booking, String> clientAddressCol = new TableColumn<>("Client Address");
-    clientNameCol.setStyle("-fx-alignment: CENTER;");
-    clientNameCol.setCellValueFactory(new PropertyValueFactory<>("clientAddress"));
-    tableView.getColumns().add(clientAddressCol);
-
-    TableColumn<Booking, String> clientEmailCol = new TableColumn<>("Client Email");
-    clientNameCol.setStyle("-fx-alignment: CENTER;");
-    clientNameCol.setCellValueFactory(new PropertyValueFactory<>("clientEmail"));
-    tableView.getColumns().add(clientEmailCol);
-     */
-
     return tableView;
   }
 }

@@ -237,6 +237,7 @@ public class DatabaseManager {
                 rs.getString("CLIENT_EMAIL"),
                 rs.getDate("START_DATE"),
                 rs.getDate("END_DATE"));
+        booking.setCharge(rs.getDouble("TOTAL_CHARGE"));
         bookingList.add(booking);
 
         // Confirm in console.
@@ -294,6 +295,7 @@ public class DatabaseManager {
                         rs.getString("CLIENT_EMAIL"),
                         rs.getDate("START_DATE"),
                         rs.getDate("END_DATE"));
+        booking.setCharge(rs.getDouble("TOTAL_CHARGE"));
         bookingList.add(booking);
 
         // Confirm in console.
