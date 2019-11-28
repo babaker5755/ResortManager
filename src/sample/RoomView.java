@@ -1,8 +1,6 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -12,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -216,7 +215,13 @@ public class RoomView {
                     || (creditCardField.getText() == null || creditCardField.getText().equals(""))
                     || checkInPicker.getValue() == null
                     || checkOutPicker.getValue() == null) {
-              new Alert(Alert.AlertType.ERROR, "One or more fields have not been filled out!").showAndWait();
+              JFXAlert alert = new JFXAlert(dialog);
+              JFXDialogLayout content = new JFXDialogLayout();
+              content.setHeading(new Text("Error"));
+              content.setBody(new Text("One or more fields have not been filled out!"));
+              alert.setSize(400,200);
+              alert.setContent(content);
+              alert.show();
             }else{
               Random rand = new Random();
               int confNumber = rand.nextInt(89999999) + 10000000;
