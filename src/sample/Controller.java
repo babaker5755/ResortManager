@@ -55,9 +55,9 @@ public class Controller {
     cancelReservationBtn.getStyleClass().add("button-raised");
     confirmationNumberField.getStyleClass().add("text-field");
 
-    Image amenitiesImage = new Image(Controller.class.getResourceAsStream("AmenitiesPic.jpg"));
+    Image amenitiesImage = new Image(Controller.class.getResourceAsStream("images/AmenitiesPic.jpg"));
     amenitiesPageImageView.setImage(amenitiesImage);
-    Image homePageImage = new Image(Controller.class.getResourceAsStream("BannerPic.jpg"));
+    Image homePageImage = new Image(Controller.class.getResourceAsStream("images/BannerPic.jpg"));
     homePageImageView.setImage(homePageImage);
 
     dbManager = new DatabaseManager();

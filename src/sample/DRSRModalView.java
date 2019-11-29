@@ -61,11 +61,11 @@ public class DRSRModalView extends TableView {
     confNumberCol.setMaxWidth(180);
     tableView.getColumns().add(confNumberCol);
 
-    TableColumn<Booking, String> roomNumberCol = new TableColumn<>("Room Number");
-    roomNumberCol.setStyle("-fx-alignment: CENTER;");
-    roomNumberCol.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-    roomNumberCol.setMaxWidth(100);
-    tableView.getColumns().add(roomNumberCol);
+    TableColumn<Booking, String> roomNameCol = new TableColumn<>("Room Name");
+    roomNameCol.setStyle("-fx-alignment: CENTER;");
+    roomNameCol.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+    roomNameCol.setMaxWidth(100);
+    tableView.getColumns().add(roomNameCol);
 
     TableColumn<Booking, Date> checkInCol = new TableColumn<>("Check-In Date");
     checkInCol.setStyle("-fx-alignment: CENTER;");
