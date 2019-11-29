@@ -61,20 +61,20 @@ public class RoomServicePane extends Pane {
         this.menuPane = setupMenuPane();
         mainPane.getChildren().add(menuPane);
 
-        Label roomNumberLabel = new Label("Room Number");
-        roomNumberLabel.getStyleClass().add("label");
-        roomNumberLabel.setLayoutX(25);
-        roomNumberLabel.setLayoutY(400);
-        roomNumberLabel.setAlignment(Pos.CENTER);
-        mainPane.getChildren().add(roomNumberLabel);
+        Label roomNameLabel = new Label("Room Name");
+        roomNameLabel.getStyleClass().add("label");
+        roomNameLabel.setLayoutX(25);
+        roomNameLabel.setLayoutY(400);
+        roomNameLabel.setAlignment(Pos.CENTER);
+        mainPane.getChildren().add(roomNameLabel);
 
-        JFXTextField roomNumberField = new JFXTextField();
-        roomNumberField.setLayoutX(25);
-        roomNumberField.setLayoutY(410);
-        roomNumberField.setPrefWidth(350);
-        roomNumberField.setPrefHeight(40);
-        mainPane.getChildren().add(roomNumberField);
-        roomNumberField.setPromptText("Ex: 1, 2, etc.");
+        JFXTextField roomNameField = new JFXTextField();
+        roomNameField.setLayoutX(25);
+        roomNameField.setLayoutY(410);
+        roomNameField.setPrefWidth(350);
+        roomNameField.setPrefHeight(40);
+        mainPane.getChildren().add(roomNameField);
+        roomNameField.setPromptText("Ex: 1, 2, etc.");
 
         Label ccLabel = new Label("Credit Card Number");
         ccLabel.getStyleClass().add("label");
@@ -113,7 +113,7 @@ public class RoomServicePane extends Pane {
                         ArrayList<Booking> bookings = databaseManager.getBookingsAsList();
                         ArrayList<Date> dateArrayList = new ArrayList<>();
                         if(creditCardField.getText().equals("")
-                                || roomNumberField.getText().equals("")){
+                                || roomNameField.getText().equals("")){
                             new Alert(Alert.AlertType.ERROR,
                                     "Please fill out missing information!").showAndWait();
                         }else if (creditCardCheck(creditCardField.getText())) {
@@ -174,13 +174,13 @@ public class RoomServicePane extends Pane {
         int baseY = 0;
         for (int i = 0; i < numberOfItems; i++) {
             baseY = i * 65;
-            Label roomNumberLabel = new Label("Food Item");
-            roomNumberLabel.getStyleClass().add("label");
-            roomNumberLabel.setLayoutX(25);
-            roomNumberLabel.setLayoutY(baseY);
-            roomNumberLabel.setPrefHeight(15);
-            roomNumberLabel.setAlignment(Pos.CENTER);
-            menuPane.getChildren().add(roomNumberLabel);
+            Label foodItemLabel = new Label("Food Item");
+            foodItemLabel.getStyleClass().add("label");
+            foodItemLabel.setLayoutX(25);
+            foodItemLabel.setLayoutY(baseY);
+            foodItemLabel.setPrefHeight(15);
+            foodItemLabel.setAlignment(Pos.CENTER);
+            menuPane.getChildren().add(foodItemLabel);
 
             JFXComboBox<FoodItem> comboBox = new JFXComboBox<FoodItem>();
             ObservableList<FoodItem> foodItemOptions =

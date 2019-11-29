@@ -44,7 +44,7 @@ public class RoomView {
 
 
     // Add Label
-    Label nameLbl = new Label(room.getRoomNumber());
+    Label nameLbl = new Label(room.getRoomName());
     nameLbl.getStyleClass().add("medium-label");
     nameLbl.setPrefWidth(400);
     nameLbl.setLayoutX(0);
@@ -228,7 +228,7 @@ public class RoomView {
 
               // Do something
               System.out.println("Submit Button Pressed" + priceLbl.toString());
-              System.out.print(room.getRoomNumber() + "\n\n\n");
+              System.out.print(room.getRoomName() + "\n\n\n");
               dialog.close(); // closes booking window
               Stage confirmPopup = new Stage();
               confirmPopup.initModality(Modality.APPLICATION_MODAL);
@@ -254,7 +254,7 @@ public class RoomView {
               Booking newBooking =
                       new Booking(
                               Integer.toString(confNumber),
-                              room.getRoomNumber(),
+                              room.getRoomName(),
                               room.getPrice(),
                               nameField.getText(),
                               addressField.getText(),
@@ -269,7 +269,7 @@ public class RoomView {
               DBM.addBooking(newBooking);
 
               for (Booking b : bookingList.getBookingList()) {
-                System.out.print("Room #: " + b.getRoomNumber() + "\n");
+                System.out.print("Room #: " + b.getRoomName() + "\n");
                 System.out.print("Check-in Date: " + b.getCheckInDate() + "\n");
                 System.out.print("Check-out Date: " + b.getCheckOutDate() + "\n");
               }

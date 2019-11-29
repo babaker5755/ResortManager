@@ -6,13 +6,27 @@ import java.util.Date;
 
 import static sample.DetailedResortSummaryReport.TAX_RATE;
 
+/**
+ * This Booking class defines an object that holds all information associated
+ * with a hotel room booking. This includes the booking confirmation numbers,
+ * room name, room price per night, total charge for entire booking, client
+ * name, client address, client credit card, client email, and the check-in
+ * and check-out dates.
+ */
 public class Booking {
   private Connection conn = null;
   private PreparedStatement ps = null;
   private ResultSet rs = null;
 
+  /**
+   * A confirmation number that is unique to every booking.
+   */
   private String confirmationNumber;
-  private String roomNumber;
+
+  /**
+   * The name of the room.
+   */
+  private String roomName;
   private double price;
   private double charge;
   private String clientName;
@@ -25,7 +39,7 @@ public class Booking {
   // Default constructor. Requires every field.
   Booking(
       String confirmationNumber,
-      String roomNumber,
+      String roomName,
       double price,
       String clientName,
       String clientAddress,
@@ -34,7 +48,7 @@ public class Booking {
       Date checkInDate,
       Date checkOutDate) {
     this.confirmationNumber = confirmationNumber;
-    this.roomNumber = roomNumber;
+    this.roomName = roomName;
     this.price = price;
     this.clientName = clientName;
     this.clientAddress = clientAddress;
@@ -82,11 +96,11 @@ public class Booking {
     this.confirmationNumber = confirmationNumber;
   }
 
-  public String getRoomNumber() {
-    return roomNumber;
+  public String getRoomName() {
+    return roomName;
   }
-  public void setRoomNumber(String roomNumber) {
-    this.roomNumber = roomNumber;
+  public void setRoomName(String roomName) {
+    this.roomName = roomName;
   }
 
   public double getPrice() {

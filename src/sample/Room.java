@@ -2,35 +2,35 @@ package sample;
 
 public class Room {
 
-  private String roomNumber;
+  private String roomName;
   private int numBeds;
   private Boolean isVacant;
   private double price;
   private String imageUrl;
 
   public Room(
-      String roomNumber,
+      String roomName,
       int numBeds,
       Boolean isVacant,
       double price,
       String imageUrl) {
-    this.roomNumber = roomNumber;
+    this.roomName = roomName;
     this.numBeds = numBeds;
     this.isVacant = isVacant;
     this.price = price;
-    this.imageUrl = imageUrl;
+    this.imageUrl = "images/" + imageUrl;
   }
 
   public String getImageUrl() {
     return imageUrl;
   }
 
-  public String getRoomNumber() {
-    return roomNumber;
+  public String getRoomName() {
+    return roomName;
   }
 
-  public void setRoomNumber(String roomNumber) {
-    this.roomNumber = roomNumber;
+  public void setRoomName(String roomName) {
+    this.roomName = roomName;
   }
 
   public int getNumBeds() {

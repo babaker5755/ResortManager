@@ -23,7 +23,7 @@ public class CatalogBrowsePane extends Pane {
     this.getStyleClass().add("pane");
     
     // Add Label
-    nameLbl = new Label(room.getRoomNumber());
+    nameLbl = new Label(room.getRoomName());
     nameLbl.getStyleClass().add("medium-label");
     nameLbl.setPrefWidth(150);
     nameLbl.setLayoutX(0);
