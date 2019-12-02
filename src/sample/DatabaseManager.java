@@ -88,6 +88,20 @@ public class DatabaseManager {
 //    }
 //  }
 
+  void updateRoom(Room room) {
+    try {
+      ps = conn.prepareStatement(
+              "UPDATE ROOMS SET IS_VACANT ="
+                      + room.getVacant()
+                      + " WHERE ROOM_NAME ='"
+                      + room.getRoomName()
+                      + "'");
+      ps.executeUpdate();
+      room.getRoomName();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
   ArrayList<Room> getRoomsAsList() {
     ArrayList<Room> rooms = new ArrayList<>();
 
