@@ -2,6 +2,7 @@ package sample;
 
 import com.jfoenix.controls.*;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -218,8 +219,10 @@ public class Controller {
     titleLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(titleLabel);
 
+
+
     dialogVbox.getChildren().add(pane);
-    Scene dialogScene = new Scene(dialogVbox, 400, 400);
+    Scene dialogScene = new Scene(dialogVbox, 400, 600);
     dialog.setScene(dialogScene);
 
 
@@ -240,6 +243,13 @@ public class Controller {
         amenitiesTextGym.setLayoutY(50);
         amenitiesTextGym.setPrefWidth(400);
         amenitiesTextGym.setAlignment(Pos.CENTER);
+        Image image = new Image("sample/images/gym.jpg");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(400);
+        imageView.setX(0);
+        imageView.setLayoutY(200);
+        pane.getChildren().add(imageView);
         pane.getChildren().add(amenitiesTextGym);
         break;
       case "Wedding Packages":
@@ -252,11 +262,19 @@ public class Controller {
                 "France.\nWith the price of that one, we definitely put the steep in steeple! Neither\nof those catch " +
                 "your eye? The our Custom Package is the way to go!\nSimply tell us your request and we'll take care " +
                 "of everything.");
+
         amenitiesTextWedding.getStyleClass().add("text-field");
         amenitiesTextWedding.setLayoutX(0);
         amenitiesTextWedding.setLayoutY(50);
         amenitiesTextWedding.setPrefWidth(400);
         amenitiesTextWedding.setAlignment(Pos.CENTER);
+         image = new Image("sample/images/wedding.jpg");
+         imageView = new ImageView(image);
+        imageView.setFitHeight(250);
+        imageView.setFitWidth(400);
+        imageView.setX(0);
+        imageView.setLayoutY(250);
+        pane.getChildren().add(imageView);
         pane.getChildren().add(amenitiesTextWedding);
         break;
       case "Arcade & Minigames":
@@ -271,6 +289,13 @@ public class Controller {
         amenitiesTextArcade.setLayoutY(50);
         amenitiesTextArcade.setPrefWidth(400);
         amenitiesTextArcade.setAlignment(Pos.CENTER);
+        image = new Image("sample/images/arcade.jpg");
+        imageView = new ImageView(image);
+        imageView.setFitHeight(250);
+        imageView.setFitWidth(400);
+        imageView.setX(0);
+        imageView.setLayoutY(200);
+        pane.getChildren().add(imageView);
         pane.getChildren().add(amenitiesTextArcade);
         break;
       case "Private Beach":
@@ -284,7 +309,15 @@ public class Controller {
         amenitiesTextBeach.setLayoutX(0);
         amenitiesTextBeach.setLayoutY(50);
         amenitiesTextBeach.setPrefWidth(400);
+        image = new Image("sample/images/beach.jpg");
+        imageView = new ImageView(image);
+        imageView.setFitHeight(250);
+        imageView.setFitWidth(400);
+        imageView.setX(0);
+        imageView.setLayoutY(200);
+        pane.getChildren().add(imageView);
         amenitiesTextBeach.setAlignment(Pos.CENTER);
+
         pane.getChildren().add(amenitiesTextBeach);
         break;
       case "Private Ski Slopes":
@@ -297,6 +330,13 @@ public class Controller {
         amenitiesTextSki.setLayoutY(50);
         amenitiesTextSki.setPrefWidth(400);
         amenitiesTextSki.setAlignment(Pos.CENTER);
+        image = new Image("sample/images/ski.jpg");
+        imageView = new ImageView(image);
+        imageView.setFitHeight(250);
+        imageView.setFitWidth(400);
+        imageView.setX(0);
+        imageView.setLayoutY(150);
+        pane.getChildren().add(imageView);
         pane.getChildren().add(amenitiesTextSki);
         break;
     }
