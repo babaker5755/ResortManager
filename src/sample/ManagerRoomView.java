@@ -156,12 +156,6 @@ public class ManagerRoomView {
     confNumberCol.setMaxWidth(180);
     tableView.getColumns().add(confNumberCol);
 
-    TableColumn<Booking, String> roomNameCol = new TableColumn<>("Room Name");
-    roomNameCol.setStyle("-fx-alignment: CENTER;");
-    roomNameCol.setCellValueFactory(new PropertyValueFactory<>("roomName"));
-    roomNameCol.setMaxWidth(100);
-    tableView.getColumns().add(roomNameCol);
-
     TableColumn<Booking, Date> checkInCol = new TableColumn<>("Check-In Date");
     checkInCol.setStyle("-fx-alignment: CENTER;");
     checkInCol.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
