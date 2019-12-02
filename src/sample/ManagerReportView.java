@@ -47,6 +47,7 @@ public class ManagerReportView extends Pane {
     startDatePicker.setLayoutX(50);
     startDatePicker.setLayoutY(70);
     this.getChildren().add(startDatePicker);
+    startDatePicker.setPromptText("Ex: 01/01/1999");
 
     // Add Label
     Label endLabel = new Label("End Date");
@@ -61,24 +62,44 @@ public class ManagerReportView extends Pane {
     endDatePicker.setLayoutX(450);
     endDatePicker.setLayoutY(70);
     this.getChildren().add(endDatePicker);
+    endDatePicker.setPromptText("Ex: 01/01/2000");
 
     // Generate Report Button In Manager Tab
     JFXButton btn = new JFXButton("Generate Report");
     btn.getStyleClass().add("button-raised");
     btn.setPrefSize(150, 40);
-    btn.setLayoutX(300);
+    btn.setLayoutX(200);
     btn.setLayoutY(140);
     btn.setOnAction(
         new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent e) {
-            Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
-            Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
-            DRSRModalView drsrModalView = new DRSRModalView();
-            drsrModalView.initialize(startDate, endDate);
+            if(startDatePicker.getValue() == null || endDatePicker.getValue() == null) {
+              new Alert(Alert.AlertType.ERROR,"Please pick a start date and an end date!").showAndWait();
+            }else{
+              Date startDate = java.sql.Date.valueOf(startDatePicker.getValue());
+              Date endDate = java.sql.Date.valueOf(endDatePicker.getValue());
+              DRSRModalView drsrModalView = new DRSRModalView();
+              drsrModalView.initialize(startDate, endDate);
+            }
           }
         });
     this.getChildren().add(btn);
+
+    JFXButton statisticsButton = new JFXButton("Resort Statistics");
+    statisticsButton.getStyleClass().add("button-raised");
+    statisticsButton.setPrefSize(150, 40);
+    statisticsButton.setLayoutX(400);
+    statisticsButton.setLayoutY(140);
+    statisticsButton.setOnAction(
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(ActionEvent e) {
+                Graphs barChart = new Graphs();
+                barChart.start();
+              }
+            });
+    this.getChildren().add(statisticsButton);
 
     // Log out currently signed in manager
     logoutBtn.getStyleClass().add("button-raised");

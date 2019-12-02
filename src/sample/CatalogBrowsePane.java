@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 
 public class CatalogBrowsePane extends Pane {
 
-  private Label bedSizeLbl;
+  private Label nameLbl;
   private Label numBedsLbl;
   private Image roomImage;
   private ImageView imgView;
@@ -21,13 +21,16 @@ public class CatalogBrowsePane extends Pane {
   public CatalogBrowsePane(Room room) {
 
     this.getStyleClass().add("pane");
+    
     // Add Label
-    bedSizeLbl = new Label(room.getBedSize());
-    bedSizeLbl.setPrefWidth(150);
-    bedSizeLbl.setLayoutX(0);
-    bedSizeLbl.setLayoutY(35);
-    bedSizeLbl.setAlignment(Pos.CENTER);
-    this.getChildren().add(bedSizeLbl);
+    nameLbl = new Label(room.getRoomName());
+    nameLbl.getStyleClass().add("medium-label");
+    nameLbl.setPrefWidth(150);
+    nameLbl.setLayoutX(0);
+    nameLbl.setLayoutY(30);
+    nameLbl.setAlignment(Pos.CENTER);
+    this.getChildren().add(nameLbl);
+
 
     // Add Label
     numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
@@ -38,7 +41,7 @@ public class CatalogBrowsePane extends Pane {
     this.getChildren().add(numBedsLbl);
 
     // Add Image
-    roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
+    roomImage = new Image(Controller.class.getResourceAsStream(room.getImageUrl()));
     imgView = new ImageView(roomImage);
     imgView.setFitHeight(120);
     imgView.setFitWidth(120);
@@ -71,10 +74,6 @@ public class CatalogBrowsePane extends Pane {
           }
         });
     this.getChildren().add(btn);
-  }
-
-  public void setBedSizeLblTxt(String text) {
-    this.bedSizeLbl.setText(text);
   }
 
   public void setNumBedsLblTxt(String text) {

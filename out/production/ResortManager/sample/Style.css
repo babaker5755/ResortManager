@@ -1,11 +1,16 @@
 {
-    -fx-primary : #424250;
-    -fx-secondary : #37EFBA;
-    -fx-primarytext : #f9f9f9;
-    -fx-secondary-text : #f7f7f7;
+    /*-fx-primary : #424250;*/
+    -fx-primary : #FFFFFF;
+    /*-fx-secondary : #37EFBA;*/
+    -fx-secondary : #6495ED;
+    /*-fx-primarytext : #f9f9f9;*/
+    -fx-primarytext : #000000;
+    /*-fx-secondary-text : #f7f7f7;*/
+    -fx-secondary-text : #000000;
     -fx-blue: #1976D2;
     -fx-red: #FF0000;
     -fx-color-1:#1976D2;
+    -fx-gray-text:#808080;
 }
 .jfx-tab-pane .headers-region > .tab > .jfx-rippler {
     -jfx-rippler-fill: -fx-secondary;
@@ -18,7 +23,14 @@
 }
 .title-label {
     -fx-text-fill: -fx-primarytext;
-    /*-fx-font-size: 20pt;*/
+    -fx-font-size: 20pt;
+}
+.medium-label {
+     -fx-text-fill: -fx-primarytext;
+     -fx-font-size: 15pt;
+ }
+.tab-label {
+    -fx-text-fill:  -fx-primarytext;
 }
 .label {
     -fx-text-fill: -fx-primarytext;
@@ -30,12 +42,13 @@
 .tab {
     -fx-pref-height: 35;
     -fx-background-color: -fx-primary;
+    -fx-text-fill:  -fx-primarytext;
 }
 .text-field {
     -fx-text-fill: -fx-primarytext;
     -fx-background-color: transparent;
     -fx-font-weight: BOLD;
-    -fx-prompt-text-fill: -fx-secondary-text;
+    -fx-prompt-text-fill: -fx-gray-text;
     -jfx-focus-color: -fx-primarytext;
     -jfx-unfocus-color: -fx-secondary;
 }

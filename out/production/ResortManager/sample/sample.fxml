@@ -15,7 +15,9 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXButton?>
-<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <JFXTabPane fx:id="tabPane" prefHeight="750.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -23,19 +25,27 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <JFXButton fx:id="cancelReservationBtn" layoutX="507.0" layoutY="600.0" mnemonicParsing="false" onMouseClicked="#cancelReservation" text="Cancel Reservation" />
-                                <ImageView fx:id="homePageImageView" fitHeight="303.0" fitWidth="744.0" layoutX="13.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                                <JFXButton fx:id="cancelReservationBtn" layoutX="507.0" layoutY="600.0"
+                                           mnemonicParsing="false" onMouseClicked="#cancelReservation"
+                                           text="Cancel Reservation"/>
+                                <ImageView fx:id="homePageImageView" fitHeight="300.0" fitWidth="730.0" layoutX="10.0"
+                                           layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <!--                              <Image url="/sample/BannerPic.jpg" />-->
                                     </image>
                                 </ImageView>
-                                <JFXTextField fx:id="confirmationNumberField" layoutX="108.0" layoutY="600.0" prefHeight="25.0" prefWidth="365.0" />
-                                <Label fx:id="homePageTitleLabel" layoutX="134.0" layoutY="37.0" text="Welcome To import resortName; Home Page">
+                                <JFXTextField fx:id="confirmationNumberField" layoutX="108.0" layoutY="600.0"
+                                              prefHeight="25.0" prefWidth="365.0"/>
+                                <Label fx:id="homePageTitleLabel" layoutX="134.0" layoutY="37.0"
+                                       text="Welcome To import resortName; Home Page">
                                     <font>
-                                        <Font size="24.0" />
+                                        <Font size="24.0"/>
                                     </font>
                                 </Label>
-                                <Label layoutX="16.0" fx:id="homePageBodyLabel" layoutY="382.0" prefHeight="222.0" prefWidth="738.0" text="If you would like to book a room at our wonderful resort, simply click the &quot;Browse Catalog&quot; button at the top and pick from our wide selection of state-of-the-art rooms.  With a whole TWO options, the possibilities are endless! If you are a staff manager here at import resortName; simply click the &quot;Manager&quot; tab and input your Secure Manager Key whenprompted, allowing you access to our secure server and the ability to view different aspects of resort and client information.\n Finally, if you'd like to see all the wonderful things available to guests here at the resort, click the &quot;Amenities&quot; tab at the top of this page and be greeted with a vast description of all the different ways you can relax and unwind while staying at import resortName! \n (Images borrowed from Marriot.com and Hiltonbarbadosresort.com. We claim no ownership of any images on this program)" wrapText="true" />
+                                <Label layoutX="10.0" fx:id="homePageBodyLabel" layoutY="382.0" prefHeight="222.0"
+                                       prefWidth="730.0"
+                                       text="If you would like to book a room at import resortName, simply click the &quot;Browse Catalog&quot; button at the top and pick from our wide selection of state-of-the-art rooms. If you are a staff manager, simply click the &quot;Manager&quot; tab and input your username and password when prompted, allowing you access to our secure server and the ability to view different aspects of resort and client information. Finally, if you'd like to see all the wonderful things available to guests here at the resort, click the &quot;Amenities&quot; tab at the top of this page and be greeted with a vast description of all the different ways you can relax and unwind while staying at import resortName! (Images borrowed from Marriot.com and Hiltonbarbadosresort.com. We claim no ownership of any images on this program)"
+                                       wrapText="true"/>
                             </children>
                         </AnchorPane>
                     </content>
@@ -44,17 +54,18 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <GridPane fx:id="catalogGridPane" layoutX="10.0" layoutY="12.0" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: #ffffff;">
+                                <GridPane fx:id="catalogGridPane" layoutX="0.0" layoutY="12.0" prefHeight="650.0"
+                                          prefWidth="750.0" style="-fx-background-color: #ffffff;">
                                     <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                                     </columnConstraints>
                                     <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                     </rowConstraints>
                                 </GridPane>
                             </children>
@@ -65,20 +76,22 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <GridPane fx:id="managerGridPane" gridLinesVisible="false" layoutX="10.0" layoutY="14.0" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: #ffffff;">
+                                <GridPane fx:id="managerGridPane" gridLinesVisible="false" layoutX="0.0" layoutY="15.0"
+                                          prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: #ffffff;">
                                     <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                                     </columnConstraints>
                                     <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                                     </rowConstraints>
                                 </GridPane>
-                                <Pane fx:id="managerReportFormPane" layoutX="10.0" layoutY="464.0" prefHeight="200.0" prefWidth="750.0" />
+                                <Pane fx:id="managerReportFormPane" layoutX="10.0" layoutY="464.0" prefHeight="200.0"
+                                      prefWidth="750.0"/>
                             </children>
                         </AnchorPane>
                     </content>
@@ -87,14 +100,30 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="650.0" prefWidth="742.0000999999975">
+                                <Pane fx:id="amenitiesPane" layoutX="5.0" layoutY="0.0" prefHeight="650.0"
+                                      prefWidth="750">
                                     <children>
-                                        <ImageView fx:id="amenitiesPageImageView" fitHeight="267.0" fitWidth="713.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="amenitiesPageImageView" fitHeight="265.0" fitWidth="730.0"
+                                                   layoutX="10.0" layoutY="15.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
                                                 <!--                                    <Image url="/sample/AmenitiesPic.jpg" />-->
                                             </image>
                                         </ImageView>
-                                        <Label layoutX="15.0" layoutY="337.0" prefHeight="299.0" prefWidth="712.0" text="Welcome to ParadiseAt import resortName, we pride ourselves in excellence and perfection. Our guests enjoy only the finest amenities available, from our 2000 foot indoor swimming pool to our state-of-the-art arcade, there's some thing here for everyone. Whether you want to visit our private beach or go on a ski trip down our private slopes, you'll never be out of things to do.With over a million accolades and awards, import resortName has been the pinnacle of hosiptality ever since early 2000 B.C. We have ensured the perfect accomodations for each and every guest, and make sure that our outrageous prices go towards funding even more ridiculous future projects, like our Endangered Species Petting Zoo coming this Spring!For inqueries, please contact:info@importResortName.comFor press info, please contact:press@importResortName.comFor legal lawsuits regarding our capture and containment methods of afformetioned endangered species, please contact:info@importRivalResortName.com" wrapText="true" />
+                                        <GridPane fx:id="amenitiesGridPane" layoutX="0.0" layoutY="335.0"
+                                                  prefHeight="300.0" prefWidth="750.0"
+                                                  style="-fx-background-color: #ffffff;">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                        </GridPane>
+                                        <!--                                        <Label layoutX="10.0" layoutY="337.0" prefHeight="299.0" prefWidth="740.0" text="Welcome to ParadiseAt import resortName, we pride ourselves in excellence and perfection. Our guests enjoy only the finest amenities available, from our 2000 foot indoor swimming pool to our state-of-the-art arcade, there's some thing here for everyone. Whether you want to visit our private beach or go on a ski trip down our private slopes, you'll never be out of things to do.With over a million accolades and awards, import resortName has been the pinnacle of hosiptality ever since early 2000 B.C. We have ensured the perfect accomodations for each and every guest, and make sure that our outrageous prices go towards funding even more ridiculous future projects, like our Endangered Species Petting Zoo coming this Spring!For inqueries, please contact:info@importResortName.comFor press info, please contact:press@importResortName.comFor legal lawsuits regarding our capture and containment methods of afformetioned endangered species, please contact:info@importRivalResortName.com" wrapText="true" />-->
                                     </children>
                                 </Pane>
                             </children>
@@ -105,9 +134,9 @@
         </JFXTabPane>
     </children>
     <columnConstraints>
-        <ColumnConstraints />
+        <ColumnConstraints/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints />
+        <RowConstraints/>
     </rowConstraints>
 </GridPane>

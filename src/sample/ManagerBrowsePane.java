@@ -22,14 +22,6 @@ public class ManagerBrowsePane extends Pane {
     this.getStyleClass().add("pane");
 
     // Add Label
-    bedSizeLbl = new Label(room.getBedSize());
-    bedSizeLbl.setPrefWidth(150);
-    bedSizeLbl.setLayoutX(0);
-    bedSizeLbl.setLayoutY(5);
-    bedSizeLbl.setAlignment(Pos.CENTER);
-    this.getChildren().add(bedSizeLbl);
-
-    // Add Label
     numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
     numBedsLbl.setPrefWidth(150);
     numBedsLbl.setLayoutX(0);
@@ -38,7 +30,7 @@ public class ManagerBrowsePane extends Pane {
     this.getChildren().add(numBedsLbl);
 
     // Add Image
-    roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
+    roomImage = new Image(Controller.class.getResourceAsStream(room.getImageUrl()));
     imgView = new ImageView(roomImage);
     imgView.setFitHeight(90);
     imgView.setFitWidth(90);

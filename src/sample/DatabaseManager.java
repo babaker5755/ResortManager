@@ -60,36 +60,49 @@ public class DatabaseManager {
     isConnectedToDB = false;
     System.out.print("Connection successfully closed.\n");
   }
-
-  void addRoomsToDB(ArrayList<Room> rooms) {
-
-    for (Room room : rooms) {
-      System.out.println("Inserting room records into table...");
-      try {
-        PreparedStatement ps =
-            conn.prepareStatement(
-                "INSERT INTO ROOMS VALUES ('"
-                    + room.getRoomNumber()
-                    + "', '"
-                    + room.getBedSize()
-                    + "', "
-                    + room.getNumBeds()
-                    + ", "
-                    + room.getVacant()
-                    + ", "
-                    + room.getPrice()
-                    + ")");
-        ps.executeUpdate();
-        System.out.println("Inserted room record into table.");
-      } catch (SQLException e) {
-        e.printStackTrace();
-        System.out.println("Could not create room record.");
-      }
-    }
-  }
+// this was not being used so i commented it out
+//  void addRoomsToDB(ArrayList<Room> rooms) {
+//
+//    for (Room room : rooms) {
+//      System.out.println("Inserting room records into table...");
+//      try {
+//        PreparedStatement ps =
+//            conn.prepareStatement(
+//                "INSERT INTO ROOMS VALUES ('"
+//                    + room.getRoomName()
+//                    + "', '"
+//                    + room.getBedSize()
+//                    + "', "
+//                    + room.getNumBeds()
+//                    + ", "
+//                    + room.getVacant()
+//                    + ", "
+//                    + room.getPrice()
+//                    + ")");
+//        ps.executeUpdate();
+//        System.out.println("Inserted room record into table.");
+//      } catch (SQLException e) {
+//        e.printStackTrace();
+//        System.out.println("Could not create room record.");
+//      }
+//    }
+//  }
 
   ArrayList<Room> getRoomsAsList() {
     ArrayList<Room> rooms = new ArrayList<>();
+
+    /*
+    rooms.add(new Room("Beach",2,false,100.00,"images/Room_Beach.jpg" ));
+    rooms.add(new Room("Eastern",2,false,100.00,"images/Room_Eastern.jpg" ));
+    rooms.add(new Room("High Rollers",2,false,100.00,"images/Room_High_Rollers.jpg" ));
+    rooms.add(new Room("Jungle",2,false,100.00,"images/Room_Jungle.jpg" ));
+    rooms.add(new Room("Sea Floor",2,false,100.00,"images/Room_Sea_Floor.jpg" ));
+    rooms.add(new Room("Space",2,false,100.00,"images/Room_Space.jpg" ));
+    rooms.add(new Room("Spy",2,false,100.00,"images/Room_Spy.jpg" ));
+    rooms.add(new Room("Superhero",2,false,100.00,"images/Room_Superhero.jpg" ));
+    rooms.add(new Room("Victorian",2,false,100.00,"images/Room_Victorian.jpg" ));
+    rooms.add(new Room("Winter",2,false,100.00,"images/Room_Winter.png" ));
+    */
 
     try {
       // Get all rows from the specified table.
@@ -98,27 +111,25 @@ public class DatabaseManager {
 
       // Make each row a room object, then add it to the list of rooms.
       while (rs.next()) {
-        Room room =
-                new Room(
-                        rs.getString("ROOM_NUMBER"),
-                        rs.getString("BED_SIZE"),
-                        rs.getInt("NUM_BEDS"),
-                        rs.getBoolean("IS_VACANT"),
-                        rs.getDouble("PRICE"));
+        Room room = new Room(
+          rs.getString("ROOM_NAME"),
+          rs.getInt("NUM_BEDS"),
+          rs.getBoolean("IS_VACANT"),
+          rs.getDouble("PRICE"),
+          rs.getString("IMAGE_URL")
+        );
         rooms.add(room);
 
         // Cumbersome console confirmation.
         System.out.println(
-                "ROOM_NUMBER: "
-                        + rs.getString("ROOM_NUMBER")
-                        + ", BED_SIZE: "
-                        + rs.getString("BED_SIZE")
-                        + ", NUM_BEDS: "
-                        + rs.getInt("NUM_BEDS")
-                        + ", IS_VACANT: "
-                        + rs.getBoolean("IS_VACANT")
-                        + ", PRICE: "
-                        + rs.getDouble("PRICE"));
+          "ROOM_NAME: "
+            + rs.getString("ROOM_NAME")
+            + ", NUM_BEDS: "
+            + rs.getInt("NUM_BEDS")
+            + ", IS_VACANT: "
+            + rs.getBoolean("IS_VACANT")
+            + ", PRICE: "
+            + rs.getDouble("PRICE"));
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -128,41 +139,12 @@ public class DatabaseManager {
     return rooms;
   }
 
-  // add bookings to database
-  void addBookings(ArrayList<Booking> bookingList) {
-    System.out.println("Inserting booking records into table...");
-    for (Booking booking : bookingList) {
-      try {
-        PreparedStatement ps =
-                conn.prepareStatement(
-                        "INSERT INTO BOOKINGS VALUES ('"
-                                + booking.getConfirmationNumber()
-                                + "', '"
-                                + booking.getRoomNumber()
-                                + "', '"
-                                + booking.getPrice()
-                                + "', '"
-                                + booking.getClientName()
-                                + "', '"
-                                + booking.getClientAddress()
-                                + "', '"
-                                + booking.getClientCreditCard()
-                                + "', '"
-                                + booking.getClientEmail()
-                                + "', '"
-                                + booking.getCheckInDate()
-                                + "', '"
-                                + booking.getCheckOutDate()
-                                + "')");
-        ps.executeUpdate();
-        System.out.println("Inserted booking record into table.");
-      } catch (SQLException e) {
-        e.printStackTrace();
-        System.out.println("Could not create booking record.");
-      }
-    }
+  // add to total charge to booking
+  void addToCharge(){
+
   }
 
+  // add booking to database
   void addBooking(Booking booking) {
     System.out.println("Inserting booking records into table...");
     try {
@@ -170,7 +152,7 @@ public class DatabaseManager {
                       "INSERT INTO BOOKINGS VALUES ('"
                               + booking.getConfirmationNumber()
                               + "', '"
-                              + booking.getRoomNumber()
+                              + booking.getRoomName()
                               + "', '"
                               + booking.getPrice()
                               + "', '"
@@ -185,6 +167,8 @@ public class DatabaseManager {
                               + new Date(booking.getCheckInDate().getTime())
                               + "', '"
                               + new Date(booking.getCheckOutDate().getTime())
+                              + "', '"
+                              + booking.getCharge()
                               + "')");
       ps.executeUpdate();
       System.out.println("Inserted booking record into table.");
@@ -244,7 +228,7 @@ public class DatabaseManager {
         Booking booking =
             new Booking(
                 rs.getString("CONFIRMATION_NUMBER"),
-                rs.getString("ROOM_NUMBER"),
+                rs.getString("ROOM_NAME"),
                 rs.getDouble("PRICE"),
                 rs.getString("CLIENT_NAME"),
                 rs.getString("CLIENT_ADDRESS"),
@@ -252,14 +236,15 @@ public class DatabaseManager {
                 rs.getString("CLIENT_EMAIL"),
                 rs.getDate("START_DATE"),
                 rs.getDate("END_DATE"));
+        booking.setCharge(rs.getDouble("TOTAL_CHARGE"));
         bookingList.add(booking);
 
         // Confirm in console.
         System.out.println(
             "CONFIRMATION_NUMBER: "
                 + rs.getString("CONFIRMATION_NUMBER")
-                + ", ROOM_NUMBER: "
-                + rs.getString("ROOM_NUMBER")
+                + ", ROOM_NAME: "
+                + rs.getString("ROOM_NAME")
                 + ", PRICE: "
                 + rs.getDouble("PRICE")
                 + ", CLIENT_NAME: "
@@ -273,7 +258,9 @@ public class DatabaseManager {
                 + ", START_DATE: "
                 + rs.getDate("START_DATE")
                 + ", END_DATE: "
-                + rs.getDate("END_DATE"));
+                + rs.getDate("END_DATE")
+                + ", TOTAL_CHARGE: "
+                + booking.getCharge());
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -283,14 +270,14 @@ public class DatabaseManager {
     return bookingList;
   }
 
-  ArrayList<Booking> getBookingsByRoom(String roomNumber) {
+  ArrayList<Booking> getBookingsByRoom(String roomName) {
     ArrayList<Booking> bookingList = new ArrayList<>();
 
     try {
 
       // Get all rows from the specified table.
-      ps = conn.prepareStatement("SELECT * FROM BOOKINGS WHERE ROOM_NUMBER='"
-      + roomNumber
+      ps = conn.prepareStatement("SELECT * FROM BOOKINGS WHERE ROOM_NAME='"
+      + roomName
       + "'");
       rs = ps.executeQuery();
 
@@ -299,7 +286,7 @@ public class DatabaseManager {
         Booking booking =
                 new Booking(
                         rs.getString("CONFIRMATION_NUMBER"),
-                        rs.getString("ROOM_NUMBER"),
+                        rs.getString("ROOM_NAME"),
                         rs.getDouble("PRICE"),
                         rs.getString("CLIENT_NAME"),
                         rs.getString("CLIENT_ADDRESS"),
@@ -307,14 +294,15 @@ public class DatabaseManager {
                         rs.getString("CLIENT_EMAIL"),
                         rs.getDate("START_DATE"),
                         rs.getDate("END_DATE"));
+        booking.setCharge(rs.getDouble("TOTAL_CHARGE"));
         bookingList.add(booking);
 
         // Confirm in console.
         System.out.println(
                 "CONFIRMATION_NUMBER: "
                         + rs.getString("CONFIRMATION_NUMBER")
-                        + ", ROOM_NUMBER: "
-                        + rs.getString("ROOM_NUMBER")
+                        + ", ROOM_NAME: "
+                        + rs.getString("ROOM_NAME")
                         + ", PRICE: "
                         + rs.getDouble("PRICE")
                         + ", CLIENT_NAME: "
@@ -328,7 +316,9 @@ public class DatabaseManager {
                         + ", START_DATE: "
                         + rs.getDate("START_DATE")
                         + ", END_DATE: "
-                        + rs.getDate("END_DATE"));
+                        + rs.getDate("END_DATE")
+                        + ", TOTAL_CHARGE: "
+                        + booking.getCharge());
       }
     } catch (SQLException e) {
       e.printStackTrace();

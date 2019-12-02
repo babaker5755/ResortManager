@@ -39,14 +39,6 @@ public class ManagerRoomView {
     pane.getStyleClass().add("root");
 
     // Add Label
-    Label bedSizeLbl = new Label(room.getBedSize());
-    bedSizeLbl.setPrefWidth(700);
-    bedSizeLbl.setLayoutX(0);
-    bedSizeLbl.setLayoutY(15);
-    bedSizeLbl.setAlignment(Pos.CENTER);
-    pane.getChildren().add(bedSizeLbl);
-
-    // Add Label
     Label numBedsLbl = new Label("Number of Beds: " + room.getNumBeds());
     numBedsLbl.setPrefWidth(700);
     numBedsLbl.setLayoutX(0);
@@ -54,7 +46,7 @@ public class ManagerRoomView {
     numBedsLbl.setAlignment(Pos.CENTER);
     pane.getChildren().add(numBedsLbl);
 
-    Image roomImage = new Image(Controller.class.getResourceAsStream("hotelRoom.jpg"));
+    Image roomImage = new Image(Controller.class.getResourceAsStream(room.getImageUrl()));
     ImageView imgView = new ImageView(roomImage);
     imgView.setFitHeight(135);
     imgView.setFitWidth(135);
@@ -144,15 +136,17 @@ public class ManagerRoomView {
             );
           }
         });
-
     pane.getChildren().add(cancelBooking);
+
+
+
   }
 
   private TableView<Booking> setTableView(TableView<Booking> tableView) {
 
     DatabaseManager db = new DatabaseManager();
     final ObservableList<Booking> bookingsByRoom =
-            FXCollections.observableArrayList(db.getBookingsByRoom(room.getRoomNumber()));
+            FXCollections.observableArrayList(db.getBookingsByRoom(room.getRoomName()));
     db.disconnectFromDB();
     tableView.setItems(bookingsByRoom);
 
@@ -162,11 +156,11 @@ public class ManagerRoomView {
     confNumberCol.setMaxWidth(180);
     tableView.getColumns().add(confNumberCol);
 
-    TableColumn<Booking, String> roomNumberCol = new TableColumn<>("Room Number");
-    roomNumberCol.setStyle("-fx-alignment: CENTER;");
-    roomNumberCol.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-    roomNumberCol.setMaxWidth(100);
-    tableView.getColumns().add(roomNumberCol);
+    TableColumn<Booking, String> roomNameCol = new TableColumn<>("Room Name");
+    roomNameCol.setStyle("-fx-alignment: CENTER;");
+    roomNameCol.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+    roomNameCol.setMaxWidth(100);
+    tableView.getColumns().add(roomNameCol);
 
     TableColumn<Booking, Date> checkInCol = new TableColumn<>("Check-In Date");
     checkInCol.setStyle("-fx-alignment: CENTER;");

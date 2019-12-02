@@ -1,37 +1,36 @@
 package sample;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class Room {
 
-  private String roomNumber;
-  private String bedSize;
+  private String roomName;
   private int numBeds;
   private Boolean isVacant;
   private double price;
+  private String imageUrl;
 
-  public Room(String roomNumber, String bedSize, int numBeds, Boolean isVacant, double price) {
-    this.roomNumber = roomNumber;
-    this.bedSize = bedSize;
+  public Room(
+      String roomName,
+      int numBeds,
+      Boolean isVacant,
+      double price,
+      String imageUrl) {
+    this.roomName = roomName;
     this.numBeds = numBeds;
     this.isVacant = isVacant;
     this.price = price;
+    this.imageUrl = "images/" + imageUrl;
   }
 
-  public String getRoomNumber() {
-    return roomNumber;
+  public String getImageUrl() {
+    return imageUrl;
   }
 
-  public void setRoomNumber(String roomNumber) {
-    this.roomNumber = roomNumber;
+  public String getRoomName() {
+    return roomName;
   }
 
-  public String getBedSize() {
-    return bedSize;
-  }
-
-  public void setBedSize(String bedSize) {
-    this.bedSize = bedSize;
+  public void setRoomName(String roomName) {
+    this.roomName = roomName;
   }
 
   public int getNumBeds() {
