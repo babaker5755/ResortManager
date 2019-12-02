@@ -15,6 +15,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
@@ -167,20 +169,34 @@ public class RoomView {
     checkOutPicker.setLayoutY(570);
     checkOutPicker.setPrefWidth(175);
     checkOutPicker.setPrefHeight(40);
+
+    DatabaseManager databaseManager = new DatabaseManager();
+    ArrayList<Booking> bookings = databaseManager.getBookingsAsList();
+
     checkOutPicker.setDayCellFactory(
-        picker ->
-            new DateCell() {
-              public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                LocalDate today = LocalDate.now();
-                if(checkInPicker.getValue() != null) {
-                  setDisable(empty || date.compareTo(today) < 0
-                          || date.compareTo(checkInPicker.getValue()) <= 0);
-                } else {
-                  setDisable(empty || date.compareTo(today) < 0);
-                }
-              }
-            });
+            picker ->
+                    new DateCell() {
+                      public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        LocalDate today = LocalDate.now();
+
+                        for (Booking b : bookings) {
+                          if (b.getRoomName() == room.getRoomName()) {
+                            setDisabled(
+                                    date.compareTo(b.getCheckInDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) >= 0 &&
+                                            date.compareTo(b.getCheckOutDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) <= 0);
+                          }
+                        }
+
+                        if(checkInPicker.getValue() != null) {
+                          setDisable(empty || date.compareTo(today) < 0
+                                  || date.compareTo(checkInPicker.getValue()) <= 0);
+                        } else {
+                          setDisable(empty || date.compareTo(today) < 0);
+                        }
+                      }
+                    });
+
     pane.getChildren().add(checkOutPicker);
     checkOutPicker.setPromptText("Ex: 01/14/2019");
 
@@ -190,6 +206,15 @@ public class RoomView {
                       public void updateItem(LocalDate date, boolean empty) {
                         super.updateItem(date, empty);
                         LocalDate today = LocalDate.now();
+
+                        for (Booking b : bookings) {
+                          if (b.getRoomName() == room.getRoomName()) {
+                            setDisabled(
+                                    date.compareTo(b.getCheckInDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) >= 0 &&
+                                            date.compareTo(b.getCheckOutDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) <= 0);
+                          }
+                        }
+
                         if(checkOutPicker.getValue() != null) {
                           setDisable(empty || date.compareTo(today) < 0
                                   || 0 <= date.compareTo(checkOutPicker.getValue()));
