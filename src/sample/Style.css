@@ -19,8 +19,10 @@
     -fx-background-color: -fx-secondary;
 }
 .root{
-    -fx-background-color: -fx-primary;
+    /*-fx-background-color: -fx-primary;*/
+    -fx-background-color: linear-gradient(from 0px 0px to 3000px 3000px, -fx-primary, -fx-secondary);
 }
+
 .title-label {
     -fx-text-fill: -fx-primarytext;
     -fx-font-size: 20pt;
@@ -54,7 +56,7 @@
 }
 .button-raised {
     -fx-text-fill: -fx-primarytext;
-    -fx-background-color: -fx-primary;
+    -fx-background-color: transparent;
     -fx-border-color: -fx-secondary;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
@@ -66,8 +68,8 @@
     -fx-text-fill: -fx-primary;
 }
 .grid-pane {
-    -fx-background-color: -fx-primary;
+    -fx-background-color: transparent;
 }
 .pane {
-    -fx-background-color: -fx-primary;
+    -fx-background-color: transparent;
 }

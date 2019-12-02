@@ -75,9 +75,12 @@ public class Controller {
   }
 
   private void loadManagerTab(ArrayList<Room> rooms) {
+    managerReportFormPane.getStyleClass().add("grid-pane");
+    managerGridPane.getStyleClass().add("grid-pane");
     if (hasLoggedInAsManager) {
       setupManagerGridPane(rooms, false);
       ManagerReportView managerReportView = new ManagerReportView();
+      managerReportView.getStyleClass().add("grid-pane");
       EventHandler<ActionEvent> logoutHandler = new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent e) {
@@ -164,6 +167,7 @@ public class Controller {
             "Private Ski Slopes"
     );
 
+    amenitiesGridPane.getStyleClass().add("grid-pane");
     amenitiesGridPane.setGridLinesVisible(false);
     // For each room in the list of rooms
     for (int i = 0; i < listOfAmenities.size() ; i++) {
