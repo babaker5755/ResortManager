@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Fixed DRSR's date pickers.">
-      <change afterPath="$PROJECT_DIR$/src/sample/images/arcade.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/images/beach.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/images/gym.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/images/wedding.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ResortManager/sample/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Hotel_Database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Hotel_Database.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +34,32 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
+        <item name="HOTEL_DATABASE: database" type="2aa06773:H2ImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
+        <item name="HOTEL_DATABASE: database" type="2aa06773:H2ImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
+        <item name="HOTEL_DATABASE: database" type="2aa06773:H2ImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="PUBLIC: schema" type="7f85d983:H2ImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Hotel_Database" type="feb32156:DbDataSourceImpl" />
+        <item name="HOTEL_DATABASE: database" type="2aa06773:H2ImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="PUBLIC: schema" type="7f85d983:H2ImplModel$Schema" />
+        <item name="ROOMS: table" type="818c1b4a:H2ImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -437,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574880439928</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed DRSR's date pickers.">
+      <created>1575256782626</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575256782627</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,10 +520,10 @@
     <MESSAGE value="1. Date pickers in the room catalog view for customers have dates before&#10;today grayed out." />
     <MESSAGE value="Update fields within the &quot;booking a room&quot; (too tired to remember actual name) pane to have default prompt text with examples as well as added error message for submitting empty fields within booking and last but not least updated end date picker to gray out dates before the start date picker's selected value." />
     <MESSAGE value="Updated statistics to show revenue (total charges per month) and number of bookings per month." />
-    <MESSAGE value="Fixed DRSR's date pickers." />
     <MESSAGE value="Fully functional graph added with bookings and revenue per month shown for the current year." />
     <MESSAGE value="* Added back-end functionality to Room Service window.&#10;* Created enum class for FoodItem (Beverage, Meal, Entree, Snack).&#10;* Added error messages to Room Service window for incomplete, blank and incorrect text fields.&#10;* Added default prompt text to Credit card field and Room Number field within Room Service window.&#10;* Charges are added upon in bookings from Room Service charges functionality." />
     <MESSAGE value="* Fixed DRSR TableView to update with charges from Room Service. Minimal changes were made in the DbManager class, but now the Booking class updates its charge attribute through the database directly as a fix for the DRSR Tableview." />
-    <option name="LAST_COMMIT_MESSAGE" value="* Fixed DRSR TableView to update with charges from Room Service. Minimal changes were made in the DbManager class, but now the Booking class updates its charge attribute through the database directly as a fix for the DRSR Tableview." />
+    <MESSAGE value="Fixed DRSR's date pickers." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed DRSR's date pickers." />
   </component>
 </project>
