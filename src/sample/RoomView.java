@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -242,8 +243,12 @@ public class RoomView {
                     || checkOutPicker.getValue() == null) {
               JFXAlert alert = new JFXAlert(dialog);
               JFXDialogLayout content = new JFXDialogLayout();
-              content.setHeading(new Text("Error"));
-              content.setBody(new Text("One or more fields have not been filled out!"));
+              Text heading = new Text("Error");
+              heading.setFont(Font.font ("Verdana", 24));
+              content.setHeading(heading);
+              Text contentText = new Text("One or more fields have not been filled out!");
+              contentText.setFont(Font.font ("Verdana", 14));
+              content.setBody(contentText);
               alert.setSize(400,200);
               alert.setContent(content);
               alert.show();
@@ -255,23 +260,19 @@ public class RoomView {
               System.out.println("Submit Button Pressed" + priceLbl.toString());
               System.out.print(room.getRoomName() + "\n\n\n");
               dialog.close(); // closes booking window
-              Stage confirmPopup = new Stage();
-              confirmPopup.initModality(Modality.APPLICATION_MODAL);
-              VBox popupVbox = new VBox();
-              Pane pane = new Pane();
-              Label lbl =
-                      new Label(
-                              "  You're booked! Your confirmation number is: "
-                                      + confNumber
-                                      + "\n   Please write this number down and keep it safe!"); // TODO: Add
-              // confirmation
-              pane.getChildren().add(lbl);
-              Scene dialogScene =
-                      new Scene(popupVbox, 325, 75); // Change confirmation popup size here
-              dialogScene.getStylesheets().add(Main.class.getResource("Style.css").toExternalForm());
-              popupVbox.getChildren().add(pane);
-              confirmPopup.setScene(dialogScene);
-              confirmPopup.show();
+
+
+              JFXAlert alert = new JFXAlert(dialog);
+              JFXDialogLayout content = new JFXDialogLayout();
+              Text heading = new Text("You're booked!");
+              heading.setFont(Font.font ("Verdana", 24));
+              content.setHeading(heading);
+              Text contentText = new Text("Your confirmation number is: " + confNumber + "\nPlease write this number down and keep it safe!");
+              contentText.setFont(Font.font ("Verdana", 14));
+              content.setBody(contentText);
+              alert.setSize(400,200);
+              alert.setContent(content);
+              alert.show();
 
               DatabaseManager DBM = new DatabaseManager();
               bookingList.populateFromDB();
