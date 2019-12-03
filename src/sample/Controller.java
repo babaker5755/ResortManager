@@ -20,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -71,8 +73,33 @@ public class Controller {
   }
   @FXML
   void cancelReservation(MouseEvent event) {
-    dbManager.removeBookingInList(dbManager.getBookingsAsList(), confirmationNumberField.getText());
-    System.out.println(confirmationNumberField.getText());
+    Stage stage = (Stage) tabPane.getScene().getWindow();
+    if (confirmationNumberField.getText() != null && !confirmationNumberField.getText().equals("")) {
+      dbManager.removeBookingInList(dbManager.getBookingsAsList(), confirmationNumberField.getText());
+      JFXAlert alert = new JFXAlert(stage);
+      JFXDialogLayout content = new JFXDialogLayout();
+      Text heading = new Text("Success");
+      heading.setFont(Font.font ("Verdana", 24));
+      content.setHeading(heading);
+      Text contentText = new Text("The booking associated with your confirmation number has been cancelled.");
+      contentText.setFont(Font.font ("Verdana", 12));
+      content.setBody(contentText);
+      alert.setSize(600,200);
+      alert.setContent(content);
+      alert.show();
+    } else {
+      JFXAlert alert = new JFXAlert(stage);
+      JFXDialogLayout content = new JFXDialogLayout();
+      Text heading = new Text("Missing confirmation number");
+      heading.setFont(Font.font ("Verdana", 24));
+      content.setHeading(heading);
+      Text contentText = new Text("Please enter a confirmation number to cancel your booking.");
+      contentText.setFont(Font.font ("Verdana", 12));
+      content.setBody(contentText);
+      alert.setSize(600,200);
+      alert.setContent(content);
+      alert.show();
+    }
   }
 
   private void loadManagerTab(ArrayList<Room> rooms) {
