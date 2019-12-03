@@ -108,5 +108,6 @@ public class ManagerReportView extends Pane {
     logoutBtn.setLayoutY(190);
     logoutBtn.setOnAction(logoutHandler);
     this.getChildren().add(logoutBtn);
+
   }
 }

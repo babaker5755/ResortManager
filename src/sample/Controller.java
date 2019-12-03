@@ -200,6 +200,11 @@ public class Controller {
   private void setupManagerGridPane(ArrayList<Room> rooms, boolean setEmpty) {
     managerGridPane.setGridLinesVisible(false);
 
+    if(setEmpty){
+      managerGridPane.getChildren().clear();
+
+    }
+
     // For each room in the list of rooms
     for (int i = 0; i < rooms.size(); i++) {
 

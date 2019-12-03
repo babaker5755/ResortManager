@@ -6,6 +6,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Hotel_Database.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/Hotel_Database.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/res/Hotel_Database.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ManagerReportView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ManagerReportView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -362,6 +365,7 @@
       <workItem from="1575248451274" duration="1836000" />
       <workItem from="1575250309197" duration="640000" />
       <workItem from="1575250950256" duration="246000" />
+      <workItem from="1575403222495" duration="1064000" />
     </task>
     <task id="LOCAL-00001" summary="pull request">
       <created>1571161850397</created>
