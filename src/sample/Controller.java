@@ -17,6 +17,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -32,8 +33,7 @@ public class Controller {
 
   private boolean hasLoggedInAsManager = false;
 
-  @FXML
-  private JFXTabPane tabPane;
+  @FXML private JFXTabPane tabPane;
   @FXML private ImageView homePageImageView;
   @FXML private ImageView amenitiesPageImageView;
   @FXML private GridPane catalogGridPane;
@@ -42,8 +42,9 @@ public class Controller {
   @FXML private JFXButton cancelReservationBtn;
   @FXML private JFXTextField confirmationNumberField;
   @FXML private Label homePageTitleLabel;
-  @FXML private Label homePageBodyLabel;
   @FXML private Pane amenitiesPane;
+  @FXML private Pane homeScreenPane;
+  @FXML private GridPane homeScreenGridPane;
   @FXML private GridPane amenitiesGridPane;
 
   @FXML
@@ -53,12 +54,12 @@ public class Controller {
       tab.getStyleClass().add("tab");
     }
 
-    homePageBodyLabel.getStyleClass().add("label");
     homePageTitleLabel.getStyleClass().add("title-label");
     cancelReservationBtn.getStyleClass().add("button-raised");
     confirmationNumberField.getStyleClass().add("text-field");
 
-    Image amenitiesImage = new Image(Controller.class.getResourceAsStream("images/AmenitiesPic.jpg"));
+    Image amenitiesImage =
+        new Image(Controller.class.getResourceAsStream("images/AmenitiesPic.jpg"));
     amenitiesPageImageView.setImage(amenitiesImage);
     Image homePageImage = new Image(Controller.class.getResourceAsStream("images/BannerPic.jpg"));
     homePageImageView.setImage(homePageImage);
@@ -68,38 +69,92 @@ public class Controller {
     bookingList = new BookingManager(dbManager.getBookingsAsList());
     setupGridPaneWithRooms(rooms);
     loadManagerTab(rooms);
-
+    loadHomeScreenPane();
     setupAmenitiesGridPane();
   }
+
   @FXML
   void cancelReservation(MouseEvent event) {
-    Stage stage = (Stage) tabPane.getScene().getWindow();
-    if (confirmationNumberField.getText() != null && !confirmationNumberField.getText().equals("")) {
-      dbManager.removeBookingInList(dbManager.getBookingsAsList(), confirmationNumberField.getText());
+    Stage stage = (Stage) homeScreenPane.getScene().getWindow();
+    if (confirmationNumberField.getText() != null
+        && !confirmationNumberField.getText().equals("")) {
+      dbManager.removeBookingInList(
+          dbManager.getBookingsAsList(), confirmationNumberField.getText());
       JFXAlert alert = new JFXAlert(stage);
       JFXDialogLayout content = new JFXDialogLayout();
       Text heading = new Text("Success");
-      heading.setFont(Font.font ("Verdana", 24));
+      heading.setFont(Font.font("Verdana", 24));
       content.setHeading(heading);
-      Text contentText = new Text("The booking associated with your confirmation number has been cancelled.");
-      contentText.setFont(Font.font ("Verdana", 12));
+      Text contentText =
+          new Text("The booking associated with your confirmation number has been cancelled.");
+      contentText.setFont(Font.font("Verdana", 12));
       content.setBody(contentText);
-      alert.setSize(600,200);
+      alert.setSize(600, 200);
       alert.setContent(content);
       alert.show();
     } else {
       JFXAlert alert = new JFXAlert(stage);
       JFXDialogLayout content = new JFXDialogLayout();
       Text heading = new Text("Missing confirmation number");
-      heading.setFont(Font.font ("Verdana", 24));
+      heading.setFont(Font.font("Verdana", 24));
       content.setHeading(heading);
       Text contentText = new Text("Please enter a confirmation number to cancel your booking.");
-      contentText.setFont(Font.font ("Verdana", 12));
+      contentText.setFont(Font.font("Verdana", 12));
       content.setBody(contentText);
-      alert.setSize(600,200);
+      alert.setSize(600, 200);
       alert.setContent(content);
       alert.show();
     }
+  }
+
+  private void loadHomeScreenPane() {
+    homeScreenGridPane.getStyleClass().add("grid-pane");
+    for (int i = 0; i < 9; i++) {
+      boolean setEmpty = false;
+      int row = (i > 2) ? (i > 5) ? 2 : 1 : 0;
+      int column = (i > 2) ? (i > 5) ? i - 6 : i - 3 : i;
+
+      // Create pane from room data
+      Pane pane = new Pane();
+      pane.prefWidth(230);
+      Label lbl = new Label();
+      Label titleLabel = new Label();
+      if (i != 0){
+        titleLabel.setLayoutY(-10);
+      }
+      titleLabel.prefWidth(230);
+      titleLabel.getStyleClass().add("title-label");
+      titleLabel.setAlignment(Pos.CENTER);
+      pane.getChildren().add(titleLabel);
+      switch (i) {
+        case 0 :
+          titleLabel.setText("Book a room");
+          lbl.setText("If you would like to book a room at \nimport resortName, simply click \nthe \"Browse Catalog\" button at the \ntop and pick from our wide \nselection of state-of-the-art \nrooms."); break;
+        case 4 :
+          titleLabel.setText("Manage rooms");
+          lbl.setText("If you are a staff manager, simply\nclick the \"Manager\" tab and input\n your username and password when \nprompted, allowing you access to\n our secure server and the ability\n to view different aspects of resort \nand client information."); break;
+        case 8 :
+          titleLabel.setText("Discover Amenities");
+          lbl.setText("If you'd like to see all the wonderful \nthings available to guests here at \nthe resort, click the \"Amenities\"\n tab at the top of this page and be \ngreeted with a vast description of \nall the different ways you can relax \nwhile staying at import resortName!"); break;
+        default:  setEmpty = true;
+      }if (i == 0){
+        lbl.setLayoutY(30);
+      } else {
+        lbl.setLayoutY(20);
+      }
+      lbl.setPrefWidth(230);
+      lbl.getStyleClass().add("label");
+      pane.getChildren().add(lbl);
+      // Add pane to specified grid
+      if (setEmpty) {
+        Pane emptyPane = new Pane();
+        emptyPane.getStyleClass().add("pane");
+        homeScreenGridPane.add(emptyPane, column, row);
+      } else {
+        homeScreenGridPane.add(pane, column, row);
+      }
+    }
+
   }
 
   private void loadManagerTab(ArrayList<Room> rooms) {
@@ -109,15 +164,16 @@ public class Controller {
       setupManagerGridPane(rooms, false);
       ManagerReportView managerReportView = new ManagerReportView();
       managerReportView.getStyleClass().add("grid-pane");
-      EventHandler<ActionEvent> logoutHandler = new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent e) {
-          hasLoggedInAsManager = false;
-          setupManagerGridPane(rooms, true);
-          managerReportFormPane.getChildren().remove(managerReportView);
-          loadManagerTab(rooms);
-        }
-      };
+      EventHandler<ActionEvent> logoutHandler =
+          new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+              hasLoggedInAsManager = false;
+              setupManagerGridPane(rooms, true);
+              managerReportFormPane.getChildren().remove(managerReportView);
+              loadManagerTab(rooms);
+            }
+          };
       managerReportView.setLogoutHandler(logoutHandler);
       managerReportFormPane.getChildren().add(managerReportView);
     } else {
@@ -125,17 +181,17 @@ public class Controller {
       loginPane.getStyleClass().add("grid-pane");
       // Pass login action to form
       EventHandler<ActionEvent> loginAction =
-              new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent e) {
-          if (loginPane.authenticate()) {
-            managerGridPane.getChildren().remove(loginPane);
-            hasLoggedInAsManager = true;
-            loadManagerTab(rooms);
-          }
-        }
-      };
-      setupManagerGridPane(rooms,true);
+          new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+              if (loginPane.authenticate()) {
+                managerGridPane.getChildren().remove(loginPane);
+                hasLoggedInAsManager = true;
+                loadManagerTab(rooms);
+              }
+            }
+          };
+      setupManagerGridPane(rooms, true);
       loginPane.setLoginAction(loginAction);
       managerGridPane.getChildren().add(loginPane);
     }
@@ -161,7 +217,7 @@ public class Controller {
       if (setEmpty) {
         Pane emptyPane = new Pane();
         emptyPane.getStyleClass().add("pane");
-        managerGridPane.add(emptyPane,column,row);
+        managerGridPane.add(emptyPane, column, row);
       } else {
         managerGridPane.add(pane, column, row);
       }
@@ -190,15 +246,19 @@ public class Controller {
   }
 
   private void setupAmenitiesGridPane() {
-    List<String>  listOfAmenities = Arrays.asList(
-            "Order Room Service", "Gym, Pool, and Track", "Wedding Packages", "Arcade & Minigames", "Private Beach",
-            "Private Ski Slopes"
-    );
+    List<String> listOfAmenities =
+        Arrays.asList(
+            "Order Room Service",
+            "Gym, Pool, and Track",
+            "Wedding Packages",
+            "Arcade & Minigames",
+            "Private Beach",
+            "Private Ski Slopes");
 
     amenitiesGridPane.getStyleClass().add("grid-pane");
     amenitiesGridPane.setGridLinesVisible(false);
     // For each room in the list of rooms
-    for (int i = 0; i < listOfAmenities.size() ; i++) {
+    for (int i = 0; i < listOfAmenities.size(); i++) {
 
       // Get row and column of current grid in gridpane
       int row = (i < 3) ? 0 : 1;
@@ -212,19 +272,19 @@ public class Controller {
       button.setAlignment(Pos.CENTER);
       int finalI = i;
       button.setOnAction(
-              new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    switch (listOfAmenities.get(finalI)) {
-                      case "Order Room Service" :
-                        RoomServicePane roomServicePane = new RoomServicePane();
-                        roomServicePane.presentRoomServicePane();
-                        return;
-                      default:
-                        presentAmenityInfo(listOfAmenities.get(finalI));
-                  }
-                }
-              });
+          new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+              switch (listOfAmenities.get(finalI)) {
+                case "Order Room Service":
+                  RoomServicePane roomServicePane = new RoomServicePane();
+                  roomServicePane.presentRoomServicePane();
+                  return;
+                default:
+                  presentAmenityInfo(listOfAmenities.get(finalI));
+              }
+            }
+          });
       pane.getChildren().add(button);
 
       // Add pane to specified grid
@@ -246,25 +306,23 @@ public class Controller {
     titleLabel.setAlignment(Pos.CENTER);
     pane.getChildren().add(titleLabel);
 
-
-
     dialogVbox.getChildren().add(pane);
     Scene dialogScene = new Scene(dialogVbox, 400, 600);
     dialog.setScene(dialogScene);
 
-
-    switch (amenity)
-    {
+    switch (amenity) {
       case "Order Room Service":
         // There's no way I'm touching THAT.
         break;
       case "Gym, Pool, and Track":
-        Label amenitiesTextGym = new Label("Are you the type of person who never is happy unless they're working\n" +
-                "out? Do you constantly wish that you were lifting weights with your bros,\neven when on vacation? Well, " +
-                "at our state of the art gym, open 24/7 for\nguests, you will be in workout heaven. With over three " +
-                "hundred\ntreadmills, four hundred weight benches, and over ten tons of assorted\nbarbells, dumbbells, " +
-                "and other types of weights. Our indoor bicycle\ntrack and swimming pool are also available for you " +
-                "to use no matter the\ntime or day.");
+        Label amenitiesTextGym =
+            new Label(
+                "Are you the type of person who never is happy unless they're working\n"
+                    + "out? Do you constantly wish that you were lifting weights with your bros,\neven when on vacation? Well, "
+                    + "at our state of the art gym, open 24/7 for\nguests, you will be in workout heaven. With over three "
+                    + "hundred\ntreadmills, four hundred weight benches, and over ten tons of assorted\nbarbells, dumbbells, "
+                    + "and other types of weights. Our indoor bicycle\ntrack and swimming pool are also available for you "
+                    + "to use no matter the\ntime or day.");
         amenitiesTextGym.getStyleClass().add("text-field");
         amenitiesTextGym.setLayoutX(0);
         amenitiesTextGym.setLayoutY(50);
@@ -280,23 +338,25 @@ public class Controller {
         pane.getChildren().add(amenitiesTextGym);
         break;
       case "Wedding Packages":
-        Label amenitiesTextWedding = new Label("If you're planning on sharing your special day with us here at\n" +
-                "import resortName, then do we have a terrific selection of packages for\nyou! Whether it's your " +
-                "highschool sweetheart or the cute towel boy you\njust met at the cabana, rest assured that your wedding " +
-                "will be as magical\nas ever. Our Starfish Package has your ceremony take place at one of our\n" +
-                "private beaches under the moonlight, perfect for those looking for a\nromantic memory to cherish. Our " +
-                "Here Comes The Bride Package takes\nplace in our special chateau atop our private mountain range in " +
-                "France.\nWith the price of that one, we definitely put the steep in steeple! Neither\nof those catch " +
-                "your eye? The our Custom Package is the way to go!\nSimply tell us your request and we'll take care " +
-                "of everything.");
+        Label amenitiesTextWedding =
+            new Label(
+                "If you're planning on sharing your special day with us here at\n"
+                    + "import resortName, then do we have a terrific selection of packages for\nyou! Whether it's your "
+                    + "highschool sweetheart or the cute towel boy you\njust met at the cabana, rest assured that your wedding "
+                    + "will be as magical\nas ever. Our Starfish Package has your ceremony take place at one of our\n"
+                    + "private beaches under the moonlight, perfect for those looking for a\nromantic memory to cherish. Our "
+                    + "Here Comes The Bride Package takes\nplace in our special chateau atop our private mountain range in "
+                    + "France.\nWith the price of that one, we definitely put the steep in steeple! Neither\nof those catch "
+                    + "your eye? The our Custom Package is the way to go!\nSimply tell us your request and we'll take care "
+                    + "of everything.");
 
         amenitiesTextWedding.getStyleClass().add("text-field");
         amenitiesTextWedding.setLayoutX(0);
         amenitiesTextWedding.setLayoutY(50);
         amenitiesTextWedding.setPrefWidth(400);
         amenitiesTextWedding.setAlignment(Pos.CENTER);
-         image = new Image("sample/images/wedding.jpg");
-         imageView = new ImageView(image);
+        image = new Image("sample/images/wedding.jpg");
+        imageView = new ImageView(image);
         imageView.setFitHeight(250);
         imageView.setFitWidth(400);
         imageView.setX(0);
@@ -305,12 +365,14 @@ public class Controller {
         pane.getChildren().add(amenitiesTextWedding);
         break;
       case "Arcade & Minigames":
-        Label amenitiesTextArcade = new Label("Our Arcade room has every game and system ever created (even those\n" +
-                "rare Japanese ones!) We've worked hard to ensure that we've obtained\neach and every game that is " +
-                "or was ever available for purchase, and a\nconsole to go with each one. Play your friends at a friendly " +
-                "game of\nMortal Street Fighting 1, or the new Mortal Street Fighting 13 that has\nyet to even come out " +
-                "yet! Wanting something a bit more exciting? Our\nindoor go-kart track is right around the corner, " +
-                "along with our laser tag\narena, trivia gameshow room, and bowling alley!");
+        Label amenitiesTextArcade =
+            new Label(
+                "Our Arcade room has every game and system ever created (even those\n"
+                    + "rare Japanese ones!) We've worked hard to ensure that we've obtained\neach and every game that is "
+                    + "or was ever available for purchase, and a\nconsole to go with each one. Play your friends at a friendly "
+                    + "game of\nMortal Street Fighting 1, or the new Mortal Street Fighting 13 that has\nyet to even come out "
+                    + "yet! Wanting something a bit more exciting? Our\nindoor go-kart track is right around the corner, "
+                    + "along with our laser tag\narena, trivia gameshow room, and bowling alley!");
         amenitiesTextArcade.getStyleClass().add("text-field");
         amenitiesTextArcade.setLayoutX(0);
         amenitiesTextArcade.setLayoutY(50);
@@ -326,12 +388,14 @@ public class Controller {
         pane.getChildren().add(amenitiesTextArcade);
         break;
       case "Private Beach":
-        Label amenitiesTextBeach = new Label("Sit back and relax at one of our three dozen private beaches, all" +
-                "\naccessible by our own chartered boats. Take a nap on one of our islands\nin the Caribbean, then set " +
-                "sail to a different beach off the coast of\nSouth America. Looking for something a little more exotic? " +
-                "Our beaches in\nGreece, Italy, and Morocco are only a quick trip away with our private jet\nrentals. With" +
-                " locations all over the world, you can find a place in any continent\nyou'd like to soak up some sun, " +
-                "enjoy the water, and sip on mimosas all\nday long.");
+        Label amenitiesTextBeach =
+            new Label(
+                "Sit back and relax at one of our three dozen private beaches, all"
+                    + "\naccessible by our own chartered boats. Take a nap on one of our islands\nin the Caribbean, then set "
+                    + "sail to a different beach off the coast of\nSouth America. Looking for something a little more exotic? "
+                    + "Our beaches in\nGreece, Italy, and Morocco are only a quick trip away with our private jet\nrentals. With"
+                    + " locations all over the world, you can find a place in any continent\nyou'd like to soak up some sun, "
+                    + "enjoy the water, and sip on mimosas all\nday long.");
         amenitiesTextBeach.getStyleClass().add("text-field");
         amenitiesTextBeach.setLayoutX(0);
         amenitiesTextBeach.setLayoutY(50);
@@ -348,10 +412,12 @@ public class Controller {
         pane.getChildren().add(amenitiesTextBeach);
         break;
       case "Private Ski Slopes":
-        Label amenitiesTextSki = new Label("Who needs beaches and arcades when you have some slopes? Take a\nplane " +
-                "to any of our private ski resorts and shred that fresh snow,\nbrochacho. With resorts all over the world, " +
-                "we have a location for you\nwherever you'd like to be. Our in-house ski and snowboard\nmanufacturers " +
-                "will design a set of skiis just for you, perfectly handcrafted\nto your exact needs.");
+        Label amenitiesTextSki =
+            new Label(
+                "Who needs beaches and arcades when you have some slopes? Take a\nplane "
+                    + "to any of our private ski resorts and shred that fresh snow,\nbrochacho. With resorts all over the world, "
+                    + "we have a location for you\nwherever you'd like to be. Our in-house ski and snowboard\nmanufacturers "
+                    + "will design a set of skiis just for you, perfectly handcrafted\nto your exact needs.");
         amenitiesTextSki.getStyleClass().add("text-field");
         amenitiesTextSki.setLayoutX(0);
         amenitiesTextSki.setLayoutY(50);
@@ -368,8 +434,6 @@ public class Controller {
         break;
     }
 
-
     dialog.show();
   }
-
 }
