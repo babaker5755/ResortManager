@@ -3,11 +3,16 @@ package sample;
 import com.jfoenix.controls.*;
 
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -26,6 +31,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.Data;
+
 public class Controller {
 
   private BookingManager bookingList;
@@ -42,7 +49,6 @@ public class Controller {
   @FXML private JFXButton cancelReservationBtn;
   @FXML private JFXTextField confirmationNumberField;
   @FXML private Label homePageTitleLabel;
-  @FXML private Pane amenitiesPane;
   @FXML private Pane homeScreenPane;
   @FXML private GridPane homeScreenGridPane;
   @FXML private GridPane amenitiesGridPane;
@@ -53,6 +59,33 @@ public class Controller {
     for (Tab tab : tabPane.getTabs()) {
       tab.getStyleClass().add("tab");
     }
+
+    tabPane.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>()
+    {
+      @Override
+      public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1)
+      {
+        DatabaseManager databaseManager = new DatabaseManager();
+        ArrayList<Room> rooms = databaseManager.getRoomsAsList();
+
+        for (Room room : rooms) {
+          ArrayList<Booking> bookingsForRoom = databaseManager.getBookingsByRoom(room.getRoomName());
+          LocalDate today = LocalDate.now();
+          boolean isVacant = true;
+
+          for (Booking booking : bookingsForRoom) {
+
+            if (today.compareTo(
+                booking.getCheckInDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) >= 0
+                && today.compareTo(
+                booking.getCheckOutDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) <= 0) {
+              isVacant = false;
+            }
+          }
+          databaseManager.setIsVacant(room.getRoomName(), isVacant);
+        }
+      }
+    });
 
     homePageTitleLabel.getStyleClass().add("title-label");
     cancelReservationBtn.getStyleClass().add("button-raised");
