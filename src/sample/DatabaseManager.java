@@ -328,6 +328,19 @@ public class DatabaseManager {
     return bookingList;
   }
 
+  void setIsVacant(String roomName, boolean isVacant) {
+    try {
+      ps = conn.prepareStatement("UPDATE ROOMS SET IS_VACANT="
+              + isVacant
+              + " WHERE ROOM_NAME = '"
+              + roomName
+              + "'");
+      ps.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
   boolean authenticateUser(String userName, String password) {
 
     boolean authenticatedFlag = false;
