@@ -3,10 +3,13 @@
 ### Resort topic functionality: 
 - Create and manage reservations for specific dates and sizes of rooms.
 - Cancel room reservations. 
-- View different sorts of accommodations per room (different views to the outside areas, different types of beds, different types of sizes for each room, etc). 
+- View amenities that the resort offers.
+- Browse the room catalog and view different sorts of accommodations per room (different views to the outside areas, different types of beds, different types of sizes for each room, etc). 
 - Pay for room reservations.
 - Order Room Service.
+- Managers can log in and view room reservation activity.
 - Managers can produce summary report views.
+- Managers can generate report statistics.
 
 ### Group Members: 
 Brandon Baker, Todd Bauer, Chase Canales, Jose Silvestre-Bautista, Gerardo Ortiz, Cristian Mendoza
