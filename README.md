@@ -1,4 +1,5 @@
-
+# Resort Manager
+## Import your personal Paradise
 
 ### Resort topic functionality: 
 - Create and manage reservations for specific dates and sizes of rooms.
@@ -22,6 +23,12 @@ import team_name
 
 ### Meeting schedule: 
 Tuesdays after class (around 3:00 pm) and Saturdays (around 8:00 pm)
+
+### Technologies Used
+- JavaFX
+- IntelliJ IDEA
+- H2 SQL Database
+- JFoenix JavaFX Material Design Library
 
 ### Program installation:
 - Open IntelliJ IDEA.
