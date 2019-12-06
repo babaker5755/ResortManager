@@ -1,5 +1,8 @@
 # Resort Manager
-## Import your personal Paradise
+### Import your personal paradise
+
+Resort Manager is a project designed to allow hotel guests to browse hotel room information and book rooms. Hotels guests can also view amenities offered at the resort and even order room service. Resort Manager is designed to be simple and easy for anyone to use. Managers can log in and view room reservation activity, generate reports, and cancel room reservations. 
+
 
 ### Resort topic functionality: 
 - Create and manage reservations for specific dates and sizes of rooms.
