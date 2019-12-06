@@ -1,0 +1,45 @@
+Summary.txt
+Below is a summary of the main functionality for each scene in bullet point form
+
+Home Tab
+* Users are told how to use the program
+* Users can input a reservation number into the text field and click "Cancel Reservation" to remove their reservation
+from the database.
+* Users can switch to any tab from this view.
+
+Browse Catalog Tab
+* Users can choose the room they want by hitting the "Book Now" button
+	* After selecting a room, users can input their information into the corresponding text fields, along with chooseing a 
+	start and end date from the calendar date pickers.
+		* After hitting submit, the user receives a uniquely generated confirmation number that can be used to cancel their
+		room on the Home Tab. This adds the information to a database that can be aaccessed in the Manager Tab.
+		* If the user attempts to hit submit before filling out all fields, they will get an error popup.
+
+Manager Tab
+* The user must input a correct username and password to enter the manager view.
+	* If the user inputs incorrect credentials, they will be told they have inputed incorrect credentials.
+	* After inputting correct information, the user can view if a room is currently vacant or occupied.
+		* The user can select the "View" button that gives them information on the room's current occupants. If the room is
+		empty, no information is given. If it is occupied, the user has access to the occupant's confirmation number,
+		check-in date, check-out date, and name.
+			* The user can select a booking and cancel it by clicking the "Cancel Booking" button.
+	* The user can click "Resort Statistics" to view both booking and revenue statistics by month over a year span, showing
+	information on the number of residents that book each month and the amount of money that is generated each month as well.
+	* The user can choose two dates from the calendar date pickers and generate a Detailed Room Summary Report (DRSR).
+		* If the user does not select dates, they will receive an error popup.
+		* After the user generates the report, they will see the following information in a new popup, filtered by the
+		afformentioned date picker: all reservation confirmation numbers in the selected date range, the associated rooms 
+		that were reserved, the check-in and check-out dates for each room, the client names, addresses, credit card number,
+		and emails that were put in when the client booked their room, along with the price each person was charged.
+	* The user is able to hit the "Logout" button, closing the view and requiring login credentials to see the manager
+	view again.
+	
+Amenities Tab
+* The user can select one of six buttons, with five of them displaying information on a popup window regarding amenities
+at the hotel.
+* If a user selects the "Order Room Service" button, they are greeted with a new popup.
+	* The user can select a food item from the dropdown menu to add it to their order, and add up to four items per order.
+		* After selecting their items, the user inputs their room name and credit card number before hitting "Submit Order"
+		This charge is then added to the booking's total charge that is found on the Manager Tab.
+
+https://github.com/babaker5755/ResortManager
