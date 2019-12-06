@@ -13,7 +13,7 @@ Cristian Mendoza
 import team_name
 
 ### Meeting schedule: 
-Tuesdays after class (around 3:00 pm)
+Tuesdays after class (around 3:00 pm) and Saturdays (around 8:00 pm)
 
 ### Program installation:
 Click the “Clone or download” button and select the zip file. Extract the zip file and store it in a location you’ll remember. Open your IDE, click open and select the location of the folder and open it. Once loaded into your IDE, select the proper SDK: 1.8. Then run the program. 
