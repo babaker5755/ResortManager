@@ -45,4 +45,4 @@ Tuesdays after class (around 3:00 pm) and Saturdays (around 8:00 pm)
 
 
 
-![Image of our Group](https://github.com/babaker5755/ResortManager/blob/master/groupPhoto.JPG)
+![Image of our Group](https://github.com/babaker5755/ResortManager/blob/master/demo_gif.gif)
