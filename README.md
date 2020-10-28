@@ -15,6 +15,9 @@ Resort Manager is a project created to allow hotel guests to browse hotel room i
 - Managers can produce summary report views.
 - Managers can generate report statistics.
 
+## Demo
+![Demo GIF](https://github.com/babaker5755/ResortManager/blob/master/demo_gif.gif)
+
 ### Group Members: 
 Brandon Baker, Todd Bauer, Chase Canales, Jose Silvestre-Bautista, Gerardo Ortiz, Cristian Mendoza
 
@@ -42,7 +45,3 @@ Tuesdays after class (around 3:00 pm) and Saturdays (around 8:00 pm)
 - Ensure you have the proper SDK configured: Java 1.8
 - You should now be able to view all source code and run the project by pressing the play button in the top right.
 
-
-
-
-![Image of our Group](https://github.com/babaker5755/ResortManager/blob/master/demo_gif.gif)
